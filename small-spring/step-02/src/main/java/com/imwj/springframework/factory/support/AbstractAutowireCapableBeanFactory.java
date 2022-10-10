@@ -4,7 +4,7 @@ import com.imwj.springframework.BeansException;
 import com.imwj.springframework.factory.config.BeanDefinition;
 
 /**
- * 抽象自动装配bean工程
+ * 抽象自动装配bean工程（创建bean）
  * @author wj
  * @create 2022-10-09 17:38
  */

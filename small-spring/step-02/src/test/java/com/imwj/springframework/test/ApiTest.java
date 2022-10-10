@@ -18,10 +18,10 @@ public class ApiTest {
     public void test_BeanFactory() throws BeansException {
         // 1.初始化BeanFactory
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        // 2.注册bean
+        // 2.注册bean（注册BeanDefinition）
         BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
-        // 3.第一次获取bean
+        // 3.第一次获取bean（）
         UserService userService = (UserService) beanFactory.getBean("userService");
         userService.queryUserInfo();
         // 4.第二次获取bean

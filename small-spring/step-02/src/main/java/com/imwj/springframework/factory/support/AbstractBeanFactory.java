@@ -5,7 +5,7 @@ import com.imwj.springframework.factory.BeanFactory;
 import com.imwj.springframework.factory.config.BeanDefinition;
 
 /**
- * 抽象工厂类
+ * 抽象工厂类（通过BeanDefinition获取bean）
  * @author wj
  * @create 2022-10-09 17:39
  */
