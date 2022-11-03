@@ -1,4 +1,4 @@
-package com.imwj.springframework;
+package com.imwj.springframework.beans;
 
 /**
  * bean异常处理类

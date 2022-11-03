@@ -1,6 +1,6 @@
-package com.imwj.springframework.factory.config;
+package com.imwj.springframework.beans.factory.config;
 
-import com.imwj.springframework.factory.PropertyValues;
+import com.imwj.springframework.beans.PropertyValues;
 
 /**
  * @author wj

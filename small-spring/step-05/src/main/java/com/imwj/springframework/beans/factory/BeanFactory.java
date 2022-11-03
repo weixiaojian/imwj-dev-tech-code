@@ -1,6 +1,6 @@
-package com.imwj.springframework.factory;
+package com.imwj.springframework.beans.factory;
 
-import com.imwj.springframework.BeansException;
+import com.imwj.springframework.beans.BeansException;
 
 /**
  * @author wj

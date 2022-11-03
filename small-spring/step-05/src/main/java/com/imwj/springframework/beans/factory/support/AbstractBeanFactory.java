@@ -1,8 +1,8 @@
-package com.imwj.springframework.factory.support;
+package com.imwj.springframework.beans.factory.support;
 
-import com.imwj.springframework.factory.BeanFactory;
-import com.imwj.springframework.BeansException;
-import com.imwj.springframework.factory.config.BeanDefinition;
+import com.imwj.springframework.beans.factory.BeanFactory;
+import com.imwj.springframework.beans.BeansException;
+import com.imwj.springframework.beans.factory.config.BeanDefinition;
 
 /**
  * @author wj

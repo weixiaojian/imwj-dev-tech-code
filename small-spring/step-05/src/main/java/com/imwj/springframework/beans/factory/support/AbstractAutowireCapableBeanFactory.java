@@ -1,11 +1,11 @@
-package com.imwj.springframework.factory.support;
+package com.imwj.springframework.beans.factory.support;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.imwj.springframework.BeansException;
-import com.imwj.springframework.factory.PropertyValue;
-import com.imwj.springframework.factory.PropertyValues;
-import com.imwj.springframework.factory.config.BeanDefinition;
-import com.imwj.springframework.factory.config.BeanReference;
+import com.imwj.springframework.beans.BeansException;
+import com.imwj.springframework.beans.PropertyValue;
+import com.imwj.springframework.beans.PropertyValues;
+import com.imwj.springframework.beans.factory.config.BeanDefinition;
+import com.imwj.springframework.beans.factory.config.BeanReference;
 
 import java.lang.reflect.Constructor;
 

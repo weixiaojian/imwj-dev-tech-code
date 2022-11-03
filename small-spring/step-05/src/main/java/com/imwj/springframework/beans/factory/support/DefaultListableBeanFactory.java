@@ -1,8 +1,8 @@
-package com.imwj.springframework.factory.support;
+package com.imwj.springframework.beans.factory.support;
 
 
-import com.imwj.springframework.BeansException;
-import com.imwj.springframework.factory.config.BeanDefinition;
+import com.imwj.springframework.beans.BeansException;
+import com.imwj.springframework.beans.factory.config.BeanDefinition;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,4 +28,10 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
         if (beanDefinition == null) throw new BeansException("No bean named '" + beanName + "' is defined");
         return beanDefinition;
     }
+
+    @Override
+    public boolean containsBeanDefinition(String beanName)  {
+        return beanDefinitionMap.containsKey(beanName);
+    }
+
 }

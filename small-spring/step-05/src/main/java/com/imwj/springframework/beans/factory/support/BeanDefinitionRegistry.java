@@ -1,6 +1,7 @@
-package com.imwj.springframework.factory.support;
+package com.imwj.springframework.beans.factory.support;
 
-import com.imwj.springframework.factory.config.BeanDefinition;
+import com.imwj.springframework.beans.BeansException;
+import com.imwj.springframework.beans.factory.config.BeanDefinition;
 
 /**
  * BeanDefinition注册
@@ -16,4 +17,5 @@ public interface BeanDefinitionRegistry {
      */
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition);
 
+    boolean containsBeanDefinition(String beanName) throws BeansException;
 }

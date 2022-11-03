@@ -1,4 +1,4 @@
-package com.imwj.springframework.factory;
+package com.imwj.springframework.beans;
 
 /**
  * @author wj
