@@ -9,8 +9,6 @@ import java.util.Map;
  */
 public class UserDao {
 
-    private String uName;
-
     private static Map<String, String> hashMap = new HashMap<>();
 
     static {
@@ -20,15 +18,7 @@ public class UserDao {
     }
 
     public String queryUserName(String uId) {
-        return hashMap.get(uId) + uName;
+        return hashMap.get(uId);
     }
 
-
-    public String getuName() {
-        return uName;
-    }
-
-    public void setuName(String uName) {
-        this.uName = uName;
-    }
 }
