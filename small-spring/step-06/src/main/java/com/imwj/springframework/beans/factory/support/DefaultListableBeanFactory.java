@@ -62,10 +62,4 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
             getBean(s);
         }
     }
-
-
-    @Override
-    public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName) throws BeansException {
-        return null;
-    }
 }
