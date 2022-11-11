@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 默认单例bean注册器
  * @author wj
  * @create 2022-10-11 16:39
  */

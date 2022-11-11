@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * bean里面的属性集合
  * @author wj
  * @create 2022-10-25 11:29
  */
 public class PropertyValues {
 
+    /**
+     * 存储bean里面属性值的集合
+     */
     private final List<PropertyValue> propertyValueList = new ArrayList<>();
 
     public void addPropertyValue(PropertyValue pv) {

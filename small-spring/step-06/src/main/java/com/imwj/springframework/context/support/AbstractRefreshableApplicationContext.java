@@ -15,13 +15,15 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 
     @Override
     protected void refreshBeanFactory() throws BeansException {
+        // 1.创建beanFactory对象
         DefaultListableBeanFactory beanFactory = createBeanFactory();
+        // 2.加载spring.xml配置文件中的beanDefinitions
         loadBeanDefinitions(beanFactory);
         this.beanFactory = beanFactory;
     }
 
     /**
-     * 加载beanDefinitions
+     * 加载spring.xml配置文件中的beanDefinitions
      * @param beanFactory
      */
     protected abstract void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException;

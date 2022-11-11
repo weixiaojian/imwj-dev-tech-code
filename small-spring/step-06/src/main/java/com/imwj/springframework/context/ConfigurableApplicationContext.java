@@ -4,6 +4,7 @@ import com.imwj.springframework.beans.BeansException;
 import com.imwj.springframework.context.support.AbstractApplicationContext;
 
 /**
+ * 可配置应用上下文
  * @author wj
  * @create 2022-11-04 15:39
  */

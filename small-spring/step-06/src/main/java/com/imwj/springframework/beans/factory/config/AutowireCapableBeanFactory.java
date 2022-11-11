@@ -4,6 +4,7 @@ import com.imwj.springframework.beans.BeansException;
 import com.imwj.springframework.beans.factory.BeanFactory;
 
 /**
+ * 自动装配工厂接口
  * @author wj
  * @create 2022-11-01 17:22
  */

@@ -4,6 +4,7 @@ import com.imwj.springframework.core.io.DefaultResourceLoader;
 import com.imwj.springframework.core.io.ResourceLoader;
 
 /**
+ * BeanDefinition读取器-抽象
  * @author wj
  * @create 2022-11-01 17:22
  */

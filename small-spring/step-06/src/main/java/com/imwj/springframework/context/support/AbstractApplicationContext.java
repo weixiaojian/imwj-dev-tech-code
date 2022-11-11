@@ -10,6 +10,7 @@ import com.imwj.springframework.core.io.DefaultResourceLoader;
 import java.util.Map;
 
 /**
+ * 上下文加载器（核心）
  * @author wj
  * @create 2022-11-04 15:39
  */
@@ -18,26 +19,39 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     @Override
     public void refresh() throws BeansException {
-        // 1. 创建 BeanFactory，并加载 BeanDefinition
+        // 1. 创建 BeanFactory，并加载spring文件中的BeanDefinition（重点）
         refreshBeanFactory();
 
         // 2. 获取 BeanFactory
         ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 
-        // 3. 在 Bean 实例化之前，执行 BeanFactoryPostProcessor (Invoke factory processors registered as beans in the context.)
+        // 3. 在 Bean 实例化之前，执行 BeanFactoryPostProcessor (重点，Invoke factory processors registered as beans in the context.)
         invokeBeanFactoryPostProcessors(beanFactory);
 
-        // 4. BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作
+        // 4. 注册BeanPostProcessor 需要提前于其他 Bean 对象实例化之前执行注册操作（重点，方便后续执行）
         registerBeanPostProcessors(beanFactory);
 
         // 5. 提前实例化单例Bean对象
         beanFactory.preInstantiateSingletons();
     }
 
+    /**
+     * 创建 BeanFactory，并加载spring文件中的BeanDefinition
+     * @throws BeansException
+     */
     protected abstract void refreshBeanFactory() throws BeansException;
 
+    /**
+     * 获取beanFactory
+     * @return
+     */
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
+    /**
+     * 获取到所有的BeanFactoryPostProcessors并调用
+     * @param beanFactory
+     * @throws BeansException
+     */
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Map<String, BeanFactoryPostProcessor> beanFactoryPostProcessorMap = beanFactory.getBeansOfType(BeanFactoryPostProcessor.class);
         for (BeanFactoryPostProcessor beanFactoryPostProcessor : beanFactoryPostProcessorMap.values()) {
@@ -45,6 +59,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         }
     }
 
+    /**
+     * 获取到所有的BeanPostProcessors 并添加到集合中（后续创建bean的时候执行：AbstractAutowireCapableBeanFactory.createBean）
+     * @param beanFactory
+     * @throws BeansException
+     */
     private void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Map<String, BeanPostProcessor> beanPostProcessorMap = beanFactory.getBeansOfType(BeanPostProcessor.class);
         for (BeanPostProcessor beanPostProcessor : beanPostProcessorMap.values()) {

@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
+ * Url类型资源
  * @author wj
  * @create 2022-11-01 17:27
  */

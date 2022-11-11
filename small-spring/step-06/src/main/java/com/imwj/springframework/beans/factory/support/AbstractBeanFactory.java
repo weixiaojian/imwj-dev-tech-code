@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * beanFactory
  * @author wj
  * @create 2022-10-11 16:43
  */
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
-    /** BeanPostProcessors to apply in createBean */
+    /**
+     * 储存BeanPostProcessor 方便后续在createBean中执行
+     */
     private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 
     @Override
@@ -43,8 +46,21 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         return (T) createBean(name, beanDefinition, args);
     }
 
+    /**
+     * 获取beanDefinition
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
+    /**
+     * 创建bean对象
+     * @param beanName
+     * @param beanDefinition
+     * @param args
+     * @return
+     */
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException;
 
     @Override

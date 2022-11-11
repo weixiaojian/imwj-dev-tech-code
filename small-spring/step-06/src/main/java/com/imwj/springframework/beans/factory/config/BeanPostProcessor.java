@@ -3,6 +3,7 @@ package com.imwj.springframework.beans.factory.config;
 import com.imwj.springframework.beans.BeansException;
 
 /**
+ * Bean后置处理器
  * @author wj
  * @create 2022-11-04 15:37
  */

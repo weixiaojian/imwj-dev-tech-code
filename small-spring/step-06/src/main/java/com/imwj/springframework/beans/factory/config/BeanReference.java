@@ -1,6 +1,7 @@
 package com.imwj.springframework.beans.factory.config;
 
 /**
+ * bean引用（）
  * @author wj
  * @create 2022-10-25 11:28
  */

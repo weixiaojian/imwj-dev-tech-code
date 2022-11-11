@@ -1,6 +1,7 @@
 package com.imwj.springframework.beans;
 
 /**
+ * bean里面的属性
  * @author wj
  * @create 2022-10-25 11:29
  */

@@ -6,6 +6,7 @@ import com.imwj.springframework.beans.factory.config.BeanDefinition;
 import java.lang.reflect.Constructor;
 
 /**
+ * 实例化策略
  * @author wj
  * @create 2022-10-11 16:51
  */

@@ -3,6 +3,7 @@ package com.imwj.springframework.context.support;
 import com.imwj.springframework.beans.BeansException;
 
 /**
+ * 上下文路径加载器
  * @author wj
  * @create 2022-11-04 15:39
  */

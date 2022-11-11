@@ -1,11 +1,16 @@
 package com.imwj.springframework.utils;
 
 /**
+ * 类工具
  * @author wj
  * @create 2022-11-01 17:26
  */
 public class ClassUtils {
 
+    /**
+     * 获取默认的类加载器
+     * @return
+     */
     public static ClassLoader getDefaultClassLoader() {
         ClassLoader cl = null;
         try {

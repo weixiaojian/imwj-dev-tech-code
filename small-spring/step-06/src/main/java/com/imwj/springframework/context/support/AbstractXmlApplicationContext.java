@@ -13,9 +13,12 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableA
 
     @Override
     protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException {
+        // 1.初始化xml加载器
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory, this);
+        // 2.获取配置文件路径
         String[] configLocations = getConfigLocations();
         if(null != configLocations){
+            // 3.加载beanDefinitions
             xmlBeanDefinitionReader.loadBeanDefinitions(configLocations);
         }
     }

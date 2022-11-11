@@ -5,6 +5,7 @@ import cn.hutool.core.lang.Assert;
 import java.net.URL;
 
 /**
+ * 默认资源加载器
  * @author wj
  * @create 2022-11-01 17:26
  */

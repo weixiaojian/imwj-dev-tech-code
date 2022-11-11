@@ -3,6 +3,7 @@ package com.imwj.springframework.beans.factory;
 import com.imwj.springframework.beans.BeansException;
 
 /**
+ * BeanFactory
  * @author wj
  * @create 2022-10-25 11:27
  */

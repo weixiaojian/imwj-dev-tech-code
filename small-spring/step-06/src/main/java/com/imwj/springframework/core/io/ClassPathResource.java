@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * 类路径资源
  * @author wj
  * @create 2022-11-01 17:26
  */

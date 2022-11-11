@@ -3,13 +3,20 @@ package com.imwj.springframework.beans.factory.config;
 import com.imwj.springframework.beans.PropertyValues;
 
 /**
+ * 创建类所需的BeanDefinition
  * @author wj
  * @create 2022-10-25 11:28
  */
 public class BeanDefinition {
 
+    /**
+     * 类的class属性
+     */
     private Class beanClass;
 
+    /**
+     * 类所需填充的属性
+     */
     private PropertyValues propertyValues;
 
     public BeanDefinition(Class beanClass) {

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * xml beanDefinition读取
  * @author wj
  * @create 2022-11-01 17:23
  */
@@ -66,11 +67,20 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         }
     }
 
+    /**
+     * 核心：加载BeanDefinitions
+     * @param inputStream
+     * @throws ClassNotFoundException
+     * @throws BeansException
+     */
     private void doLoadBeanDefinitions(InputStream inputStream) throws ClassNotFoundException, BeansException {
+        // 0.读取xml文件
         Document doc = XmlUtil.readXML(inputStream);
+        // 1.获取根节点
         Element root = doc.getDocumentElement();
+        // 2.得到所有字节点
         NodeList childNodes = root.getChildNodes();
-
+        // 3.遍历子节点
         for(int i=0; i< childNodes.getLength(); i++){
             // 判断元素
             if(!(childNodes.item(i) instanceof Element)) continue;

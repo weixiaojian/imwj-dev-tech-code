@@ -12,19 +12,18 @@ import com.imwj.springframework.beans.factory.config.BeanReference;
 import java.lang.reflect.Constructor;
 
 /**
+ * 自动装配工厂抽象类
  * @author wj
  * @create 2022-10-11 16:48
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
 
+    /**
+     * 创建bean所用的实例化方式：cglib、jdk
+     */
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
 
-    /**
-     * @param beanName
-     * @param beanDefinition
-     * @param args
-     * @return
-     */
+
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object... args) throws BeansException {
         Object bean = null;
         try {
@@ -41,7 +40,14 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     }
 
 
-
+    /**
+     * 创建bean对象实例
+     * @param beanDefinition
+     * @param beanName
+     * @param args
+     * @return
+     * @throws BeansException
+     */
     protected  Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) throws BeansException {
         Constructor constructor = null;
         Class<?> beanClass = beanDefinition.getBeanClass();
@@ -112,6 +118,14 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return result;
     }
 
+    /**
+     * 初始化bean（执行 Bean 的初始化方法和 BeanPostProcessor 的前置和后置处理方法）
+     * @param beanName
+     * @param bean
+     * @param beanDefinition
+     * @return
+     * @throws BeansException
+     */
     private Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) throws BeansException {
         // 1. 执行 BeanPostProcessor Before 处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);

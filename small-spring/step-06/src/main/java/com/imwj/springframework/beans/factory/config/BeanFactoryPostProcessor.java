@@ -4,6 +4,7 @@ import com.imwj.springframework.beans.BeansException;
 import com.imwj.springframework.beans.factory.ConfigurableListableBeanFactory;
 
 /**
+ * BeanFactory后置处理器（bean实例化之前执行）
  * @author wj
  * @create 2022-11-04 15:37
  */
