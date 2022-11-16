@@ -5,6 +5,7 @@ import com.imwj.springframework.beans.BeansException;
 import com.imwj.springframework.beans.factory.config.BeanDefinition;
 import com.imwj.springframework.beans.factory.config.BeanPostProcessor;
 import com.imwj.springframework.beans.factory.config.ConfigurableBeanFactory;
+import com.imwj.springframework.utils.ClassUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,11 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
      * 储存BeanPostProcessor 方便后续在createBean中执行
      */
     private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+
+    /**
+     * 获取类加载器
+     */
+    private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
 
     @Override
     public Object getBean(String name) throws BeansException {
@@ -75,6 +81,10 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
      */
     public List<BeanPostProcessor> getBeanPostProcessors() {
         return this.beanPostProcessors;
+    }
+
+    public ClassLoader getBeanClassLoader() {
+        return this.beanClassLoader;
     }
 
 }

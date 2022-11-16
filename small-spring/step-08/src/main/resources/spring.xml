@@ -10,7 +10,4 @@
 
     <bean id="userDao" class="bean.UserDao" init-method="initDataMethod" destroy-method="destroyDataMethod"/>
 
-    <bean class="common.MyBeanPostProcessor"/>
-    <bean class="common.MyBeanFactoryPostProcessor"/>
-
 </beans>

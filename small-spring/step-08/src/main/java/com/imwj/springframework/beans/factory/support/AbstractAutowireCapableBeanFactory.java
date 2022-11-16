@@ -5,8 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.imwj.springframework.beans.BeansException;
 import com.imwj.springframework.beans.PropertyValue;
 import com.imwj.springframework.beans.PropertyValues;
-import com.imwj.springframework.beans.factory.DisposableBean;
-import com.imwj.springframework.beans.factory.InitializingBean;
+import com.imwj.springframework.beans.factory.*;
 import com.imwj.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import com.imwj.springframework.beans.factory.config.BeanDefinition;
 import com.imwj.springframework.beans.factory.config.BeanPostProcessor;
@@ -134,6 +133,19 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
      * @throws BeansException
      */
     private Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) throws BeansException {
+        // 0.执行Aware的相关方法
+        if(bean instanceof Aware){
+            if(bean instanceof BeanFactoryAware){
+                ((BeanFactoryAware)bean).setBeanFactory(this);
+            }
+            if(bean instanceof BeanFactoryAware){
+                ((BeanClassLoaderAware)bean).setBeanClassLoader(getBeanClassLoader());
+            }
+            if(bean instanceof BeanFactoryAware){
+                ((BeanNameAware)bean).setBeanName(beanName);
+            }
+        }
+
         // 1. 执行 BeanPostProcessor Before 处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
         // 执行bean的InitMethod
