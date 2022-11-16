@@ -19,6 +19,16 @@ public class BeanDefinition {
      */
     private PropertyValues propertyValues;
 
+    /**
+     * xml中的init-method配置项
+     */
+    private String initMethodName;
+    /**
+     * xml中destroy-method配置项
+     */
+    private String destroyMethodName;
+
+
     public BeanDefinition(Class beanClass) {
         this.beanClass = beanClass;
         this.propertyValues = new PropertyValues();
@@ -43,5 +53,21 @@ public class BeanDefinition {
 
     public void setPropertyValues(PropertyValues propertyValues) {
         this.propertyValues = propertyValues;
+    }
+
+    public String getInitMethodName() {
+        return initMethodName;
+    }
+
+    public void setInitMethodName(String initMethodName) {
+        this.initMethodName = initMethodName;
+    }
+
+    public String getDestroyMethodName() {
+        return destroyMethodName;
+    }
+
+    public void setDestroyMethodName(String destroyMethodName) {
+        this.destroyMethodName = destroyMethodName;
     }
 }

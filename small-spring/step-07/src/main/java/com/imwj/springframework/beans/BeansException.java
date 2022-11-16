@@ -5,7 +5,7 @@ package com.imwj.springframework.beans;
  * @author wj
  * @create 2022-10-09 17:42
  */
-public class BeansException extends Throwable {
+public class BeansException extends RuntimeException {
     public BeansException(String msg, Exception e) {
         System.out.println(msg + "，e:" + e);
     }
