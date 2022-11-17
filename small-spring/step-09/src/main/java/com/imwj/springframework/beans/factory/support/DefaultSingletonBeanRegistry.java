@@ -15,8 +15,15 @@ import java.util.Set;
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
-    Map<String, Object> singletonObjects = new HashMap<>();
+    protected static final Object NULL_OBJECT = new Object();
 
+    /**
+     * 单例bean缓存对象（key:beanName  value:Bean）
+     */
+    Map<String, Object> singletonObjects = new HashMap<>();
+    /**
+     * 销毁Bean缓存对象（key:beanName  value:Bean）
+     */
     Map<String, DisposableBean> disposableBeans = new HashMap<>();
 
     /**

@@ -2,6 +2,7 @@ package com.imwj.springframework.beans.factory.support;
 
 import com.imwj.springframework.beans.factory.BeanFactory;
 import com.imwj.springframework.beans.BeansException;
+import com.imwj.springframework.beans.factory.FactoryBean;
 import com.imwj.springframework.beans.factory.config.BeanDefinition;
 import com.imwj.springframework.beans.factory.config.BeanPostProcessor;
 import com.imwj.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author wj
  * @create 2022-10-11 16:43
  */
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /**
      * 储存BeanPostProcessor 方便后续在createBean中执行
@@ -43,13 +44,33 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     }
 
     protected <T> T doGetBean(final String name, final Object[] args) throws BeansException {
-        Object bean = getSingleton(name);
-        if (bean != null) {
-            return (T) bean;
+        Object sharedInstance  = getSingleton(name);
+        if (sharedInstance  != null) {
+            return (T) getObjectForBeanInstance(sharedInstance, name);
         }
-
         BeanDefinition beanDefinition = getBeanDefinition(name);
-        return (T) createBean(name, beanDefinition, args);
+        Object bean = createBean(name, beanDefinition, args);
+        return (T) getObjectForBeanInstance(bean, name);
+    }
+
+    /**
+     * 添加bean对应的FactoryBean到缓存中去
+     * @param beanInstance
+     * @param beanName
+     * @return
+     */
+    private Object getObjectForBeanInstance(Object beanInstance, String beanName) {
+        // 如果不是FactoryBean 直接返回
+        if(!(beanInstance instanceof FactoryBean)){
+            return beanInstance;
+        }
+        // 如果是FactoryBean 则需要添加到缓存中
+        Object object = getCachedObjectForFactoryBean(beanName);
+        if(object == null){
+            FactoryBean<?> factoryBean = (FactoryBean<?>) beanInstance;
+            object = getObjectFromFactoryBean(factoryBean, beanName);
+        }
+        return object;
     }
 
     /**
