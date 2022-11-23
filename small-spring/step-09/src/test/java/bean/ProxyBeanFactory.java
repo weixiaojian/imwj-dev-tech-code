@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 如果这个bean是FactoryBean的话 那么spring在初始化的时候会调用getObject方法  而不是直接初始化bean
  * @author wj
  * @create 2022-11-17 16:35
  */
