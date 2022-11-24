@@ -7,6 +7,10 @@ package com.imwj.springframework.beans.factory;
  */
 public interface BeanFactoryAware extends Aware{
 
+    /**
+     * 设置beanFactory
+     * @param beanFactory
+     */
     void setBeanFactory(BeanFactory beanFactory);
 
 }

@@ -13,4 +13,11 @@ public interface SingletonBeanRegistry {
      */
     Object getSingleton(String beanName);
 
+    /**
+     * 注册单例bean对象
+     * @param beanName
+     * @param singletonObject
+     */
+    void registerSingleton(String beanName, Object singletonObject);
+
 }

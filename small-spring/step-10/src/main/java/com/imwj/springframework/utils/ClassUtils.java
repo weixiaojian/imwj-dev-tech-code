@@ -1,5 +1,7 @@
 package com.imwj.springframework.utils;
 
+import com.imwj.springframework.context.ApplicationListener;
+
 /**
  * 类工具
  * @author wj
@@ -24,5 +26,14 @@ public class ClassUtils {
             cl = ClassUtils.class.getClassLoader();
         }
         return cl;
+    }
+
+    /**
+     * 判断是否是cglib实例化
+     * @param listenerClass
+     * @return
+     */
+    public static boolean isCglibProxyClass(Class<? extends ApplicationListener> listenerClass) {
+        return true;
     }
 }
