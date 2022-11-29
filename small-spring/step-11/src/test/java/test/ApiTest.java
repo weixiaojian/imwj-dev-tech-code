@@ -1,33 +1,61 @@
 package test;
 
-import bean.IUserDao;
-import bean.UserService;
-import cn.hutool.core.io.IoUtil;
-import com.imwj.springframework.beans.BeansException;
-import com.imwj.springframework.beans.PropertyValue;
-import com.imwj.springframework.beans.PropertyValues;
-import com.imwj.springframework.beans.factory.config.BeanDefinition;
-import com.imwj.springframework.beans.factory.config.BeanReference;
-import com.imwj.springframework.beans.factory.support.DefaultListableBeanFactory;
-import com.imwj.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import com.imwj.springframework.context.support.ClassPathXmlApplicationContext;
-import com.imwj.springframework.core.io.DefaultResourceLoader;
-import com.imwj.springframework.core.io.Resource;
-import common.MyBeanFactoryPostProcessor;
-import common.MyBeanPostProcessor;
-import event.CustomEvent;
-import org.junit.Before;
-import org.junit.Test;
-import org.openjdk.jol.info.ClassLayout;
 
-import java.io.IOException;
-import java.io.InputStream;
+import bean.IUserService;
+import bean.UserService;
+import com.imwj.springframework.aop.MethodMatcher;
+import com.imwj.springframework.aop.aspectj.AspectJExpressionPointcut;
+import com.imwj.springframework.aop.framework.ReflectiveMethodInvocation;
+import com.imwj.springframework.context.support.ClassPathXmlApplicationContext;
+import event.CustomEvent;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.junit.Test;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @author wj
  * @create 2022-10-11 17:29
  */
 public class ApiTest {
+
+    @Test
+    public void test_proxy_method() {
+        // 目标对象
+        Object targetObj = new UserService();
+        // 0.aop代理
+        IUserService proxy = (IUserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), targetObj.getClass().getInterfaces(), new InvocationHandler() {
+            // 2.方法匹配器
+            MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* bean.IUserService.*(..))");
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                // 3.如果方法匹配是目标对象的
+                if (methodMatcher.matches(method, targetObj.getClass())) {
+                    // 5.设置方法拦截器
+                    MethodInterceptor methodInterceptor = invocation -> {
+                        long start = System.currentTimeMillis();
+                        try {
+                            return invocation.proceed();
+                        } finally {
+                            System.out.println("监控 - Begin By AOP");
+                            System.out.println("方法名称：" + invocation.getMethod().getName());
+                            System.out.println("方法耗时：" + (System.currentTimeMillis() - start) + "ms");
+                            System.out.println("监控 - End\r\n");
+                        }
+                    };
+                    // 4.通过反射调用目标
+                    return methodInterceptor.invoke(new ReflectiveMethodInvocation(targetObj, method, args));
+                }
+                return method.invoke(targetObj, args);
+            }
+        });
+        // 1.执行业务逻辑
+        String result = proxy.queryUserInfo();
+        // 6.输出结果
+        System.out.println("测试结果：" + result);
+    }
 
     @Test
     public void test_event() {
