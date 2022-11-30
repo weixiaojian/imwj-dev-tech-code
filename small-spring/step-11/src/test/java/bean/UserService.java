@@ -16,6 +16,7 @@ public class UserService implements IUserService{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("service查询操作！");
         return "imwj，100001，深圳";
     }
 

@@ -22,6 +22,17 @@ import java.lang.reflect.Proxy;
 public class ApiTest {
 
     @Test
+    public void test_aop() throws NoSuchMethodException {
+        AspectJExpressionPointcut methodMatcher = new AspectJExpressionPointcut("execution(* bean.IUserService.*(..))");
+        Class<UserService> clazz = UserService.class;
+        Method method = clazz.getDeclaredMethod("queryUserInfo");
+
+        System.out.println(methodMatcher.matches(clazz));
+        System.out.println(methodMatcher.matches(method, clazz));
+
+    }
+
+    @Test
     public void test_proxy_method() {
         // 目标对象
         Object targetObj = new UserService();
@@ -37,17 +48,20 @@ public class ApiTest {
                     MethodInterceptor methodInterceptor = invocation -> {
                         long start = System.currentTimeMillis();
                         try {
+                            // 执行代理方法
                             return invocation.proceed();
                         } finally {
+                            // 增加额外操作如：日志、监控等
                             System.out.println("监控 - Begin By AOP");
                             System.out.println("方法名称：" + invocation.getMethod().getName());
                             System.out.println("方法耗时：" + (System.currentTimeMillis() - start) + "ms");
                             System.out.println("监控 - End\r\n");
                         }
                     };
-                    // 4.通过反射调用目标
+                    // 4.通过反射调用代理对象的方法
                     return methodInterceptor.invoke(new ReflectiveMethodInvocation(targetObj, method, args));
                 }
+                // 调用被代理的方法（执行了代理方法就不会执行该步骤）
                 return method.invoke(targetObj, args);
             }
         });
