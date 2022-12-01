@@ -6,6 +6,7 @@ import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
 /**
+ * 反射调用包装类
  * @author wj
  * @create 2022-11-29 17:36
  */

@@ -3,8 +3,13 @@ package test;
 
 import bean.IUserService;
 import bean.UserService;
+import bean.UserServiceInterceptor;
+import com.imwj.springframework.aop.AdvisedSupport;
 import com.imwj.springframework.aop.MethodMatcher;
+import com.imwj.springframework.aop.TargetSource;
 import com.imwj.springframework.aop.aspectj.AspectJExpressionPointcut;
+import com.imwj.springframework.aop.framework.Cglib2AopProxy;
+import com.imwj.springframework.aop.framework.JdkDynamicAopProxy;
 import com.imwj.springframework.aop.framework.ReflectiveMethodInvocation;
 import com.imwj.springframework.context.support.ClassPathXmlApplicationContext;
 import event.CustomEvent;
@@ -71,12 +76,32 @@ public class ApiTest {
         System.out.println("测试结果：" + result);
     }
 
+    /**
+     * 动态代理测试
+     */
     @Test
-    public void test_event() {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
-        applicationContext.publishEvent(new CustomEvent(applicationContext, 1019129009086763L, "成功了！"));
+    public void test_dynamic() {
+        // 目标对象
+        IUserService userService = new UserService();
 
-        applicationContext.registerShutdownHook();
+        // 组装代理信息
+        AdvisedSupport advisedSupport = new AdvisedSupport();
+        advisedSupport.setTargetSource(new TargetSource(userService));
+        advisedSupport.setMethodInterceptor(new UserServiceInterceptor());
+        advisedSupport.setMethodMatcher(new AspectJExpressionPointcut("execution(* bean.IUserService.*(..))"));
+
+        // 原生对象调用
+        System.out.println("原生调用：" + userService.queryUserInfo());
+
+        // 代理对象(JdkDynamicAopProxy)
+        IUserService proxy_jdk = (IUserService) new JdkDynamicAopProxy(advisedSupport).getProxy();
+        // 测试调用
+        System.out.println("JdkDynamicAopProxy测试结果：" + proxy_jdk.queryUserInfo());
+
+        // 代理对象(Cglib2AopProxy)
+        IUserService proxy_cglib = (IUserService) new Cglib2AopProxy(advisedSupport).getProxy();
+        // 测试调用
+        System.out.println("Cglib2AopProxy测试结果：" + proxy_cglib.register("花花"));
     }
 
 }
