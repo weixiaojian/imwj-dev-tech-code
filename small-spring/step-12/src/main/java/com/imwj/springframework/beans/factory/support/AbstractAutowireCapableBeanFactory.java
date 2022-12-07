@@ -6,10 +6,7 @@ import com.imwj.springframework.beans.BeansException;
 import com.imwj.springframework.beans.PropertyValue;
 import com.imwj.springframework.beans.PropertyValues;
 import com.imwj.springframework.beans.factory.*;
-import com.imwj.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import com.imwj.springframework.beans.factory.config.BeanDefinition;
-import com.imwj.springframework.beans.factory.config.BeanPostProcessor;
-import com.imwj.springframework.beans.factory.config.BeanReference;
+import com.imwj.springframework.beans.factory.config.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -30,6 +27,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object... args) throws BeansException {
         Object bean = null;
         try {
+            // 判断是否返回代理Bean对象
+            bean = resolveBeforeInstantiation(beanName, beanDefinition);
+            if(bean != null){
+                return bean;
+            }
+
             bean = createBeanInstance(beanDefinition, beanName, args);
             // 给 Bean 填充属性
             applyPropertyValues(beanName, bean, beanDefinition);
@@ -48,6 +51,40 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return bean;
     }
 
+    /**
+     * 实例化前解析bean对象（得到代理对象）
+     * TODO 原先的bean的初始化前方法没有执行
+     * @param beanName
+     * @param beanDefinition
+     * @return
+     */
+    protected Object resolveBeforeInstantiation(String beanName, BeanDefinition beanDefinition) {
+        Object bean = applyBeanPostProcessorsBeforeInstantiation(beanDefinition.getBeanClass(), beanName);
+        if(bean != null){
+            // 执行bean初始化后方法
+            bean = applyBeanPostProcessorsAfterInitialization(bean, beanName);
+        }
+        return bean;
+    }
+
+    /**
+     * 在实例化前应用BeanPostProcessor（生成代理对象返回）
+     * @param beanClass
+     * @param beanName
+     * @return
+     */
+    private Object applyBeanPostProcessorsBeforeInstantiation(Class beanClass, String beanName) {
+        for(BeanPostProcessor processor : getBeanPostProcessors()){
+            if(processor instanceof InstantiationAwareBeanPostProcessor){
+                // 执行bean的初始化前方法(生成代理类 替换掉原先的类)
+                Object result = ((InstantiationAwareBeanPostProcessor)processor).postProcessBeforeInstantiation(beanClass, beanName);
+                if (null != result) {
+                    return result;
+                }
+            }
+        }
+        return null;
+    }
 
     /**
      * 创建bean对象实例
@@ -110,7 +147,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object result = existingBean;
         for (BeanPostProcessor processor : getBeanPostProcessors()) {
             Object current = processor.postProcessBeforeInitialization(result, beanName);
-            if (null == current) return result;
+            if (null == current) {
+                return result;
+            }
             result = current;
         }
         return result;
@@ -121,7 +160,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object result = existingBean;
         for (BeanPostProcessor processor : getBeanPostProcessors()) {
             Object current = processor.postProcessAfterInitialization(result, beanName);
-            if (null == current) return result;
+            if (null == current) {
+                return result;
+            }
             result = current;
         }
         return result;
@@ -141,10 +182,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             if(bean instanceof BeanFactoryAware){
                 ((BeanFactoryAware)bean).setBeanFactory(this);
             }
-            if(bean instanceof BeanFactoryAware){
+            if(bean instanceof BeanClassLoaderAware){
                 ((BeanClassLoaderAware)bean).setBeanClassLoader(getBeanClassLoader());
             }
-            if(bean instanceof BeanFactoryAware){
+            if(bean instanceof BeanNameAware){
                 ((BeanNameAware)bean).setBeanName(beanName);
             }
         }

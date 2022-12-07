@@ -37,11 +37,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
         beanDefinitionMap.forEach((beanName, beanDefinition) -> {
             Class beanClass = beanDefinition.getBeanClass();
             if (type.isAssignableFrom(beanClass)) {
-                try {
-                    result.put(beanName, (T) getBean(beanName));
-                } catch (BeansException e) {
-                    throw new RuntimeException(e);
-                }
+                result.put(beanName, (T) getBean(beanName));
             }
         });
         return result;

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-    <bean class="event.ContextRefreshedEventListener"/>
-    <bean class="event.CustomEventListener"/>
-    <bean class="event.ContextClosedEventListener"/>
+
+    <!--业务类-->
+    <bean id="userService" class="bean.UserService"/>
+    <!--aop功能核心类（交给spring容器管理）-->
+    <bean class="com.imwj.springframework.aop.aspectj.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+    <!--业务日志类-->
+    <bean id="beforeAdvice" class="bean.UserServiceBeforeAdvice"/>
+    <!--方法拦截器-->
+    <bean id="methodInterceptor" class="com.imwj.springframework.aop.aspectj.framework.adapter.MethodBeforeAdviceInterceptor">
+        <!--注入业务日志lei1类-->
+        <property name="advice" ref="beforeAdvice"/>
+    </bean>
+    <!--表达式和切面关联类-->
+    <bean id="pointcutAdvisor" class="com.imwj.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+        <!--切点表达式-->
+        <property name="expression" value="execution(* bean.IUserService.*(..))"/>
+        <!--方法拦截器-->
+        <property name="advice" ref="methodInterceptor"/>
+    </bean>
 </beans>
