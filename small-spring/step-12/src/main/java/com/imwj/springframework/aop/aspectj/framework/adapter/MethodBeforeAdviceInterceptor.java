@@ -1,5 +1,6 @@
 package com.imwj.springframework.aop.aspectj.framework.adapter;
 
+import com.imwj.springframework.aop.MethodAfterAdvice;
 import com.imwj.springframework.aop.MethodBeforeAdvice;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -14,13 +15,15 @@ public class MethodBeforeAdviceInterceptor implements MethodInterceptor {
     /**
      * 方法Before处理
      */
-    private MethodBeforeAdvice advice;
+    private MethodBeforeAdvice beforeAdvice;
+    private MethodAfterAdvice afterAdvice;
 
     public MethodBeforeAdviceInterceptor() {
     }
 
-    public MethodBeforeAdviceInterceptor(MethodBeforeAdvice advice){
-        this.advice = advice;
+    public MethodBeforeAdviceInterceptor(MethodBeforeAdvice beforeAdvice, MethodAfterAdvice afterAdvice){
+        this.beforeAdvice = beforeAdvice;
+        this.afterAdvice = afterAdvice;
     }
 
     /**
@@ -32,17 +35,27 @@ public class MethodBeforeAdviceInterceptor implements MethodInterceptor {
     @Override
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         // 执行方法before的处理
-        this.advice.before(methodInvocation.getMethod(), methodInvocation.getArguments(), methodInvocation.getThis());
+        this.beforeAdvice.before(methodInvocation.getMethod(), methodInvocation.getArguments(), methodInvocation.getThis());
         // 执行真正的业务方法
         Object result = methodInvocation.proceed();
-        // TODO 执行方法的after的处理
+        // 执行方法的after的处理
+        this.afterAdvice.after(methodInvocation.getMethod(), methodInvocation.getArguments(), methodInvocation.getThis());
         return result;
     }
 
-    public MethodBeforeAdvice getAdvice(){
-        return advice;
+    public MethodBeforeAdvice getBeforeAdvice() {
+        return beforeAdvice;
     }
-    public void setAdvice(MethodBeforeAdvice advice){
-        this.advice = advice;
+
+    public void setBeforeAdvice(MethodBeforeAdvice beforeAdvice) {
+        this.beforeAdvice = beforeAdvice;
+    }
+
+    public MethodAfterAdvice getAfterAdvice() {
+        return afterAdvice;
+    }
+
+    public void setAfterAdvice(MethodAfterAdvice afterAdvice) {
+        this.afterAdvice = afterAdvice;
     }
 }

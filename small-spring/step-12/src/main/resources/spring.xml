@@ -7,10 +7,12 @@
     <bean class="com.imwj.springframework.aop.aspectj.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
     <!--业务日志类-->
     <bean id="beforeAdvice" class="bean.UserServiceBeforeAdvice"/>
+    <bean id="afterAdvice" class="bean.UserServiceAfterAdvice"/>
     <!--方法拦截器-->
     <bean id="methodInterceptor" class="com.imwj.springframework.aop.aspectj.framework.adapter.MethodBeforeAdviceInterceptor">
         <!--注入业务日志lei1类-->
-        <property name="advice" ref="beforeAdvice"/>
+        <property name="beforeAdvice" ref="beforeAdvice"/>
+        <property name="afterAdvice" ref="afterAdvice"/>
     </bean>
     <!--表达式和切面关联类-->
     <bean id="pointcutAdvisor" class="com.imwj.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
