@@ -33,7 +33,11 @@ public class ClassUtils {
      * @param listenerClass
      * @return
      */
-    public static boolean isCglibProxyClass(Class<? extends ApplicationListener> listenerClass) {
-        return true;
+    public static boolean isCglibProxyClass(Class<?> clazz) {
+        return (clazz != null && isCglibProxyClassName(clazz.getName()));
+    }
+
+    public static boolean isCglibProxyClassName(String className) {
+        return (className != null && className.contains("$$"));
     }
 }

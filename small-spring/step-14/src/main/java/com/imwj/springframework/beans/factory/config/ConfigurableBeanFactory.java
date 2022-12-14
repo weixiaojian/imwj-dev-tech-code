@@ -1,6 +1,7 @@
 package com.imwj.springframework.beans.factory.config;
 
 import com.imwj.springframework.beans.factory.HierarchicalBeanFactory;
+import com.imwj.springframework.utils.StringValueResolver;
 
 /**
  * 可配置的BeanFactory
@@ -24,4 +25,17 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
      * 销毁单例对象
      */
     void destroySingletons();
+
+    /**
+     * 添加占位符解析器
+     * @param valueResolver
+     */
+    void addEmbeddedValueResolver(StringValueResolver valueResolver);
+
+    /**
+     * 处理占位符的值
+     * @param value
+     * @return
+     */
+    String resolveEmbeddedValue(String value);
 }

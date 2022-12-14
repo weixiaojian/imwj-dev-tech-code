@@ -41,6 +41,9 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 // 注册beanDefinition
                 registry.registerBeanDefinition(determineBeanName(beanDefinition), beanDefinition);
             }
+            // 注册处理注解的 BeanPostProcessor（@Autowired、@Value）
+            // 由于AutowiredAnnotationBeanPostProcessor并没有标注@Component,所以是无法在类扫描时注入到beanFactory中的,此处需要我们手动进行注册
+            registry.registerBeanDefinition("autowiredAnnotationBeanPostProcessor", new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
         }
     }
 

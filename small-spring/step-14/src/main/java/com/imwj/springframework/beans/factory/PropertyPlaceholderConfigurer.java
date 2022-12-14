@@ -7,6 +7,7 @@ import com.imwj.springframework.beans.factory.config.BeanDefinition;
 import com.imwj.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import com.imwj.springframework.core.io.DefaultResourceLoader;
 import com.imwj.springframework.core.io.Resource;
+import com.imwj.springframework.utils.StringValueResolver;
 import sun.dc.pr.PRError;
 
 import java.util.Properties;
@@ -43,6 +44,8 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
         try {
             DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
             Resource resource = resourceLoader.getResource(location);
+
+            // 占位符替换属性值
             Properties properties = new Properties();
             properties.load(resource.getInputStream());
 
@@ -58,24 +61,14 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
                     if(!(value instanceof String)){
                         continue;
                     }
-                    // 获取属性值
-                    String strVal = (String)value;
-                    StringBuilder builder = new StringBuilder(strVal);
-                    int startIdx = strVal.indexOf(DEFAULT_PLACEHOLDER_PREFIX);
-                    int stopIdx  = strVal.indexOf(DEFAULT_PLACEHOLDER_SUFFIX);
-                    // 判断属性值是以${}包裹
-                    if(startIdx != -1 && stopIdx != -1 && startIdx < stopIdx){
-                        // 获取到真正的key
-                        String propKey = strVal.substring(startIdx + 2, stopIdx);
-                        // 根据key从配置文件中获取对应的属性值
-                        String propVal = properties.getProperty(propKey);
-                        // 将属性值替换
-                        builder.replace(startIdx, stopIdx +1, propVal);
-                        // 属性放回到beanDefinition中
-                        propertyValues.addPropertyValue(new PropertyValue(propertyValue.getName(), builder.toString()));
-                    }
+                    value = resolvePlaceholder((String) value, properties);
+                    propertyValues.addPropertyValue(new PropertyValue(propertyValue.getName(), value));
                 }
             }
+
+            // 向容器中添加字符串解析器，供解析@Value注解使用
+            StringValueResolver valueResolver = new PlaceholderResolvingStringValueResolver(properties);
+            beanFactory.addEmbeddedValueResolver(valueResolver);
         } catch (Exception e) {
             throw new BeansException("Could not load properties", e);
         }
@@ -83,5 +76,41 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    /**
+     * 字符串解析器类
+     */
+    private class PlaceholderResolvingStringValueResolver implements StringValueResolver {
+
+        private final Properties properties;
+
+        public PlaceholderResolvingStringValueResolver(Properties properties) {
+            this.properties = properties;
+        }
+
+        @Override
+        public String resolveStringValue(String strVal) {
+            return PropertyPlaceholderConfigurer.this.resolvePlaceholder(strVal, properties);
+        }
+    }
+
+    /**
+     * 处理占位符
+     * @param value
+     * @param properties
+     * @return
+     */
+    private String resolvePlaceholder(String value, Properties properties) {
+        String strVal = value;
+        StringBuilder builder = new StringBuilder(strVal);
+        int startIdx = strVal.indexOf(DEFAULT_PLACEHOLDER_PREFIX);
+        int stopIdx = strVal.indexOf(DEFAULT_PLACEHOLDER_SUFFIX);
+        if(startIdx != -1 && stopIdx != -1 && startIdx < stopIdx){
+            String propKey = strVal.substring(startIdx + 2, stopIdx);
+            String propVal = properties.getProperty(propKey);
+            builder.replace(startIdx, stopIdx +1, propVal);
+        }
+        return builder.toString();
     }
 }
