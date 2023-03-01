@@ -1,5 +1,7 @@
 package com.imwj.springframework.aop;
 
+import com.imwj.springframework.utils.ClassUtils;
+
 /**
  * 被代理的目标对象
  * @author wj
@@ -19,10 +21,13 @@ public class TargetSource {
 
     /**
      * 获取被代理的目标对象的class
+     * 如果市cglib代理对象需要通过getSuperclass获取
      * @return
      */
     public Class<?>[] getTargetClass(){
-        return this.target.getClass().getInterfaces();
+        Class<?> clazz = this.target.getClass();
+        clazz = ClassUtils.isCglibProxyClass(clazz) ? clazz.getSuperclass() : clazz;
+        return clazz.getInterfaces();
     }
 
     /**
