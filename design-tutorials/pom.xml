@@ -11,6 +11,7 @@
     <modules>
         <module>step00-01</module>
         <module>step00-02</module>
+        <module>step00-03</module>
     </modules>
 
     <properties>
