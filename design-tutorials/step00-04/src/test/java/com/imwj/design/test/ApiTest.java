@@ -20,7 +20,7 @@ public class ApiTest {
     public void test_Principal() {
         Principal principal = new Principal();
         Map<String, Object> map = principal.queryClazzInfo("3年1班");
-        logger.info("查询结果：{}", JSON.toJSONString(map));
+        logger.info("查询结果 ：{}", JSON.toJSONString(map));
     }
 
 
