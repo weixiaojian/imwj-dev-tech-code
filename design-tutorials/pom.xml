@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>design-tutorials</artifactId>
+    <groupId>com.imwj.design</groupId>
+    <artifactId>CodeDesign</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
@@ -15,6 +15,9 @@
         <module>step00-04</module>
         <module>step00-05</module>
         <module>step00-06</module>
+        <module>step01-00</module>
+        <module>step01-01</module>
+        <module>step01-02</module>
     </modules>
 
     <properties>
