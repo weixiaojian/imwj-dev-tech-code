@@ -5,12 +5,26 @@ import com.imwj.design.store.impl.CardCommodityService;
 import com.imwj.design.store.impl.CouponCommodityService;
 import com.imwj.design.store.impl.GoodsCommodityService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 工厂
  * @author wj
  * @create 2023-05-24 17:52
  */
 public class StoreFactory {
+
+    private Map<Integer, ICommodity> factoryMap = new HashMap<>();
+
+    /**
+     * 工厂初始化
+     */
+    {
+        factoryMap.put(1, new CouponCommodityService());
+        factoryMap.put(2, new GoodsCommodityService());
+        factoryMap.put(3, new CardCommodityService());
+    }
 
 
     /**
@@ -20,9 +34,10 @@ public class StoreFactory {
      */
     public ICommodity getCommodityService(Integer commodityType) {
         if (null == commodityType) return null;
-        if (1 == commodityType) return new CouponCommodityService();
-        if (2 == commodityType) return new GoodsCommodityService();
-        if (3 == commodityType) return new CardCommodityService();
+        ICommodity iCommodity = factoryMap.get(commodityType);
+        if(iCommodity != null){
+            return iCommodity;
+        }
         throw new RuntimeException("不存在的奖品服务类型");
     }
 
