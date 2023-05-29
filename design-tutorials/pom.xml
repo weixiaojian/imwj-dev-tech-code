@@ -21,6 +21,9 @@
         <module>step02-00</module>
         <module>step02-01</module>
         <module>step02-02</module>
+        <module>step03-00</module>
+        <module>step03-01</module>
+        <module>step03-02</module>
     </modules>
 
     <properties>
