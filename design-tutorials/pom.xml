@@ -24,6 +24,9 @@
         <module>step03-00</module>
         <module>step03-01</module>
         <module>step03-02</module>
+        <module>step04-00</module>
+        <module>step04-01</module>
+        <module>step04-02</module>
     </modules>
 
     <properties>
