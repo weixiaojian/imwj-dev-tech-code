@@ -31,6 +31,8 @@
         <module>step06-00</module>
         <module>step06-01</module>
         <module>step06-02</module>
+        <module>step07-00</module>
+        <module>step07-01</module>
     </modules>
 
     <properties>
