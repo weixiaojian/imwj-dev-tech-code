@@ -36,6 +36,9 @@
         <module>step08-00</module>
         <module>step08-01</module>
         <module>step08-02</module>
+        <module>step09-00</module>
+        <module>step09-01</module>
+        <module>step09-02</module>
     </modules>
 
     <properties>
