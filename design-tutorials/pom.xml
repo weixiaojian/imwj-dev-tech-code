@@ -44,6 +44,7 @@
         <module>step10-02</module>
         <module>step11-00</module>
         <module>step11-01</module>
+        <module>step12-00</module>
     </modules>
 
     <properties>
