@@ -1,9 +1,9 @@
 > 本文主要是对Java中一些常用的设计模式进行讲解 后期会进行不断的更新，欢迎浏览
 
 # 23种设计模式
-* 创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
-* 结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
-* 行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+* 创建型模式，共五种：工厂方法模式、抽象工厂模式、建造者模式、原型模式、单例模式。
+* 结构型模式，共七种：适配器模式、桥接模式、组合模式、装饰器模式、外观模式、享元模式、代理模式。
+* 行为型模式，共十一种：责任链模式、命令模式、迭代器模式、中介者模式、备忘录模式、观察者模式、状态模式、策略模式、模板方法模式、访问者模式、解释器模式。
 
 # 六大设计原则
 ## 单一职责原则
@@ -464,15 +464,552 @@ public class MQAdapter {
 ```
 ## 桥接模式
 * 桥接模式的主要作用就是通过将抽象部分与实现部分分离，把多种可匹配的使用进行组合。说白了核心实现也就是在A类中含有B类接口，通过构造函数传递B类的实现，这个B类就是设计的桥
-* 
+* 1.定义一个支付方式接口`IPayMode`,下面有n个实现类`PayCypher`、`PayFaceMode`、`PayFingerprintMode`
+```
+public interface IPayMode {
+
+    /**
+     * 支付是否安全
+     * @param uId
+     * @return
+     */
+    boolean security(String uId);
+
+}
+```
+```
+public class PayFaceMode implements IPayMode{
+    protected Logger logger = LoggerFactory.getLogger(IPayMode.class);
+
+    @Override
+    public boolean security(String uId) {
+        logger.info("人脸支付，风控校验脸部识别");
+        return true;
+    }
+}
+```
+* 2.抽象一个支付类`Pay`，下面有两个支付实体`WxPay`、`ZfbPay`，抽象类的构造方法会将支付方式作为参数传递进来，`ZfbPay`实体就能根据传递进来的支付方式进行支付了
+```
+public abstract class Pay {
+
+    protected Logger logger = LoggerFactory.getLogger(Pay.class);
+
+    protected IPayMode payMode;
+
+    Pay(IPayMode payMode){
+        this.payMode = payMode;
+    }
+
+    public abstract String transfer(String uId, String tradeId, BigDecimal amount);
+
+}
+```
+```
+public class ZfbPay extends Pay{
+
+    public ZfbPay(IPayMode payMode) {
+        super(payMode);
+    }
+
+    @Override
+    public String transfer(String uId, String tradeId, BigDecimal amount) {
+        logger.info("模拟支付宝渠道支付划账开始。uId：{} tradeId：{} amount：{}", uId, tradeId, amount);
+        boolean security = payMode.security(uId);
+        logger.info("模拟支付宝渠道支付风控校验。uId：{} tradeId：{} security：{}", uId, tradeId, security);
+        if (!security) {
+            logger.info("模拟支付宝渠道支付划账拦截。uId：{} tradeId：{} amount：{}", uId, tradeId, amount);
+            return "0001";
+        }
+        logger.info("模拟支付宝渠道支付划账成功。uId：{} tradeId：{} amount：{}", uId, tradeId, amount);
+        return "0000";
+    }
+}
+```
+* 3.测试使用
+```
+public class ApiTest {
+
+    @Test
+    public void test(){
+
+        System.out.println("\r\n模拟测试场景；微信支付、人脸方式。");
+        Pay wxPay = new WxPay(new PayFaceMode());
+        wxPay.transfer("weixin_1092033111", "100000109893", new BigDecimal(100));
+
+        System.out.println("\r\n模拟测试场景；支付宝支付、指纹方式。");
+        Pay zfbPay = new ZfbPay(new PayFingerprintMode());
+        zfbPay.transfer("jlu19dlxo111", "100000109894", new BigDecimal(100));
+    }
+}
+```
 ## 组合模式
+* 通过把相似对象(也可以称作是方法)组合成一组可被调用的结构树对象的设计思路叫做组合模式，并且能够以统一的方式处理单个对象以及组合对象
+* 1.一个相对简单的例子
+```
+// 组件接口
+interface Component {
+    void operation();
+}
+
+// 叶子类
+class Leaf implements Component {
+    public void operation() {
+        System.out.println("Leaf operation");
+    }
+}
+
+// 容器类
+class Composite implements Component {
+    private List<Component> components = new ArrayList<>();
+
+    public void addComponent(Component component) {
+        components.add(component);
+    }
+
+    public void removeComponent(Component component) {
+        components.remove(component);
+    }
+
+    public void operation() {
+        System.out.println("Composite operation");
+        // 遍历子组件并调用其操作方法
+        for (Component component : components) {
+            component.operation();
+        }
+    }
+}
+
+// 客户端代码
+public class Client {
+    public static void main(String[] args) {
+        Component leaf1 = new Leaf();
+        Component leaf2 = new Leaf();
+        Component composite = new Composite();
+
+        composite.addComponent(leaf1);
+        composite.addComponent(leaf2);
+
+        composite.operation();
+    }
+}
+```
+* 2.输出结果
+```
+Composite operation
+Leaf operation
+Leaf operation
+```
 ## 装饰器模式
+* 通过创建包装器对象来包裹原始对象，从而在不修改原始对象的情况下动态地扩展其功能。
+* 1.原有一个拦截器接口`HandlerInterceptor`，以及一个实现类`SsoInterceptor`，在不改变原有类的情况下 我们对其做扩展
+```
+public interface HandlerInterceptor {
+
+    boolean preHandle(String request, String response, Object handler);
+}
+```
+```
+public class SsoInterceptor implements HandlerInterceptor{
+
+    @Override
+    public boolean preHandle(String request, String response, Object handler) {
+        // 模拟获取cookie
+        String ticket = request.substring(1, 8);
+        // 模拟校验
+        return ticket.equals("success");
+    }
+}
+```
+* 2.抽象类装饰角色（将原有的逻辑接口接入）`SsoDecorator`，并针对抽象类进行继承增强`LoginSsoDecorator`
+```
+public abstract class SsoDecorator {
+
+    private HandlerInterceptor handlerInterceptor;
+
+    /**
+     * 将原有的逻辑方法传入
+     * @param handlerInterceptor
+     */
+    public SsoDecorator(HandlerInterceptor handlerInterceptor){
+        this.handlerInterceptor = handlerInterceptor;
+    }
+
+    /**
+     * 继承原有的逻辑方法
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     */
+    public boolean preHandle(String request, String response, Object handler) {
+        return handlerInterceptor.preHandle(request, response, handler);
+    }
+}
+```
+```
+public class LoginSsoDecorator extends SsoDecorator{
+
+    private Logger logger = LoggerFactory.getLogger(LoginSsoDecorator.class);
+
+    private static Map<String, String> authMap = new ConcurrentHashMap<String, String>();
+
+    static {
+        authMap.put("huahua", "queryUserInfo");
+        authMap.put("doudou", "queryUserInfo");
+    }
+
+    /**
+     * 将原有的逻辑方法传入
+     *
+     * @param handlerInterceptor
+     */
+    public LoginSsoDecorator(HandlerInterceptor handlerInterceptor) {
+        super(handlerInterceptor);
+    }
+
+    @Override
+    public boolean preHandle(String request, String response, Object handler) {
+        // 先调用原有的逻辑方法
+        boolean success = super.preHandle(request, response, handler);
+        // 自己新增的逻辑
+        if (!success) return false;
+        String userId = request.substring(8);
+        String method = authMap.get(userId);
+        logger.info("模拟单点登录方法访问拦截校验：{} {}", userId, method);
+        // 模拟方法校验
+        return "queryUserInfo".equals(method);
+    }
+}
+```
+* 3.测试使用
+```
+public class ApiTest {
+
+    @Test
+    public void test_LoginSsoDecorator() {
+        LoginSsoDecorator ssoDecorator = new LoginSsoDecorator(new SsoInterceptor());
+        String request = "1successhuahua";
+        boolean success = ssoDecorator.preHandle(request, "ewcdqwt40liuiu", "t");
+        System.out.println("登录校验：" + request + (success ? " 放行" : " 拦截"));
+    }
+}
+```
+
 ## 外观模式
+* 将一组复杂的子系统封装起来，对外提供一个简单的接口，以简化客户端与子系统的交互
+* 1.在实际开发中我们会有多个controller，每个controller都需要拦截处理 校验用户是否能够访问(白名单)，这个时候我们可以用自定义注解`DoDoor`  + aop来进行处理
+```
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface DoDoor {
+
+    /**
+     * 拦截字段值
+     * @return
+     */
+    String key() default "";
+
+    /**
+     * 拦截时返回json
+     * @return
+     */
+    String returnJson() default "";
+
+}
+```
+* 2.aop实现自定义注解逻辑
+```
+@Aspect
+@Component
+public class DoJoinPoint {
+
+    private Logger logger = LoggerFactory.getLogger(DoJoinPoint.class);
+
+    @Value("${userIdStr}")
+    public String userIdStr;
+
+    @Pointcut("@annotation(com.imwj.design.door.annotation.DoDoor)")
+    public void aopPoint(){
+    }
+
+    @Around("aopPoint()")
+    public Object doRouter(ProceedingJoinPoint jp) throws Throwable {
+        // 获取方法内容
+        Method method = getMethod(jp);
+        // 获取注解中的字段值
+        DoDoor door = method.getAnnotation(DoDoor.class);
+        String keyValue = getFiledValue(door.key(), jp.getArgs());
+        logger.info("door handler method：{} value：{}", method.getName(), keyValue);
+        // 获取不到值直接放行
+        if (null == keyValue || "".equals(keyValue)) return jp.proceed();
+        // 白名单放行
+        if(checkUserIdIntercept(keyValue))return jp.proceed();
+        // 拦截并返回
+        return returnObject(door, method);
+    }
+
+    /**
+     * 获取方法
+     * @param jp
+     * @return
+     * @throws NoSuchMethodException
+     */
+    private Method getMethod(JoinPoint jp) throws NoSuchMethodException {
+        Signature sig = jp.getSignature();
+        MethodSignature methodSignature = (MethodSignature) sig;
+        return getClass(jp).getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
+    }
+
+    private Class<? extends Object> getClass(JoinPoint jp) throws NoSuchMethodException {
+        return jp.getTarget().getClass();
+    }
+
+    /**
+     * 校验用户id是否需要拦截
+     * @param userId
+     * @return
+     */
+    private Boolean checkUserIdIntercept(String userId){
+        return userIdStr.contains(userId);
+    }
+
+    /**
+     * 返回对象
+     * @param doGate
+     * @param method
+     * @return
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     */
+    private Object returnObject(DoDoor doGate, Method method) throws IllegalAccessException, InstantiationException {
+        Class<?> returnType = method.getReturnType();
+        String returnJson = doGate.returnJson();
+        if ("".equals(returnJson)) {
+            return returnType.newInstance();
+        }
+        return JSON.parseObject(returnJson, returnType);
+    }
+
+    /**
+     * 获取属性值
+     * @param filed
+     * @param args
+     * @return
+     */
+    private String getFiledValue(String filed, Object[] args) {
+        String filedValue = null;
+        for (Object arg : args) {
+            try {
+                if (null == filedValue || "".equals(filedValue)) {
+                    filedValue = BeanUtils.getProperty(arg, filed);
+                } else {
+                    break;
+                }
+            } catch (Exception e) {
+                if (args.length == 1) {
+                    return args[0].toString();
+                }
+            }
+        }
+        return filedValue;
+    }
+}
+```
+* 3.controller层使用
+```
+@RestController
+public class HelloController {
+
+    @DoDoor(key = "userId", returnJson = "{\"code\":\"1111\",\"info\":\"非白名单用户拦截！\"}")
+    @RequestMapping(path = "/api/queryUserInfo", method = RequestMethod.GET)
+    public UserInfo queryUserInfo(@RequestParam String userId) {
+        return new UserInfo("团团:" + userId, 19, "天津市南开区旮旯胡同100号");
+    }
+}
+
+```
 ## 享元模式
+* 享元模式，主要在于共享通用对象，减少内存的使用，提升系统的访问效率
+* 1.有一个活动商品类`Activity`，里面有商品基础信息以及库存信息`Stock`，我们希望通过数据库存储商品信息 redis里存储商品库存
+```
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Activity {
+
+    /** 活动ID */
+    private Long id;
+    /** 活动名称 */
+    private String name;
+    /** 活动描述 */
+    private String desc;
+    /** 开始时间 */
+    private Date startTime;
+    /** 结束时间 */
+    private Date stopTime;
+    /** 活动库存 */
+    private Stock stock;
+}
+```
+```
+@Data
+@AllArgsConstructor
+public class Stock {
+
+    /** 库存总量 */
+    private int total;
+    /** 库存已用 */
+    private int used;
+}
+```
+* 2.`RedisUtils`存储库存信息，获取时通过redis工具类获取
+```
+public class RedisUtils {
+
+
+    private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+
+    private AtomicInteger stock = new AtomicInteger(0);
+
+    public RedisUtils() {
+        scheduledExecutorService.scheduleAtFixedRate(() -> {
+            // 模拟库存消耗
+            stock.addAndGet(1);
+        }, 0, 100000, TimeUnit.MICROSECONDS);
+
+    }
+
+    public int getStockUsed() {
+        return stock.get();
+    }
+}
+``` 
+* 3.controller层获取库存
+```
+public class ActivityController {
+
+    private RedisUtils redisUtils = new RedisUtils();
+
+    public Activity queryActivityInfo(Long id) {
+        Activity activity = ActivityFactory.queryInfo(id);
+        // 模拟从Redis中获取库存变化信息
+        Stock stock = new Stock(1000, redisUtils.getStockUsed());
+        activity.setStock(stock);
+        return activity;
+    }
+}
+```
 ## 代理模式
+* 它允许通过代理对象控制对另一个对象的访问。代理模式创建了一个代理对象，代理对象与原始对象具有相同的接口，客户端通过代理对象间接地访问原始对象，从而可以在不改变原始对象的情况下增加额外的功能或控制访问
+* 常见的如：mybatis中只需要定义一个接口 然后在注解或xml中配置sql即能执行sql查询
+* 1.定义一个`IUserDao`接口，一个`@Select`注解
+```
+public interface IUserDao {
+
+    @Select("select userName from user where id = #{uId}")
+    String queryUserInfo(String uId);
+
+}
+```
+```
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD})
+public @interface Select {
+
+    /**
+     * sql语句
+     * @return
+     */
+    String value() default "";
+}
+```
+* 2.代理类定义`MapperFactoryBean`
+```
+public class MapperFactoryBean<T> implements FactoryBean<T> {
+
+    private Logger logger = LoggerFactory.getLogger(MapperFactoryBean.class);
+
+    private Class<T> mapperInterface;
+
+    public MapperFactoryBean(Class<T> mapperInterface) {
+        this.mapperInterface = mapperInterface;
+    }
+
+    /**
+     * 创建代理对象
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public T getObject() throws Exception {
+        InvocationHandler handler = (proxy, method, args) ->{
+            Select select = method.getAnnotation(Select.class);
+            logger.info("SQL：{}", select.value().replace("#{uId}", args[0].toString()));
+            return args[0] + ",乐于分享！";
+        };
+        return (T) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{mapperInterface}, handler);
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return mapperInterface;
+    }
+
+    @Override
+    public boolean isSingleton() {
+        return true;
+    }
+}
+```
+* 3.注册beanFactory
+```
+public class RegisterBeanFactory implements BeanDefinitionRegistryPostProcessor {
 
 
-# 责任链模式
+    @Override
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+        beanDefinition.setBeanClass(MapperFactoryBean.class);
+        beanDefinition.setScope("singleton");
+        beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(IUserDao.class);
+
+        BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(beanDefinition, "userDao");
+        BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, registry);
+    }
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
+
+    }
+}
+```
+* 4.`spring-config.xml`中配置扫描；路径
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+
+    <bean id="userDao" class="com.imwj.design.agent.RegisterBeanFactory"/>
+
+</beans>
+```
+* 5.注入使用
+```
+    @Test
+    public void test_IUserDao() {
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
+        IUserDao userDao = beanFactory.getBean("userDao", IUserDao.class);
+        String res = userDao.queryUserInfo("100001");
+        logger.info("测试结果：{}", res);
+    }
+```
+
+# 行为型模式
+## 责任链模式
 * 用来处理相关事务责任的一条执行链，执行链上有多个节点，每个节点都有机会（条件匹配）处理请求事务，如果某个节点处理完了就可以根据实际业务需求传递给下一个节点继续处理或者返回处理完毕。
 * Spring拦截器链、servlet过滤器链等都采用了责任链设计模式。
 ```
@@ -616,6 +1153,16 @@ public class MainTest {
     }
 }
 ```
+## 命令模式、
+## 迭代器模式
+## 中介者模式
+## 备忘录模式
+## 观察者模式
+## 状态模式
+## 策略模式
+## 模板方法模式
+## 访问者模式
+## 解释器模式。
 
 > 最后大哥图片镇楼
 ![cmd-markdown-logo](http://blog.imwj.club//upload/2019/08/rtn7u1ns4uifdrcp6lipgtqhts.jpg)
