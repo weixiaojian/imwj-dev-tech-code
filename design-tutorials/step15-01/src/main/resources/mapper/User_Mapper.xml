@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imwj.design.dao.IUserDao">
+
+    <select id="queryUserInfoById" parameterType="java.lang.Long" resultType="com.imwj.design.entity.User">
+        SELECT id, name
+        FROM audit_admin_account
+        where id = #{id}
+    </select>
+
+    <select id="queryUserList" parameterType="com.imwj.design.entity.User" resultType="com.imwj.design.entity.User">
+        SELECT id, name
+        FROM audit_admin_account
+        where name = #{name}
+    </select>
+
+</mapper>

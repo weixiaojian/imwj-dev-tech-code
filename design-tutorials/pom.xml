@@ -48,6 +48,8 @@
         <module>step13-00</module>
         <module>step13-01</module>
         <module>step13-02</module>
+        <module>step15-00</module>
+        <module>step15-01</module>
     </modules>
 
     <properties>

@@ -1153,7 +1153,80 @@ public class MainTest {
     }
 }
 ```
-## 命令模式、
+## 命令模式
+* 将请求和操作进行解耦，以便能够将请求封装成独立的对象，并在需要时进行参数化
+* 1.新建一个`ICook`厨师接口、一个`ICuisine`菜系接口（菜系实现类中将对应的厨师实现类作为构造参数传入），两个接口各自有各自的n个实现类
+```
+public class GuangDongCook implements ICook{
+
+    private Logger logger = LoggerFactory.getLogger(ICook.class);
+
+    @Override
+    public void doCooking() {
+        logger.info("广东厨师，烹饪粤菜，宫廷菜系，以孔府风味为龙头");
+    }
+}
+
+public class GuangDoneCuisine implements ICuisine {
+
+    private ICook cook;
+
+    private GuangDoneCuisine() {
+    }
+
+    public GuangDoneCuisine(ICook cook) {
+        this.cook = cook;
+    }
+
+    @Override
+    public void cook() {
+        cook.doCooking();
+    }
+
+}
+```
+* 2.新建一个`XiaoEr`小二类，将对应的菜系作为构造参数传入
+```
+public class XiaoEr {
+
+
+    private Logger logger = LoggerFactory.getLogger(XiaoEr.class);
+
+    private List<ICuisine> cuisineList = new ArrayList<ICuisine>();
+
+    public void order(ICuisine cuisine) {
+        cuisineList.add(cuisine);
+    }
+
+    public synchronized void placeOrder() {
+        for (ICuisine cuisine : cuisineList) {
+            cuisine.cook();
+        }
+        cuisineList.clear();
+    }
+}
+```
+* 3.测试使用：构建厨师、菜系将菜系放入小二类的订单中
+```
+public class ApiTest {
+
+    @Test
+    public void test_xiaoEr(){
+        // 菜系 + 厨师；广东（粤菜）、江苏（苏菜）、山东（鲁菜）、四川（川菜）
+        ICuisine guangDoneCuisine = new GuangDoneCuisine(new GuangDongCook());
+        JiangSuCuisine jiangSuCuisine = new JiangSuCuisine(new JiangSuCook());
+
+        // 点单
+        XiaoEr xiaoEr = new XiaoEr();
+        xiaoEr.order(guangDoneCuisine);
+        xiaoEr.order(jiangSuCuisine);
+
+        xiaoEr.placeOrder();
+
+    }
+}
+```
+
 ## 迭代器模式
 ## 中介者模式
 ## 备忘录模式
