@@ -1565,6 +1565,132 @@ public class SqlSessionFactoryBuilder {
     }
 ```
 ## 备忘录模式
+* 以回滚，配置、版本、悔棋为核心功能的设计模式，在功能实现上是以不破坏原对象为基础增加备忘录操作类，记录原对象的行为从而实现备忘录模式。
+* 1.新建一个配置文件类`ConfigFile`，主要用于记录版本的相关信息
+```
+@Data
+@AllArgsConstructor
+public class ConfigFile {
+
+    private String versionNo; // 版本号
+    private String content;   // 内容
+    private Date dateTime;    // 时间
+    private String operator;  // 操作人
+}
+```
+* 2.新建一个备忘录类`ConfigMemento`，对原有配置类的扩展，可以设置和获取配置信息
+```
+public class ConfigMemento {
+
+    private ConfigFile configFile;
+
+    public ConfigMemento(ConfigFile configFile) {
+        this.configFile = configFile;
+    }
+
+    public ConfigFile getConfigFile() {
+        return configFile;
+    }
+
+    public void setConfigFile(ConfigFile configFile) {
+        this.configFile = configFile;
+    }
+}
+```
+* 3.新建一个记录者类`ConfigOriginator`，保存操作的相关信息
+```
+public class ConfigOriginator {
+
+    private ConfigFile configFile;
+
+    public ConfigFile getConfigFile() {
+        return configFile;
+    }
+
+    public void setConfigFile(ConfigFile configFile) {
+        this.configFile = configFile;
+    }
+
+    public ConfigMemento saveMemento(){
+        return new ConfigMemento(configFile);
+    }
+
+    public void getMemento(ConfigMemento memento){
+        this.configFile = memento.getConfigFile();
+    }
+}
+```
+* 4.创建一个管理员类`Admin`，主要操作回滚、前进、跳转到指定版本
+```
+public class Admin {
+
+    private int cursorIdx = 0;
+    private List<ConfigMemento> mementoList = new ArrayList<>();
+    private Map<String, ConfigMemento> mementoMap = new ConcurrentHashMap<>();
+
+    public void append(ConfigMemento memento){
+        mementoList.add(memento);
+        mementoMap.put(memento.getConfigFile().getVersionNo(), memento);
+        cursorIdx ++;
+    }
+
+    public ConfigMemento undo(){
+        if(--cursorIdx <= 0){
+            return mementoList.get(0);
+        }
+        return mementoList.get(cursorIdx);
+    }
+
+    public ConfigMemento  redo(){
+        if(++cursorIdx > mementoList.size()){
+            return mementoList.get(mementoList.size() - 1);
+        }
+        return mementoList.get(cursorIdx);
+    }
+
+    public ConfigMemento get(String versionNo){
+        return mementoMap.get(versionNo);
+    }
+
+}
+```
+* 5.测试使用
+```
+    @Test
+    public void test() {
+        Admin admin = new Admin();
+        ConfigOriginator configOriginator = new ConfigOriginator();
+
+        configOriginator.setConfigFile(new ConfigFile("1000001", "配置内容A=哈哈", new Date(), "imwj"));
+        admin.append(configOriginator.saveMemento()); // 保存配置
+
+        configOriginator.setConfigFile(new ConfigFile("1000002", "配置内容A=嘻嘻", new Date(), "imwj"));
+        admin.append(configOriginator.saveMemento()); // 保存配置
+
+        configOriginator.setConfigFile(new ConfigFile("1000003", "配置内容A=么么", new Date(), "imwj"));
+        admin.append(configOriginator.saveMemento()); // 保存配置
+
+        configOriginator.setConfigFile(new ConfigFile("1000004", "配置内容A=嘿嘿", new Date(), "imwj"));
+        admin.append(configOriginator.saveMemento()); // 保存配置  
+
+        // 历史配置(回滚)
+        configOriginator.getMemento(admin.undo());
+        logger.info("历史配置(回滚)undo：{}", JSON.toJSONString(configOriginator.getConfigFile()));
+
+        // 历史配置(回滚)
+        configOriginator.getMemento(admin.undo());
+        logger.info("历史配置(回滚)undo：{}", JSON.toJSONString(configOriginator.getConfigFile()));
+
+        // 历史配置(前进)
+        configOriginator.getMemento(admin.redo());
+        logger.info("历史配置(前进)redo：{}", JSON.toJSONString(configOriginator.getConfigFile()));
+
+        // 历史配置(获取)
+        configOriginator.getMemento(admin.get("1000002"));
+        logger.info("历史配置(获取)get：{}", JSON.toJSONString(configOriginator.getConfigFile()));
+    }
+```
+
 ## 观察者模式
 ## 状态模式
 ## 策略模式
