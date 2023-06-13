@@ -1692,6 +1692,106 @@ public class Admin {
 ```
 
 ## 观察者模式
+* 当一个行为发生时传递信息给另外一个用户接收做出相应的处理，两者之间没有直接的耦合关联。
+* 1.新建一个监听接口`EventListener`,对应的有两个实现类`MessageEventListener`和`MQEventListener`
+```
+public class MessageEventListener implements EventListener{
+    private Logger logger = LoggerFactory.getLogger(MessageEventListener.class);
+
+    @Override
+    public void doEvent(LotteryResult result) {
+        logger.info("给用户 {} 发送短信通知(短信)：{}", result.getUId(), result.getMsg());
+    }
+}
+```
+* 2.新建一个监听事件处理类`EventManager`
+```
+public class EventManager {
+
+    Map<Enum<EventType>, List<EventListener>> listeners = new HashMap<>();
+
+    public enum EventType {
+        MQ, Message
+    }
+
+    public EventManager(Enum<EventType>... operations) {
+        for (Enum<EventType> operation : operations) {
+            this.listeners.put(operation, new ArrayList<>());
+        }
+    }
+
+
+    /**
+     * 订阅
+     * @param eventType
+     * @param listener
+     */
+    public void subscribe(Enum<EventType> eventType, EventListener listener){
+        List<EventListener> users = listeners.get(eventType);
+        users.add(listener);
+    }
+
+    /**
+     * 取消订阅
+     * @param eventType
+     * @param listener
+     */
+    public void unsubscribe(Enum<EventType> eventType, EventListener listener){
+        List<EventListener> users = listeners.get(eventType);
+        users.remove(listener);
+    }
+
+    /**
+     * 消息通知
+     * @param eventType
+     * @param result
+     */
+    public void notify(Enum<EventType> eventType, LotteryResult result){
+        List<EventListener> users  = listeners.get(eventType);
+        for(EventListener listener : users){
+            listener.doEvent(result);
+        }
+    }
+}
+```
+* 3.抽取业务类接口`LotteryService`(抽象类)
+```
+public abstract class LotteryService {
+
+    private EventManager eventManager;
+
+    public LotteryService(){
+        eventManager = new EventManager(EventManager.EventType.MQ, EventManager.EventType.Message);
+        eventManager.subscribe(EventManager.EventType.MQ, new MQEventListener());
+        eventManager.subscribe(EventManager.EventType.Message, new MessageEventListener());
+    }
+
+    public LotteryResult draw(String uId){
+        LotteryResult lotteryResult = doDraw(uId);
+        // 通知方法
+        eventManager.notify(EventManager.EventType.MQ, lotteryResult);
+        eventManager.notify(EventManager.EventType.Message, lotteryResult);
+        return lotteryResult;
+    }
+
+    /**
+     * 真正的业务方法
+     * @param uId
+     * @return
+     */
+    protected abstract LotteryResult doDraw(String uId);
+
+}
+```
+* 4.测试使用
+```
+    @Test
+    public void test() {
+        LotteryService lotteryService = new LotteryServiceImpl();
+        LotteryResult result = lotteryService.draw("2765789109876");
+        logger.info("测试结果：{}", JSON.toJSONString(result));
+    }
+```
 ## 状态模式
 ## 策略模式
 ## 模板方法模式
