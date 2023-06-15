@@ -1998,6 +1998,93 @@ public class StateHandler {
 ```
 
 ## 策略模式(重点)
+* 允许在运行时选择算法的行为。它定义了一系列算法，并将每个算法封装在独立的类中，使它们可以互相替换。通过使用策略模式，可以使算法的变化独立于使用算法的客户端。 策略模式的主要目的是将算法的定义与使用分离，
+* 1.新建一个优惠券接口`ICouponDiscount`，该接口定义了一个优惠方法
+```
+public interface ICouponDiscount<T> {
+
+    /**
+     * 优惠券金额计算
+     * @param couponInfo 券折扣信息；直减、满减、折扣、N元购
+     * @param skuPrice   sku金额
+     * @return           优惠后金额
+     */
+    BigDecimal discountAmount(T couponInfo, BigDecimal skuPrice);
+}
+```
+* 2.优惠券接口有n个对应实现类：满减`MJCouponDiscount`，直减`ZJCouponDiscount`，每个实现类有自己的计算方式 此处还用到了泛型
+```
+public class MJCouponDiscount implements ICouponDiscount<Map<String,String>> {
+
+    /**
+     * 满减计算
+     * 1. 判断满足x元后-n元，否则不减
+     * 2. 最低支付金额1元
+     */
+    @Override
+    public BigDecimal discountAmount(Map<String,String> couponInfo, BigDecimal skuPrice) {
+        String x = couponInfo.get("x");
+        String o = couponInfo.get("n");
+
+        // 小于商品金额条件的，直接返回商品原价
+        if (skuPrice.compareTo(new BigDecimal(x)) < 0) return skuPrice;
+        // 减去优惠金额判断
+        BigDecimal discountAmount = skuPrice.subtract(new BigDecimal(o));
+        if (discountAmount.compareTo(BigDecimal.ZERO) < 1) return BigDecimal.ONE;
+
+        return discountAmount;
+    }
+}
+```
+```
+public class ZJCouponDiscount implements ICouponDiscount<Double > {
+
+    /**
+     * 直减计算
+     * 1. 使用商品价格减去优惠价格
+     * 2. 最低支付金额1元
+     */
+    @Override
+    public BigDecimal discountAmount(Double  couponInfo, BigDecimal skuPrice) {
+        BigDecimal discountAmount = skuPrice.subtract(new BigDecimal(couponInfo));
+        if (discountAmount.compareTo(BigDecimal.ZERO) < 1) return BigDecimal.ONE;
+        return discountAmount;
+    }
+}
+```
+* 3.新建一个控制类，用于控制控制使用不同优惠方式`Context`
+```
+public class Context<T>{
+
+    private ICouponDiscount<T> couponDiscount;
+
+    public Context(ICouponDiscount<T> couponDiscount) {
+        this.couponDiscount = couponDiscount;
+    }
+
+    public BigDecimal discountAmount(T couponInfo, BigDecimal skuPrice) {
+        return couponDiscount.discountAmount(couponInfo, skuPrice);
+    }
+
+}
+```
+* 4.测试使用
+```
+    @Test
+    public void test_zj() {
+        Context<Double> context = new Context<Double>(new ZJCouponDiscount());
+        BigDecimal discountAmount = context.discountAmount(10D, new BigDecimal(100));
+        logger.info("测试结果：直减优惠后金额 {}", discountAmount);
+
+        Context<Map<String, String>> context1 = new Context<Map<String, String>>(new MJCouponDiscount());
+        HashMap<String, String> map = new HashMap<>();
+        map.put("x", "100");
+        map.put("n", "30");
+        BigDecimal discountAmount1 = context1.discountAmount(map, new BigDecimal(100));
+        logger.info("测试结果：满减优惠后金额 {}", discountAmount1);
+    }
+```
+
 ## 模板方法模式(重点)
 ## 访问者模式
 ## 解释器模式。
