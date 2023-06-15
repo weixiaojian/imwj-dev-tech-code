@@ -26,7 +26,7 @@
 
 
 # 创建型模式
-## 工厂方法模式
+## 工厂方法模式(重点)
 * 在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型
 * 1.新建一个`ICommodity`接口，他拥有三个实现类`CardCommodityService、CouponCommodityService、GoodsCommodityService`
 * 2.创建一个统一的工厂类`StoreFactory`，用工厂类去创建上面的三个业务对象
@@ -1793,8 +1793,212 @@ public abstract class LotteryService {
     }
 ```
 ## 状态模式
-## 策略模式
-## 模板方法模式
+* 描述的是一个行为下的多种状态变更，比如我们最常见的一个网站的页面，在你登录与不登录下展示的内容是略有差异的(不登录不能展示个人信息)，而这种登录与不登录就是我们通过改变状态，而让整个行为发生了变化
+* 1.新建一个状态抽象类`State`，定义各个状态变更的方法
+```
+public abstract class State {
+
+    /**
+     * 活动提审
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result arraignment(String activityId, Enum<Status> currentStatus);
+
+    /**
+     * 审核通过
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result checkPass(String activityId, Enum<Status> currentStatus);
+
+    /**
+     * 审核拒绝
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result checkRefuse(String activityId, Enum<Status> currentStatus);
+
+    /**
+     * 撤审撤销
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result checkRevoke(String activityId, Enum<Status> currentStatus);
+
+    /**
+     * 活动关闭
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result close(String activityId, Enum<Status> currentStatus);
+
+    /**
+     * 活动开启
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result open(String activityId, Enum<Status> currentStatus);
+
+    /**
+     * 活动执行
+     *
+     * @param activityId    活动ID
+     * @param currentStatus 当前状态
+     * @return 执行结果
+     */
+    public abstract Result doing(String activityId, Enum<Status> currentStatus);
+
+}
+```
+* 2.新建两个状态实现类：编辑状态`EditingState`，提审状态`CheckState`，同时在各自对应的方法中实现相应逻辑
+```
+public class EditingState extends State {
+
+    public Result arraignment(String activityId, Enum<Status> currentStatus) {
+        ActivityService.execStatus(activityId, currentStatus, Status.Check);
+        return new Result("0000", "活动提审成功");
+    }
+
+    public Result checkPass(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "编辑中不可审核通过");
+    }
+
+    public Result checkRefuse(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "编辑中不可审核拒绝");
+    }
+
+    @Override
+    public Result checkRevoke(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "编辑中不可撤销审核");
+    }
+
+    public Result close(String activityId, Enum<Status> currentStatus) {
+        ActivityService.execStatus(activityId, currentStatus, Status.Close);
+        return new Result("0000", "活动关闭成功");
+    }
+
+    public Result open(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "非关闭活动不可开启");
+    }
+
+    public Result doing(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "编辑中活动不可执行活动中变更");
+    }
+}
+```
+```
+public class CheckState extends State {
+
+    public Result arraignment(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "待审核状态不可重复提审");
+    }
+
+    public Result checkPass(String activityId, Enum<Status> currentStatus) {
+        ActivityService.execStatus(activityId, currentStatus, Status.Pass);
+        return new Result("0000", "活动审核通过完成");
+    }
+
+    public Result checkRefuse(String activityId, Enum<Status> currentStatus) {
+        ActivityService.execStatus(activityId, currentStatus, Status.Refuse);
+        return new Result("0000", "活动审核拒绝完成");
+    }
+
+    @Override
+    public Result checkRevoke(String activityId, Enum<Status> currentStatus) {
+        ActivityService.execStatus(activityId, currentStatus, Status.Editing);
+        return new Result("0000", "活动审核撤销回到编辑中");
+    }
+
+    public Result close(String activityId, Enum<Status> currentStatus) {
+        ActivityService.execStatus(activityId, currentStatus, Status.Close);
+        return new Result("0000", "活动审核关闭完成");
+    }
+
+    public Result open(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "非关闭活动不可开启");
+    }
+
+    public Result doing(String activityId, Enum<Status> currentStatus) {
+        return new Result("0001", "待审核活动不可执行活动中变更");
+    }
+}
+```
+* 3.新建一个状态控制类`StateHandler`，用来控制状态变更
+```
+public class StateHandler {
+
+    private Map<Enum<Status>, State> stateMap = new ConcurrentHashMap<Enum<Status>, State>();
+
+    public StateHandler() {
+        stateMap.put(Status.Check, new CheckState());     // 待审核
+        // stateMap.put(Status.Close, new CloseState());     // 已关闭
+        // stateMap.put(Status.Doing, new DoingState());     // 活动中
+        stateMap.put(Status.Editing, new EditingState()); // 编辑中
+        // stateMap.put(Status.Open, new OpenState());       // 已开启
+        // stateMap.put(Status.Pass, new PassState());       // 审核通过
+        // stateMap.put(Status.Refuse, new RefuseState());   // 审核拒绝
+    }
+
+    public Result arraignment(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).arraignment(activityId, currentStatus);
+    }
+
+    public Result checkPass(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).checkPass(activityId, currentStatus);
+    }
+
+    public Result checkRefuse(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).checkRefuse(activityId, currentStatus);
+    }
+
+    public Result checkRevoke(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).checkRevoke(activityId, currentStatus);
+    }
+
+    public Result close(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).close(activityId, currentStatus);
+    }
+
+    public Result open(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).open(activityId, currentStatus);
+    }
+
+    public Result doing(String activityId, Enum<Status> currentStatus) {
+        return stateMap.get(currentStatus).doing(activityId, currentStatus);
+    }
+
+}
+```
+* 4.测试使用
+```
+    @Test
+    public void test_Editing2Arraignment() {
+        String activityId = "100001";
+        // 初始化状态
+        ActivityService.init(activityId, Status.Editing);
+        StateHandler stateHandler = new StateHandler();
+        // 获取对应状态操作类 并执行其中的方法
+        Result result = stateHandler.arraignment(activityId, Status.Editing);
+        logger.info("测试结果(编辑中To提审活动)：{}", JSON.toJSONString(result));
+        logger.info("活动信息：{} 状态：{}", JSON.toJSONString(ActivityService.queryActivityInfo(activityId)), JSON.toJSONString(ActivityService.queryActivityInfo(activityId).getStatus()));
+    }
+```
+
+## 策略模式(重点)
+## 模板方法模式(重点)
 ## 访问者模式
 ## 解释器模式。
 
