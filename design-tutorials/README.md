@@ -2166,6 +2166,141 @@ public class JDNetMall extends NetMall {
     }
 ```
 ## 访问者模式
+* 访问者要解决的核心事项是，在一个稳定的数据结构下，例如用户信息、雇员信息等，增加易变的业务访问逻辑
+* 1.新建一个用户抽象类`user`，和两个对应实现类老师`Teacher`、学生`Student`
+```
+public abstract class User {
+    public String name;      // 姓名
+    public String identity;  // 身份；重点班、普通班 | 特级教师、普通教师、实习教师
+    public String clazz;     // 班级
+
+    public User(String name, String identity, String clazz) {
+        this.name = name;
+        this.identity = identity;
+        this.clazz = clazz;
+    }
+
+    // 核心访问方法
+    public abstract void accept(Visitor visitor);
+}
+
+public class Teacher extends User {
+    public Teacher(String name, String identity, String clazz) {
+        super(name, identity, clazz);
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    /**
+     * 升本率
+     * @return
+     */
+    public double entranceRatio() {
+        return BigDecimal.valueOf(Math.random() * 100).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+}
+
+public class Student extends User {
+
+    public Student(String name, String identity, String clazz) {
+        super(name, identity, clazz);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    /**
+     * 排名
+     * @return
+     */
+    public int ranking() {
+        return (int) (Math.random() * 100);
+    }
+}
+```
+
+* 2.新建一个访问者接口`Visitor`，以及对应的两个实现类校长`Principal`和家长`Parent`
+```
+public interface Visitor {
+
+    // 访问学生信息
+    void visit(Student student);
+
+    // 访问老师信息
+    void visit(Teacher teacher);
+
+}
+
+public class Principal implements Visitor {
+    private Logger logger = LoggerFactory.getLogger(Principal.class);
+
+    public void visit(Student student) {
+        logger.info("学生信息 姓名：{} 班级：{}", student.name, student.clazz);
+    }
+
+    public void visit(Teacher teacher) {
+        logger.info("学生信息 姓名：{} 班级：{} 升学率：{}", teacher.name, teacher.clazz, teacher.entranceRatio());
+    }
+
+}
+
+public class Parent implements Visitor {
+
+    private Logger logger = LoggerFactory.getLogger(Parent.class);
+
+    public void visit(Student student) {
+        logger.info("学生信息 姓名：{} 班级：{} 排名：{}", student.name, student.clazz, student.ranking());
+    }
+
+    public void visit(Teacher teacher) {
+        logger.info("老师信息 姓名：{} 班级：{} 级别：{}", teacher.name, teacher.clazz, teacher.identity);
+    }
+
+}
+```
+
+* 3.数据看板`DataView`
+```
+public class DataView {
+    List<User> userList = new ArrayList<User>();
+
+    public DataView() {
+        userList.add(new Student("谢飞机", "重点班", "一年一班"));
+        userList.add(new Student("windy", "重点班", "一年一班"));
+        userList.add(new Student("大毛", "普通班", "二年三班"));
+        userList.add(new Student("Shing", "普通班", "三年四班"));
+        userList.add(new Teacher("BK", "特级教师", "一年一班"));
+        userList.add(new Teacher("娜娜Goddess", "特级教师", "一年一班"));
+        userList.add(new Teacher("dangdang", "普通教师", "二年三班"));
+        userList.add(new Teacher("泽东", "实习教师", "三年四班"));
+    }
+
+    // 展示
+    public void show(Visitor visitor) {
+        for (User user : userList) {
+            user.accept(visitor);
+        }
+    }
+}
+```
+
+* 4.测试验证，不同视角下展示的数据不一致
+```
+    @Test
+    public void test(){
+        DataView dataView = new DataView();
+
+        logger.info("\r\n家长视角访问：");
+        dataView.show(new Parent());     // 家长
+
+        logger.info("\r\n校长视角访问：");
+        dataView.show(new Principal());  // 校长
+    }
+```
 ## 解释器模式。
 
 > 最后大哥图片镇楼
