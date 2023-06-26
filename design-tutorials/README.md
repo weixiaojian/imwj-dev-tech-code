@@ -2086,6 +2086,85 @@ public class Context<T>{
 ```
 
 ## 模板方法模式(重点)
+* 模板模式的核心设计思路是通过在，抽象类中定义抽象方法的执行顺序，并将抽象方法设定为只有子类实现，但不设计独立访问的方法
+* 1.新建一个抽象父类`NetMall`，在父类中定义一个可对外调用的方法`generateGoodsPoster`，同时定义三个待实现的方法（由后续子类实现[模板]）
+```
+public abstract class NetMall {
+
+    protected Logger logger = LoggerFactory.getLogger(NetMall.class);
+
+    String uId;   // 用户ID
+    String uPwd;  // 用户密码
+
+    public NetMall(String uId, String uPwd) {
+        this.uId = uId;
+        this.uPwd = uPwd;
+    }
+
+    /**
+     * 生成商品推广海报
+     *
+     * @param skuUrl 商品地址(京东、淘宝、当当)
+     * @return 海报图片base64位信息
+     */
+    public String generateGoodsPoster(String skuUrl) {
+        if (!login(uId, uPwd)) return null;             // 1. 验证登录
+        Map<String, String> reptile = reptile(skuUrl);  // 2. 爬虫商品
+        return createBase64(reptile);                   // 3. 组装海报
+    }
+
+    // 模拟登录
+    protected abstract Boolean login(String uId, String uPwd);
+
+    // 爬虫提取商品信息(登录后的优惠价格)
+    protected abstract Map<String, String> reptile(String skuUrl);
+
+    // 生成商品海报信息
+    protected abstract String createBase64(Map<String, String> goodsInfo);
+}
+```
+* 2.创建实现类`JDNetMall`，针对上面待实现的三个方法实现
+``` 
+public class JDNetMall extends NetMall {
+
+    public JDNetMall(String uId, String uPwd) {
+        super(uId, uPwd);
+    }
+
+    public Boolean login(String uId, String uPwd) {
+        logger.info("模拟京东用户登录 uId：{} uPwd：{}", uId, uPwd);
+        return true;
+    }
+
+    public Map<String, String> reptile(String skuUrl) {
+        String str = HttpClient.doGet(skuUrl);
+        Pattern p9 = Pattern.compile("(?<=title\\>).*(?=</title)");
+        Matcher m9 = p9.matcher(str);
+        Map<String, String> map = new ConcurrentHashMap<String, String>();
+        if (m9.find()) {
+            map.put("name", m9.group());
+        }
+        map.put("price", "5999.00");
+        logger.info("模拟京东商品爬虫解析：{} | {} 元 {}", map.get("name"), map.get("price"), skuUrl);
+        return map;
+    }
+
+    public String createBase64(Map<String, String> goodsInfo) {
+        BASE64Encoder encoder = new BASE64Encoder();
+        logger.info("模拟生成京东商品base64海报");
+        return encoder.encode(JSON.toJSONString(goodsInfo).getBytes());
+    }
+}
+```
+* 3.测试使用
+```
+    @Test
+    public void test_NetMall() {
+        NetMall netMall = new JDNetMall("1000001","*******");
+        String base64 = netMall.generateGoodsPoster("https://item.jd.com/100008348542.html");
+        logger.info("测试结果：{}", base64);
+    }
+```
 ## 访问者模式
 ## 解释器模式。
 

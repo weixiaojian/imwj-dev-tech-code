@@ -57,6 +57,7 @@
         <module>step18-01</module>
         <module>step18-02</module>
         <module>step19-01</module>
+        <module>step20-00</module>
     </modules>
 
     <properties>
