@@ -3,7 +3,7 @@
 * 地址：[小博哥-手写mybatis专栏](https://bugstack.cn/md/spring/develop-mybatis/2022-03-20-第1章：开篇介绍，手写Mybatis能给你带来什么？.html)
 
 # 第一章：创建简单的映射器代理工厂
-![image](https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png)
+![image](https://github.com/weixiaojian/study-code/blob/master/small-mybatis/img/mybatis-01.png?raw=true)
 * 1.创建一个映射代理器`MapperProxy`实现`InvocationHandler`（jdk动态代理接口），
 ```
 public class MapperProxy<T> implements InvocationHandler, Serializable {
@@ -78,7 +78,7 @@ public class MapperProxyFactory<T> {
 * 总体流程梳理：测试方法中定义好接口和sqlSession作为参数传入 > `factory.newInstance`创建一个代理类 > 代理执行`queryUserName`方法时其实是执行`MapperProxy.invoke`的代理方法
 
 # 第二章：实现映射器的注册和使用
-![image](https://www.yinxiang.com/blog/wp-content/uploads/2018/07/%E5%94%AE%E7%A5%A8%E5%BE%AE%E4%BF%A1%E5%B0%81%E9%9D%A22.png)
+![image](https://github.com/weixiaojian/study-code/blob/master/small-mybatis/img/mybatis-02.png?raw=true)
 * 1.创建一个`MapperRegistry`映射器注册类，该类主要用于加载指定目录的
 ```
 public class MapperRegistry {
