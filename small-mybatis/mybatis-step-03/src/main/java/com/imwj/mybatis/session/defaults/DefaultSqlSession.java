@@ -40,10 +40,8 @@ public class DefaultSqlSession implements SqlSession {
         return configuration.getMapper(type, this);
     }
 
-
     @Override
     public Configuration getConfiguration() {
         return configuration;
     }
-
 }

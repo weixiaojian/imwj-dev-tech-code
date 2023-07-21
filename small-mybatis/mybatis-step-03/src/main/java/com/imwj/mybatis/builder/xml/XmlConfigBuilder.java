@@ -62,7 +62,7 @@ public class XmlConfigBuilder extends BaseBuilder {
     private void mapperElement(Element mappers) throws Exception {
         List<Element> mapperList = mappers.elements("mapper");
         for(Element e : mapperList){
-            // 1.得到resource标签
+            // 1.得到resource标签，解析User_Mapper.xml
             String resource = e.attributeValue("resource");
             Reader reader = Resources.getResourceAsReader(resource);
             SAXReader saxReader = new SAXReader();
@@ -97,11 +97,8 @@ public class XmlConfigBuilder extends BaseBuilder {
                 // 添加解析 SQL
                 configuration.addMappedStatement(mappedStatement);
             }
-
             // 注册Mapper映射器
             configuration.addMapper(Resources.classForName(namespace));
         }
     }
-
-
 }
