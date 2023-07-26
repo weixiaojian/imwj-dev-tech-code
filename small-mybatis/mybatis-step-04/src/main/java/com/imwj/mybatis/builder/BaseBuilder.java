@@ -1,6 +1,7 @@
 package com.imwj.mybatis.builder;
 
 import com.imwj.mybatis.session.Configuration;
+import com.imwj.mybatis.type.TypeAliasRegistry;
 
 /**
  * @author wj
@@ -10,9 +11,11 @@ import com.imwj.mybatis.session.Configuration;
 public abstract class BaseBuilder {
 
     protected final Configuration configuration;
+    protected final TypeAliasRegistry typeAliasRegistry;
 
     public BaseBuilder(Configuration configuration) {
         this.configuration = configuration;
+        this.typeAliasRegistry = this.configuration.getTypeAliasRegistry();
     }
 
     public Configuration getConfiguration() {

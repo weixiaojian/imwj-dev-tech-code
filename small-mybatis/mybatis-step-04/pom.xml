@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.imwj.mybatis</groupId>
-    <artifactId>mybatis-step-03</artifactId>
+    <artifactId>mybatis-step-04</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -55,6 +55,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.48</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.18</version>
+        </dependency>
+
         <!-- LOGGING end -->
     </dependencies>
 

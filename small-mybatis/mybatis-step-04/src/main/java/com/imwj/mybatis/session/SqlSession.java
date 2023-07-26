@@ -1,5 +1,7 @@
 package com.imwj.mybatis.session;
 
+import java.sql.SQLException;
+
 /**
  * @author wj
  * @create 2023-07-18 17:34
@@ -27,7 +29,7 @@ public interface SqlSession {
      * @param parameter A parameter object to pass to the statement.
      * @return Mapped object
      */
-    <T> T selectOne(String statement, Object parameter);
+    <T> T selectOne(String statement, Object parameter) throws SQLException, ClassNotFoundException;
 
     /**
      * Retrieves a mapper.
