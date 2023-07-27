@@ -75,7 +75,11 @@ public class MapperProxyFactory<T> {
         logger.info("测试结果：{}", res);
     }
 ```
-* 总体流程梳理：测试方法中定义好接口和sqlSession作为参数传入 > `factory.newInstance`创建一个代理类 > 代理执行`queryUserName`方法时其实是执行`MapperProxy.invoke`的代理方法
+* 总结：
+* 此章节就是创建了代理`MapperProxy`、代理器工厂`MapperProxyFactory`，使用了工厂模式
+* 流程梳理：测试方法中定义好接口和sqlSession作为参数传入 > `factory.newInstance`创建一个代理类 > 代理执行`queryUserName`方法时其实是执行`MapperProxy.invoke`的代理方法
+
+
 
 # 第二章：实现映射器的注册和使用
 ![image](https://github.com/weixiaojian/study-code/blob/master/small-mybatis/img/mybatis-02.png?raw=true)
@@ -202,6 +206,10 @@ public class DefaultSqlSession implements SqlSession {
         System.out.println(res);
     }
 ```
+* 总结：
+* 增加了`MapperRegistry`映射器注册类，用于统一管理指的目录下需要代理的类
+* 增加了`DefaultSqlSessionFactory`、`DefaultSqlSession`用于执行sql查询
+* 流程梳理：`MapperRegistry`加载指的目录下的所有类 > 创建`DefaultSqlSessionFactory`用于创建`DefaultSqlSession` > 其中的`getMapper`方法用于获取代理类 > 执行代理类中的`selectOne`方法
 
 # 第三章：Mapper XML的解析和注册使用
 ![image](https://github.com/weixiaojian/study-code/blob/master/small-mybatis/img/mybatis-03.png?raw=true)
@@ -284,8 +292,7 @@ public class XmlConfigBuilder extends BaseBuilder {
         }
     }
 }
-```
-```
+
 public class Configuration {
 
     /**
@@ -418,3 +425,8 @@ public class DefaultSqlSession implements SqlSession {
         logger.info("测试结果：{}", res);
     }
 ```
+* 总结：
+* 增加了`Configuration`用于存储映射注册机、映射的语句等，从最初的xml解析数据赋值后一直带到`DefaultSqlSession`执行语句
+* 增加了`XmlConfigBuilder`用于解析xml配置文件中的sql语句
+* 增加了`SqlSessionFactoryBuilder`用于构建`DefaultSqlSessionFactory`
+* 流程梳理：`xmlConfigBuilder.parse()`加载xml配置文件到`configuration` > `SqlSessionFactoryBuilder`创建`DefaultSqlSessionFactory`创建`DefaultSqlSession` > `getMapper`获取到代理类 > 执行代理类中的`selectOne`方法

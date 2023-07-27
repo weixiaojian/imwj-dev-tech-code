@@ -2,6 +2,7 @@ package com.imwj.mybatis.session;
 
 import com.imwj.mybatis.binding.MapperRegistry;
 import com.imwj.mybatis.datasource.DataSourceFactory;
+import com.imwj.mybatis.datasource.druid.DruidDataSourceFactory;
 import com.imwj.mybatis.mapping.Environment;
 import com.imwj.mybatis.mapping.MappedStatement;
 import com.imwj.mybatis.transaction.jdbc.JdbcTransactionFactory;
@@ -36,7 +37,7 @@ public class Configuration {
 
     public Configuration() {
         typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
-        typeAliasRegistry.registerAlias("DRUID", DataSourceFactory.class);
+        typeAliasRegistry.registerAlias("DRUID", DruidDataSourceFactory.class);
     }
 
     public void addMappers(String packageName) {

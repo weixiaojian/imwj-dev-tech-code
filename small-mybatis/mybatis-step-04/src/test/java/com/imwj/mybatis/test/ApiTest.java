@@ -1,5 +1,6 @@
 package com.imwj.mybatis.test;
 
+import cn.hutool.json.JSONUtil;
 import com.imwj.mybatis.binding.MapperRegistry;
 import com.imwj.mybatis.io.Resources;
 import com.imwj.mybatis.session.SqlSession;
@@ -8,7 +9,7 @@ import com.imwj.mybatis.session.SqlSessionFactoryBuilder;
 import com.imwj.mybatis.session.defaults.DefaultSqlSession;
 import com.imwj.mybatis.session.defaults.DefaultSqlSessionFactory;
 import com.imwj.mybatis.test.dao.IUserDao;
-import com.imwj.mybatis.test.dao.User;
+import com.imwj.mybatis.test.entity.User;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +37,8 @@ public class ApiTest {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
 
         // 3. 测试验证
-        String res = userDao.queryUserInfoById("10001");
-        logger.info("测试结果：{}", res);
+        User res = userDao.queryUserInfoById("1");
+        logger.info("测试结果：{}", JSONUtil.toJsonStr(res));
     }
 
 }

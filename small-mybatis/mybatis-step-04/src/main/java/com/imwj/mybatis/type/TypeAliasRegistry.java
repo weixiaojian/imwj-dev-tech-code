@@ -37,6 +37,4 @@ public class TypeAliasRegistry {
         String key = string.toLowerCase(Locale.ENGLISH);
         return (Class<T>) TYPE_ALIASES.get(key);
     }
-
-
 }
