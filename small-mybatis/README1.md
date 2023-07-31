@@ -291,3 +291,18 @@ public class DefaultSqlSession implements SqlSession {
 * 增加了DataSourceFactory`接口和`DruidDataSourceFactory`实现，用于构建数据源，在DefaultSqlSession中真正的查询数据库
 * 增加了DefaultSqlSession实际查询了数据库并将查询结果封装返回
 * 流程梳理：`xmlConfigBuilder.parse()`加载xml配置文件到`configuration`(增加了事务和数据源配置) > `SqlSessionFactoryBuilder`创建`DefaultSqlSessionFactory`创建`DefaultSqlSession` > `getMapper`获取到代理类 > 执行代理类中的`selectOne`方法
+
+# 第五章：无池化和有池化实现
+![image](https://github.com/weixiaojian/study-code/blob/master/small-mybatis/img/mybatis-05.png?raw=true)
+* 1.无池化实现：`UnpooledDataSourceFactory`主要是将url等赋值 并用于创建`UnpooledDataSource`，后者实现了`DataSource`接口提供了获取数据库连接的方法（注册和管理 JDBC 驱动程序、驱动代理、初始化驱动、获取连接）
+```
+com.imwj.mybatis.datasource.unpooled.UnpooledDataSource
+com.imwj.mybatis.datasource.unpooled.UnpooledDataSourceFactory
+```
+* 2.有池化实现：`PooledDataSourceFactory`池工厂、`PooledDataSource`池化数据源、`PooledConnection`有池化代理连接
+```
+com.imwj.mybatis.datasource.unpooled.PooledDataSource
+com.imwj.mybatis.datasource.unpooled.PooledDataSourceFactory
+com.imwj.mybatis.datasource.unpooled.PooledConnection
+```
+* 3.总结：本章主要新增了无池化连接和有池化连接，`Configuration`中增加`UNPOOLED`、`POOLED`注册机，xml配置文件中更改`dataSourceType`即可
