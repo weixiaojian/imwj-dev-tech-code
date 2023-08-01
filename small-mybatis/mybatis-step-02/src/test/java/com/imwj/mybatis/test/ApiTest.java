@@ -27,7 +27,7 @@ public class ApiTest {
         // 3.获取映射器对象
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
 
-        String res  = userDao.queryUserName("10001");
+        String res  = userDao.queryUserAge("10001");
         System.out.println(res);
     }
 

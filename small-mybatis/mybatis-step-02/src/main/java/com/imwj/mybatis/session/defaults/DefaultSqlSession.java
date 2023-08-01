@@ -26,7 +26,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> T selectOne(String statement, Object parameter) {
-        System.out.println("执行selectOne，参数：" + parameter);
+        System.out.println(statement + "执行selectOne，参数：" + parameter);
         return (T) "test";
     }
 
