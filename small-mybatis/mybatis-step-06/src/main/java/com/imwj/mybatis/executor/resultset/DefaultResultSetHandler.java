@@ -1,12 +1,8 @@
-package com.imwj.mybatis.session.defaults;
+package com.imwj.mybatis.executor.resultset;
 
-import cn.hutool.core.thread.SemaphoreRunnable;
 import com.imwj.mybatis.executor.Executor;
 import com.imwj.mybatis.mapping.BoundSql;
-import com.imwj.mybatis.mapping.Environment;
 import com.imwj.mybatis.mapping.MappedStatement;
-import com.imwj.mybatis.session.Configuration;
-import com.imwj.mybatis.session.SqlSession;
 
 import java.lang.reflect.Method;
 import java.sql.*;
@@ -15,54 +11,29 @@ import java.util.List;
 
 /**
  * @author wj
- * @create 2023-07-18 17:45
- * @description 默认的 DefaultSqlSession
+ * @create 2023-08-08 11:37
+ * @description 默认Map结果处理器
  */
-public class DefaultSqlSession implements SqlSession {
+public class DefaultResultSetHandler implements ResultSetHandler{
 
-    private Configuration configuration;
-    private Executor executor;
+    private final BoundSql boundSql;
 
-    public DefaultSqlSession(Configuration configuration, Executor executor) {
-        this.configuration = configuration;
-        this.executor = executor;
+    public DefaultResultSetHandler(Executor executor, MappedStatement mappedStatement, BoundSql boundSql) {
+        this.boundSql = boundSql;
     }
 
     @Override
-    public <T> T selectOne(String statement) {
-        return null;
+    public <E> List<E> handleResultSets(Statement stmt) throws SQLException {
+        ResultSet resultSet = stmt.getResultSet();
+        try {
+            return resultSet2Obj(resultSet, Class.forName(boundSql.getResultType()));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    @Override
-    public <T> T selectOne(String statement, Object parameter) throws SQLException, ClassNotFoundException {
-        MappedStatement ms  = configuration.getMappedStatement(statement);
-        List<T> list  = executor.query(ms, parameter, Executor.NO_RESULT_HANDLER, ms.getBoundSql());
-        return list.get(0);
-    }
 
-    /**
-     * 获取代理类
-     * @param type Mapper interface class
-     * @return
-     * @param <T>
-     */
-    @Override
-    public <T> T getMapper(Class<T> type) {
-        return configuration.getMapper(type, this);
-    }
-
-    @Override
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
-    /**
-     * 查询结构封装为指的类
-     * @param resultSet
-     * @param clazz
-     * @return
-     * @param <T>
-     */
     private <T> List<T> resultSet2Obj(ResultSet resultSet, Class<?> clazz) {
         List<T> list = new ArrayList<>();
         try {

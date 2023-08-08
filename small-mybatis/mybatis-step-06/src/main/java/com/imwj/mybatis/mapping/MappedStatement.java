@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @author wj
  * @create 2023-07-20 17:43
- * @description
+ * @description 映射语句类
  */
 public class MappedStatement {
 
