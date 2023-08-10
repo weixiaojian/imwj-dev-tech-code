@@ -306,3 +306,20 @@ com.imwj.mybatis.datasource.unpooled.PooledDataSourceFactory
 com.imwj.mybatis.datasource.unpooled.PooledConnection
 ```
 * 3.总结：本章主要新增了无池化连接和有池化连接，`Configuration`中增加`UNPOOLED`、`POOLED`注册机，xml配置文件中更改`dataSourceType`即可
+
+# 第六章：SQL执行器的定义和实现
+* 0.SQL执行器包含：参数处理器`statement`、结果处理器`resultset`、sql执行器`Executor`三大部分(三者均在`configuration`中创建)，此部分功能设计均采用了模板方法设计模式（一个接口、一个抽象类、多个实现类）
+* 1.参数处理器包含：简单参数处理器`SimpleStatementHandler`、预语句处理器`PreparedStatementHandler`(主要使用)，
+```
+com.imwj.mybatis.executor.statement.PreparedStatementHandler
+com.imwj.mybatis.executor.statement.SimpleStatementHandler
+```
+* 2.结果处理器`DefaultResultSetHandler`负责将查询结果转换为指的实体
+```
+com.imwj.mybatis.executor.resultset.DefaultResultSetHandler
+```
+* 3.SQL执行器`SimpleExecutor`同样试用模板方法设计，主要是控制数据库事务和创建连接 并执行sql语句，并将`DefaultSqlSession`中的selectOne方法替换为执行器
+```
+com.imwj.mybatis.executor.SimpleExecutor
+```
+* 总结：本章节主要是更换了`DefaultSqlSession`中的selectOne方法替换为执行器（业务解耦），并在执行器中调用了预语句处理器`PreparedStatementHandler`和结果处理器`DefaultResultSetHandler`，最后将执行结果返回
