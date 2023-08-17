@@ -323,3 +323,30 @@ com.imwj.mybatis.executor.resultset.DefaultResultSetHandler
 com.imwj.mybatis.executor.SimpleExecutor
 ```
 * 总结：本章节主要是更换了`DefaultSqlSession`中的selectOne方法替换为执行器（业务解耦），并在执行器中调用了预语句处理器`PreparedStatementHandler`和结果处理器`DefaultResultSetHandler`，最后将执行结果返回
+
+# 第七章：把反射用到出神入化
+* 对于属性的获取从硬编码的方式调整为通过反射来获取和填充
+```
+1.比如：配置文件中的url、name、password等赋值到dataSource中之前是通过
+    PooledDataSource pooledDataSource = new PooledDataSource();
+    pooledDataSource.setDriver(props.getProperty("driver"));
+    pooledDataSource.setUrl(props.getProperty("url"));
+    pooledDataSource.setUsername(props.getProperty("username"));
+    pooledDataSource.setPassword(props.getProperty("password"));
+    
+2.优化后：我们可以直接通过MetaObject来读取和填充值
+    public void setProperties(Properties props) {
+        // 1.先加载指定对象
+        MetaObject metaObject = SystemMetaObject.forObject(dataSource);
+        // 2.循环xml配置值
+        for (Object key : props.keySet()) {
+            String propertyName = (String) key;
+            // 3.两者属性一致(有对应的set方法)就进行天才
+            if (metaObject.hasSetter(propertyName)) {
+                String value = (String) props.get(propertyName);
+                Object convertedValue = convertValue(metaObject, propertyName, value);
+                metaObject.setValue(propertyName, convertedValue);
+            }
+        }
+    }
+```
