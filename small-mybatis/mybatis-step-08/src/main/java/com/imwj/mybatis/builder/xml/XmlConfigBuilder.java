@@ -17,6 +17,7 @@ import org.xml.sax.InputSource;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -94,50 +95,22 @@ public class XmlConfigBuilder extends BaseBuilder {
 
     /**
      * 解析指定标签mapper
-     * @param mappers
+     /*
+     * <mappers>
+     *	 <mapper resource="org/mybatis/builder/AuthorMapper.xml"/>
+     *	 <mapper resource="org/mybatis/builder/BlogMapper.xml"/>
+     *	 <mapper resource="org/mybatis/builder/PostMapper.xml"/>
+     * </mappers>
      */
     private void mapperElement(Element mappers) throws Exception {
-        List<Element> mapperList = mappers.elements("mapper");
-        for(Element e : mapperList){
-            // 1.得到resource标签，解析User_Mapper.xml
-            String resource = e.attributeValue("resource");
-            Reader reader = Resources.getResourceAsReader(resource);
-            SAXReader saxReader = new SAXReader();
-            Document document = saxReader.read(new InputSource(reader));
-            Element root = document.getRootElement();
-            // 2.命名空间
-            String namespace = root.attributeValue("namespace");
+        List<Element> elementList = mappers.elements("mapper");
+        for(Element element : elementList){
+            String resource = element.attributeValue("resource");
+            InputStream inputStream = Resources.getResourceAsStream(resource);
 
-            // 3.SELECT
-            List<Element> selectNodes = root.elements("select");
-            for (Element node : selectNodes) {
-                String id = node.attributeValue("id");
-                String parameterType = node.attributeValue("parameterType");
-                String resultType = node.attributeValue("resultType");
-                String sql = node.getText();
-
-                // ? 匹配
-                Map<Integer, String> parameter = new HashMap<>();
-                Pattern pattern = Pattern.compile("(#\\{(.*?)})");
-                Matcher matcher = pattern.matcher(sql);
-                for (int i = 1; matcher.find(); i++) {
-                    String g1 = matcher.group(1);
-                    String g2 = matcher.group(2);
-                    parameter.put(i, g2);
-                    sql = sql.replace(g1, "?");
-                }
-
-                String msId = namespace + "." + id;
-                String nodeName = node.getName();
-                SqlCommandType sqlCommandType = SqlCommandType.valueOf(nodeName.toUpperCase(Locale.ENGLISH));
-
-                // 查询sql封装
-                BoundSql boundSql = new BoundSql(sql, parameter, parameterType, resultType);
-                MappedStatement mappedStatement = new MappedStatement.Builder(configuration, msId, sqlCommandType, boundSql).build();                // 添加解析 SQL
-                configuration.addMappedStatement(mappedStatement);
-            }
-            // 注册Mapper映射器
-            configuration.addMapper(Resources.classForName(namespace));
+            // 在for循环中每一个mapper都哦new一个XMLMapperBuilder解析
+            XMLMapperBuilder mapperBuilder = new XMLMapperBuilder(inputStream, configuration, resource);
+            mapperBuilder.pares();
         }
     }
 }
