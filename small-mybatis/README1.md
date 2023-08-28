@@ -350,3 +350,6 @@ com.imwj.mybatis.executor.SimpleExecutor
         }
     }
 ```
+
+# 第八章：细化XML语句构建器，完善静态SQL解析
+* 通过设计原则进行拆分和解耦，运用不同的类来承担不同的职责：映射构建器（XMLMapperBuilder）、语句构建器（XMLStatementBuilder）、源码构建器（SqlSourceBuilder）
