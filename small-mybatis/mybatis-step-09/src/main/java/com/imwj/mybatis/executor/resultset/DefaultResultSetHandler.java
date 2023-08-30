@@ -30,7 +30,13 @@ public class DefaultResultSetHandler implements ResultSetHandler{
         return resultSet2Obj(resultSet, mappedStatement.getResultType());
     }
 
-
+    /**
+     * 查询结构封装为指的类
+     * @param resultSet
+     * @param clazz
+     * @return
+     * @param <T>
+     */
     private <T> List<T> resultSet2Obj(ResultSet resultSet, Class<?> clazz) {
         List<T> list = new ArrayList<>();
         try {
