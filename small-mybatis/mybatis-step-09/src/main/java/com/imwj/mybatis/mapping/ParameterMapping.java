@@ -2,6 +2,8 @@ package com.imwj.mybatis.mapping;
 
 import cn.hutool.db.meta.JdbcType;
 import com.imwj.mybatis.session.Configuration;
+import com.imwj.mybatis.type.TypeHandler;
+import com.imwj.mybatis.type.TypeHandlerRegistry;
 
 /**
  * @author wj
@@ -18,6 +20,7 @@ public class ParameterMapping  {
     private Class<?> javaType = Object.class;
     // jdbcType=NUMERIC
     private JdbcType jdbcType;
+    private TypeHandler<?> typeHandler;
 
     private ParameterMapping() {
     }
@@ -43,6 +46,11 @@ public class ParameterMapping  {
         }
 
         public ParameterMapping build() {
+            if (parameterMapping.typeHandler == null && parameterMapping.javaType != null) {
+                Configuration configuration = parameterMapping.configuration;
+                TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
+                parameterMapping.typeHandler = typeHandlerRegistry.getTypeHandler(parameterMapping.javaType, parameterMapping.jdbcType);
+            }
             return parameterMapping;
         }
     }
@@ -62,5 +70,7 @@ public class ParameterMapping  {
     public JdbcType getJdbcType() {
         return jdbcType;
     }
-
+    public TypeHandler<?> getTypeHandler() {
+        return typeHandler;
+    }
 }

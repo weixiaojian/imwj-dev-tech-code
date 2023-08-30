@@ -24,10 +24,15 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
      * 代理类
      */
     private final Class<T> mapperInterface;
+    /**
+     * 缓存
+     */
+    private final Map<Method, MapperMethod> methodCache;
 
-    public MapperProxy(SqlSession sqlSession, Class<T> mapperInterface) {
+    public MapperProxy(SqlSession sqlSession, Class<T> mapperInterface, Map<Method, MapperMethod> methodCache) {
         this.sqlSession = sqlSession;
         this.mapperInterface = mapperInterface;
+        this.methodCache = methodCache;
     }
 
     /**
@@ -37,11 +42,25 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
      */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // Object的toString()等相关方法不需要代理  直接执行
-        if(Object.class.equals(method.getDeclaringClass())){
+        if (Object.class.equals(method.getDeclaringClass())) {
             return method.invoke(this, args);
-        }else{
-            System.out.println("你被代理了");
-            return sqlSession.selectOne(mapperInterface.getName() + "." + method.getName(), args);
+        } else {
+            final MapperMethod mapperMethod = cachedMapperMethod(method);
+            return mapperMethod.execute(sqlSession, args);
         }
     }
+
+    /**
+     * 去缓存中找MapperMethod
+     */
+    private MapperMethod cachedMapperMethod(Method method) {
+        MapperMethod mapperMethod = methodCache.get(method);
+        if (mapperMethod == null) {
+            //找不到才去new
+            mapperMethod = new MapperMethod(mapperInterface, method, sqlSession.getConfiguration());
+            methodCache.put(method, mapperMethod);
+        }
+        return mapperMethod;
+    }
+
 }

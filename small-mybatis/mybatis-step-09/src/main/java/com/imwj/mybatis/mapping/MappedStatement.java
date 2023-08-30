@@ -1,5 +1,6 @@
 package com.imwj.mybatis.mapping;
 
+import com.imwj.mybatis.scripting.LanguageDriver;
 import com.imwj.mybatis.session.Configuration;
 
 import java.util.Map;
@@ -17,6 +18,7 @@ public class MappedStatement {
     private SqlCommandType sqlCommandType;
     private SqlSource sqlSource;
     Class<?> resultType;
+    private LanguageDriver lang;
 
 
     MappedStatement() {
@@ -36,6 +38,7 @@ public class MappedStatement {
             mappedStatement.sqlCommandType = sqlCommandType;
             mappedStatement.sqlSource = sqlSource;
             mappedStatement.resultType = resultType;
+            mappedStatement.lang = configuration.getDefaultScriptingLanguageInstance();
         }
 
         public MappedStatement build() {
@@ -68,5 +71,8 @@ public class MappedStatement {
 
     public Class<?> getResultType() {
         return resultType;
+    }
+    public LanguageDriver getLang() {
+        return lang;
     }
 }

@@ -9,5 +9,5 @@ import com.imwj.mybatis.test.entity.User;
  */
 public interface IUserDao {
 
-    User queryUserInfoById(String uId);
+    User queryUserInfoById(User user);
 }
