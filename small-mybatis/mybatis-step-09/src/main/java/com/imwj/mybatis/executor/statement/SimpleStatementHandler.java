@@ -6,6 +6,7 @@ import com.imwj.mybatis.mapping.MappedStatement;
 import com.imwj.mybatis.session.ResultHandler;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -29,7 +30,7 @@ public class SimpleStatementHandler extends BaseStatementHandler {
 
     @Override
     public void parameterize(Statement statement) throws SQLException {
-        // N/A
+        parameterHandler.setParameters((PreparedStatement) statement);
     }
 
     @Override

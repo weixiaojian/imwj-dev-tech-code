@@ -353,3 +353,79 @@ com.imwj.mybatis.executor.SimpleExecutor
 
 # 第八章：细化XML语句构建器，完善静态SQL解析
 * 通过设计原则进行拆分和解耦，运用不同的类来承担不同的职责：映射构建器（XMLMapperBuilder）、语句构建器（XMLStatementBuilder）、源码构建器（SqlSourceBuilder）
+
+# 第九章：使用策略模式，调用参数处理器
+* 通过策略解耦，模板定义流程将mybatis参数处理模块化，针对不同类型的参数使用了对应的类型处理器
+* 1.`MapperProxy.invoke`代理方法变更为`mapperMethod.execute`，同时此处对mapper方法进行了缓存处理
+```
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // Object的toString()等相关方法不需要代理  直接执行
+        if (Object.class.equals(method.getDeclaringClass())) {
+            return method.invoke(this, args);
+        } else {
+            final MapperMethod mapperMethod = cachedMapperMethod(method);
+            return mapperMethod.execute(sqlSession, args);
+        }
+    }
+
+    /**
+     * 去缓存中找MapperMethod
+     */
+    private MapperMethod cachedMapperMethod(Method method) {
+        MapperMethod mapperMethod = methodCache.get(method);
+        if (mapperMethod == null) {
+            //找不到才去new
+            mapperMethod = new MapperMethod(mapperInterface, method, sqlSession.getConfiguration());
+            methodCache.put(method, mapperMethod);
+        }
+        return mapperMethod;
+    }
+```
+* 2.`MapperMethod`映射器方法中对增删改查做了不同处理，对请求参数做了签名处理`com.imwj.mybatis.binding.MapperMethod`
+```
+    public Object execute(SqlSession sqlSession, Object[] args) throws SQLException, ClassNotFoundException {
+        Object result = null;
+        switch (command.getType()) {
+            case INSERT:
+                break;
+            case DELETE:
+                break;
+            case UPDATE:
+                break;
+            case SELECT:
+                Object param = method.convertArgsToSqlCommandParam(args);
+                result = sqlSession.selectOne(command.getName(), param);
+                break;
+            default:
+                throw new RuntimeException("Unknown execution method for: " + command.getName());
+        }
+        return result;
+    }
+```
+* 3.最后在`DefaultParameterHandler.setParameters`将之前封装的参数取出并一一对应
+```
+    @Override
+    public void setParameters(PreparedStatement ps) throws SQLException {
+        List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
+        if (null != parameterMappings) {
+            for (int i = 0; i < parameterMappings.size(); i++) {
+                ParameterMapping parameterMapping = parameterMappings.get(i);
+                String propertyName = parameterMapping.getProperty();
+                Object value;
+                if (typeHandlerRegistry.hasTypeHandler(parameterObject.getClass())) {
+                    value = parameterObject;
+                } else {
+                    // 通过 MetaObject.getValue 反射取得值设进去
+                    MetaObject metaObject = configuration.newMetaObject(parameterObject);
+                    value = metaObject.getValue(propertyName);
+                }
+                JdbcType jdbcType = parameterMapping.getJdbcType();
+
+                // 设置参数
+                logger.info("根据每个ParameterMapping中的TypeHandler设置对应的参数信息 value：{}", JSON.toJSONString(value));
+                TypeHandler typeHandler = parameterMapping.getTypeHandler();
+                typeHandler.setParameter(ps, i + 1, value, jdbcType);
+            }
+        }
+    }
+```
