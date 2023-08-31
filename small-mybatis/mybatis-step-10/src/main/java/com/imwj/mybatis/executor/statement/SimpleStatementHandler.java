@@ -4,6 +4,7 @@ import com.imwj.mybatis.executor.Executor;
 import com.imwj.mybatis.mapping.BoundSql;
 import com.imwj.mybatis.mapping.MappedStatement;
 import com.imwj.mybatis.session.ResultHandler;
+import com.imwj.mybatis.session.RowBounds;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,8 +20,8 @@ import java.util.List;
 public class SimpleStatementHandler extends BaseStatementHandler {
 
 
-    public SimpleStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, ResultHandler resultHandler, BoundSql boundSql) {
-        super(executor, mappedStatement, parameterObject, resultHandler, boundSql);
+    public SimpleStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
+        super(executor, mappedStatement, parameterObject, rowBounds, resultHandler, boundSql);
     }
 
     @Override

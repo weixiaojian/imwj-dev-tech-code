@@ -6,6 +6,7 @@ import com.imwj.mybatis.mapping.BoundSql;
 import com.imwj.mybatis.mapping.Environment;
 import com.imwj.mybatis.mapping.MappedStatement;
 import com.imwj.mybatis.session.Configuration;
+import com.imwj.mybatis.session.RowBounds;
 import com.imwj.mybatis.session.SqlSession;
 
 import java.lang.reflect.Method;
@@ -36,7 +37,7 @@ public class DefaultSqlSession implements SqlSession {
     @Override
     public <T> T selectOne(String statement, Object parameter) throws SQLException, ClassNotFoundException {
         MappedStatement ms  = configuration.getMappedStatement(statement);
-        List<T> list  = executor.query(ms, parameter, Executor.NO_RESULT_HANDLER, ms.getSqlSource().getBoundSql(parameter));
+        List<T> list  = executor.query(ms, parameter, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER, ms.getSqlSource().getBoundSql(parameter));
         return list.get(0);
     }
 
