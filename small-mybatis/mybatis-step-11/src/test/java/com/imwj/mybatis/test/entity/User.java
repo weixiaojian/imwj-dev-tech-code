@@ -34,4 +34,10 @@ public class User {
         this.id = id;
         this.userId = userId;
     }
+
+    public User(long id, String userId, String userName) {
+        this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+    }
 }

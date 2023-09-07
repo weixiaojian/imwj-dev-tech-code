@@ -18,6 +18,14 @@ public interface Executor {
 
     ResultHandler NO_RESULT_HANDLER = null;
 
+    /**
+     * update方法包含了：insert、update、delete方法
+     */
+    int update(MappedStatement ms, Object parameter) throws SQLException;
+
+    /**
+     * 查询方法
+     */
     <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql);
 
     Transaction getTransaction();

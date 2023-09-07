@@ -29,6 +29,16 @@ public class MappedStatement {
     }
 
     /**
+     * 获取sql语句
+     * @param parameterObject
+     * @return
+     */
+    public BoundSql getBoundSql(Object parameterObject) {
+        // 调用 SqlSource#getBoundSql
+        return sqlSource.getBoundSql(parameterObject);
+    }
+
+    /**
      * 建造者
      */
     public static class Builder {

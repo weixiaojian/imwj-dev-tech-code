@@ -33,6 +33,11 @@ public abstract class BaseExecutor implements Executor{
     }
 
     @Override
+    public int update(MappedStatement ms, Object parameter) throws SQLException {
+        return doUpdate(ms, parameter);
+    }
+
+    @Override
     public <E> List<E> query(MappedStatement ms, Object parameter,RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
         // 判断执行器是否关闭
         if(closed){
@@ -41,6 +46,7 @@ public abstract class BaseExecutor implements Executor{
         return doQuery(ms, parameter,rowBounds, resultHandler, boundSql);
     }
 
+    protected abstract int doUpdate(MappedStatement ms, Object parameter) throws SQLException;
 
     protected abstract <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql);
 
