@@ -1,9 +1,6 @@
 package com.imwj.mybatis.builder;
 
-import com.imwj.mybatis.mapping.MappedStatement;
-import com.imwj.mybatis.mapping.ResultMap;
-import com.imwj.mybatis.mapping.SqlCommandType;
-import com.imwj.mybatis.mapping.SqlSource;
+import com.imwj.mybatis.mapping.*;
 import com.imwj.mybatis.scripting.LanguageDriver;
 import com.imwj.mybatis.session.Configuration;
 import com.imwj.mybatis.session.SqlSession;
@@ -74,7 +71,10 @@ public class MapperBuilderAssistant extends BaseBuilder{
         applyCurrentNamespace(resultMap, true);
         List<ResultMap> resultMaps = new ArrayList<>();
         if(resultMap != null){
-            // TODO：暂无Map结果映射配置，本章节不添加此逻辑
+            String[] resultMapNames = resultMap.split(",");
+            for (String resultMapName : resultMapNames) {
+                resultMaps.add(configuration.getResultMap(resultMapName.trim()));
+            }
         }
         /**
          * 通常使用resultType即可满足大部分场景
@@ -90,6 +90,18 @@ public class MapperBuilderAssistant extends BaseBuilder{
             resultMaps.add(inlineResultMapBuilder.build());
         }
         statementBuilder.resultMaps(resultMaps);
+    }
+
+
+    public ResultMap addResultMap(String id, Class<?> type, List<ResultMapping> resultMappings) {
+        ResultMap.Builder inlineResultMapBuilder = new ResultMap.Builder(
+                configuration,
+                id,
+                type,
+                resultMappings);
+        ResultMap resultMap = inlineResultMapBuilder.build();
+        configuration.addResultMap(resultMap);
+        return resultMap;
     }
 
 }

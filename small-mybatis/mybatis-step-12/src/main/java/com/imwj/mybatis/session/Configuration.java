@@ -14,6 +14,7 @@ import com.imwj.mybatis.executor.statement.StatementHandler;
 import com.imwj.mybatis.mapping.BoundSql;
 import com.imwj.mybatis.mapping.Environment;
 import com.imwj.mybatis.mapping.MappedStatement;
+import com.imwj.mybatis.mapping.ResultMap;
 import com.imwj.mybatis.reflection.MetaObject;
 import com.imwj.mybatis.reflection.factory.DefaultObjectFactory;
 import com.imwj.mybatis.reflection.factory.ObjectFactory;
@@ -51,6 +52,10 @@ public class Configuration {
      * 映射的语句，存在Map里
      */
     protected final Map<String, MappedStatement> mappedStatements = new HashMap<>();
+    /**
+     * 结果映射，存在Map里
+     */
+    protected final Map<String, ResultMap> resultMaps = new HashMap<>();
     /**
      * 类型别名注册机
      */
@@ -177,4 +182,13 @@ public class Configuration {
     public ObjectFactory getObjectFactory() {
         return objectFactory;
     }
+
+    public ResultMap getResultMap(String id) {
+        return resultMaps.get(id);
+    }
+
+    public void addResultMap(ResultMap resultMap) {
+        resultMaps.put(resultMap.getId(), resultMap);
+    }
+
 }

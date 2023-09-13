@@ -1,6 +1,7 @@
 package com.imwj.mybatis.binding;
 
 import cn.hutool.core.lang.ClassScanner;
+import com.imwj.mybatis.builder.annotation.MapperAnnotationBuilder;
 import com.imwj.mybatis.session.Configuration;
 import com.imwj.mybatis.session.SqlSession;
 
@@ -17,7 +18,7 @@ public class MapperRegistry {
 
     private Configuration config;
 
-    public MapperRegistry(Configuration configuration) {
+    public MapperRegistry(Configuration config) {
         this.config = config;
     }
 
@@ -52,6 +53,10 @@ public class MapperRegistry {
             }
             // 注册映射器代理工厂
             knownMappers.put(type, new MapperProxyFactory<>(type));
+
+            //  解析注解类语句配置
+            MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
+            parser.parse();
         }
     }
 

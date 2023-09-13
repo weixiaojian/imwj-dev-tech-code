@@ -100,17 +100,27 @@ public class XmlConfigBuilder extends BaseBuilder {
      *	 <mapper resource="org/mybatis/builder/AuthorMapper.xml"/>
      *	 <mapper resource="org/mybatis/builder/BlogMapper.xml"/>
      *	 <mapper resource="org/mybatis/builder/PostMapper.xml"/>
+     *
+     *   <mapper class="com.imwj.mybatis.test.dao.IUserDao"/>
      * </mappers>
      */
     private void mapperElement(Element mappers) throws Exception {
         List<Element> elementList = mappers.elements("mapper");
         for(Element element : elementList){
             String resource = element.attributeValue("resource");
-            InputStream inputStream = Resources.getResourceAsStream(resource);
-
-            // 在for循环中每一个mapper都哦new一个XMLMapperBuilder解析
-            XMLMapperBuilder mapperBuilder = new XMLMapperBuilder(inputStream, configuration, resource);
-            mapperBuilder.pares();
+            String mapperClass = element.attributeValue("class");
+            // XML 解析
+            if(resource != null && mapperClass == null){
+                InputStream inputStream = Resources.getResourceAsStream(resource);
+                // 在for循环中每一个mapper都哦new一个XMLMapperBuilder解析
+                XMLMapperBuilder mapperBuilder = new XMLMapperBuilder(inputStream, configuration, resource);
+                mapperBuilder.pares();
+            }
+            // Annotation 注解解析
+            else if (resource == null && mapperClass != null) {
+                Class<?> mapperInterface = Resources.classForName(mapperClass);
+                configuration.addMapper(mapperInterface);
+            }
         }
     }
 }

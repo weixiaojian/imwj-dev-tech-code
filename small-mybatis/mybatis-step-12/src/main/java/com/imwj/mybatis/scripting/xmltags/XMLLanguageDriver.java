@@ -6,6 +6,7 @@ import com.imwj.mybatis.mapping.MappedStatement;
 import com.imwj.mybatis.mapping.SqlSource;
 import com.imwj.mybatis.scripting.LanguageDriver;
 import com.imwj.mybatis.scripting.defaults.DefaultParameterHandler;
+import com.imwj.mybatis.scripting.defaults.RawSqlSource;
 import com.imwj.mybatis.session.Configuration;
 import org.dom4j.Element;
 
@@ -21,6 +22,12 @@ public class XMLLanguageDriver implements LanguageDriver {
         // 用XML脚本构建器解析
         XMLScriptBuilder builder = new XMLScriptBuilder(configuration, script, parameterType);
         return builder.parseScriptNode();
+    }
+
+    @Override
+    public SqlSource createSqlSource(Configuration configuration, String script, Class<?> parameterType) {
+        // 暂不处理动态sql
+        return new RawSqlSource(configuration, script, parameterType);
     }
 
     @Override

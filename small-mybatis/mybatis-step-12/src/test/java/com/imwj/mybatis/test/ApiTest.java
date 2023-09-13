@@ -102,7 +102,7 @@ public class ApiTest {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
 
         // 2. 测试验证：对象参数
-        User user = userDao.queryUserInfo(new User(1L, "10001"));
+        User user = userDao.queryUserInfo(new User(2L, "10002"));
         logger.info("测试结果：{}", JSON.toJSONString(user));
     }
 
