@@ -19,6 +19,9 @@
 
     <mappers>
         <!--注解配置-->
-        <mapper class="com.imwj.mybatis.test.dao.IUserDao" />
+        <!--<mapper class="com.imwj.mybatis.test.dao.IUserDao" />-->
+        <!-- XML 配置 -->
+        <mapper resource="mapper/Activity_Mapper.xml"/>
+        <mapper resource="mapper/User_Mapper.xml"/>
     </mappers>
 </configuration>

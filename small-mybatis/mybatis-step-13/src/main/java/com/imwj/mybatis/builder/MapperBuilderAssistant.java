@@ -1,9 +1,11 @@
 package com.imwj.mybatis.builder;
 
 import com.imwj.mybatis.mapping.*;
+import com.imwj.mybatis.reflection.MetaClass;
 import com.imwj.mybatis.scripting.LanguageDriver;
 import com.imwj.mybatis.session.Configuration;
 import com.imwj.mybatis.session.SqlSession;
+import com.imwj.mybatis.type.TypeHandler;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -23,6 +25,36 @@ public class MapperBuilderAssistant extends BaseBuilder{
     public MapperBuilderAssistant(Configuration configuration, String resource) {
         super(configuration);
         this.resource = resource;
+    }
+
+    public ResultMapping buildResultMapping(
+            Class<?> resultType,
+            String property,
+            String column,
+            List<ResultFlag> flags) {
+
+        Class<?> javaTypeClass = resolveResultJavaType(resultType, property, null);
+        TypeHandler<?> typeHandlerInstance = resolveTypeHandler(javaTypeClass, null);
+
+        ResultMapping.Builder builder = new ResultMapping.Builder(configuration, property, column, javaTypeClass);
+        builder.typeHandler(typeHandlerInstance);
+        builder.flags(flags);
+
+        return builder.build();
+    }
+
+    private Class<?> resolveResultJavaType(Class<?> resultType, String property, Class<?> javaType) {
+        if (javaType == null && property != null) {
+            try {
+                MetaClass metaResultType = MetaClass.forClass(resultType);
+                javaType = metaResultType.getSetterType(property);
+            } catch (Exception ignore) {
+            }
+        }
+        if (javaType == null) {
+            javaType = Object.class;
+        }
+        return javaType;
     }
 
     /**
@@ -94,6 +126,7 @@ public class MapperBuilderAssistant extends BaseBuilder{
 
 
     public ResultMap addResultMap(String id, Class<?> type, List<ResultMapping> resultMappings) {
+        // 补全ID全路径
         ResultMap.Builder inlineResultMapBuilder = new ResultMap.Builder(
                 configuration,
                 id,

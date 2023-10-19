@@ -2,14 +2,21 @@ package com.imwj.mybatis.builder.xml;
 
 import com.imwj.mybatis.builder.BaseBuilder;
 import com.imwj.mybatis.builder.MapperBuilderAssistant;
+import com.imwj.mybatis.builder.ResultMapResolver;
 import com.imwj.mybatis.io.Resources;
+import com.imwj.mybatis.mapping.ResultFlag;
+import com.imwj.mybatis.mapping.ResultMap;
+import com.imwj.mybatis.mapping.ResultMapping;
 import com.imwj.mybatis.session.Configuration;
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -61,11 +68,55 @@ public class XMLMapperBuilder extends BaseBuilder {
             throw new RuntimeException("Mapper's namespace cannot be empty");
         }
         builderAssistant.setCurrentNamespace(namespace);
-        // 2.配置select|insert|update|delete
+
+        // 2.解析resultMap
+        resultMapElements(element.elements("resultMap"));
+
+        // 3.配置select|insert|update|delete
         buildStatementFromContext(element.elements("select"),
                 element.elements("insert"),
                 element.elements("update"),
                 element.elements("delete"));
+    }
+
+    private void resultMapElements(List<Element> resultMap) {
+        for(Element element : resultMap){
+            resultMapElement(element, Collections.emptyList());
+        }
+    }
+
+    private ResultMap resultMapElement(Element resultMapNode, List<ResultMapping> additionalResultMappings) {
+        String id = resultMapNode.attributeValue("id");
+        String type = resultMapNode.attributeValue("type");
+        Class<?> typeClass = resolveClass(type);
+
+        ArrayList<ResultMapping> resultMappings = new ArrayList<>();
+        resultMappings.addAll(additionalResultMappings);
+
+        List<Element> resultChildren = resultMapNode.elements();
+        for (Element resultChild : resultChildren) {
+            List<ResultFlag> flags = new ArrayList<>();
+            if ("id".equals(resultChild.getName())) {
+                flags.add(ResultFlag.ID);
+            }
+            // 构建 ResultMapping
+            resultMappings.add(buildResultMappingFromContext(resultChild, typeClass, flags));
+        }
+
+        // 创建结果映射解析器
+        ResultMapResolver resultMapResolver = new ResultMapResolver(builderAssistant, id, typeClass, resultMappings);
+        return resultMapResolver.resolve();
+    }
+
+
+    /**
+     * <id column="id" property="id"/>
+     * <result column="activity_id" property="activityId"/>
+     */
+    private ResultMapping buildResultMappingFromContext(Element context, Class<?> resultType, List<ResultFlag> flags)  {
+        String property = context.attributeValue("property");
+        String column = context.attributeValue("column");
+        return builderAssistant.buildResultMapping(resultType, property, column, flags);
     }
 
     /**
