@@ -1,2 +1,0 @@
-24-03-01.15:33:53.052 [http-nio-8081-exec-1] WARN  DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-24-03-01.15:51:02.376 [HikariPool-1 housekeeper] WARN  HikariPool             - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=47s518ms972µs300ns).
