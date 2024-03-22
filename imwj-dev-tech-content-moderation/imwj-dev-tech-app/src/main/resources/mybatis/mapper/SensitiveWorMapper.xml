@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imwj.infratructure.dao.ISensitiveWordDao">
+
+    <resultMap id="dataMap" type="com.imwj.infratructure.po.SensitiveWord">
+        <id column="id" property="id"/>
+        <result column="word_type" property="wordType"/>
+        <result column="word" property="word"/>
+        <result column="is_valid" property="isValid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryValidSensitiveWordConfig" parameterType="java.lang.String" resultType="java.lang.String">
+        select word from sensitive_word
+        where is_valid = 1 and word_type = #{wordType}
+    </select>
+
+</mapper>
