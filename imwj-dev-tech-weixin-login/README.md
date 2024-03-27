@@ -1,4 +1,5 @@
 # 微信公众号平台扫码登录（DDD）
+![image](https://github.com/weixiaojian/study-code/blob/master/imwj-dev-tech-weixin-login/docs/img/imwj-dev-tech-weixin-login.png?raw=true)
 
 ## 对接文档-公众号
 * 微信测试号：https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index
