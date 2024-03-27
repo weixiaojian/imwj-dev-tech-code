@@ -1,5 +1,7 @@
 # [支付宝沙箱」支付接入流程
-> 代码：https://github.com/weixiaojian/study-code/tree/master/imwj-dev-tech-alipay-sandbox 
+> 支付宝开放平台：https://open.alipay.com/develop/manage  
+> 代码：https://github.com/weixiaojian/study-code/imwj-dev-tech-alipay-sandbox
+
 
 
 ![image](https://raw.githubusercontent.com/weixiaojian/study-code/master/imwj-dev-tech-alipay-sandbox/docs/img/Alipay.png)
@@ -253,7 +255,4 @@ public class OrderService extends AbstractOrderService{
     }
 }
 ```
-
-
-
 
