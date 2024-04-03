@@ -5,9 +5,9 @@ server:
   port: 8081
 weixin:
   config:
-    originalid: gh_0f3895e66e5e
-    app-id: wx2fe24d252801577b
-    app-secret: 1aa8f1edb19d5f70746bb0f3575e5d9f
+    originalid: gh_0fda3895e66e5e
+    app-id: wx2fe24dasasd2801577b
+    app-secret: 1aa8f1easd46bb0f3575e5d9f
 logging:
   level:
     root: info
