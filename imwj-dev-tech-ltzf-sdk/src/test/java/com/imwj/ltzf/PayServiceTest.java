@@ -25,7 +25,7 @@ public class PayServiceTest {
     @Before
     public void init(){
         // 1.初始化配置类(appid、merchantId、partnerKey)
-        Configuration configuration = new Configuration("1104268", "1673424392", "6d3e889f359fcb83d150e9553a9217b9");
+        Configuration configuration = new Configuration("3123123123", "1671231231232", "12834gwasdgastd7827yt3g1ge");
         // 2.初始化默认的创建工厂(http客户端配置:请求超时时间等)
         DefaultPayFactory payFactory = new DefaultPayFactory(configuration);
         // 3.初始化Retrofit(baseUrl)、创建nativePayService
