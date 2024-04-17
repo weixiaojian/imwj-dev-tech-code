@@ -1,4 +1,4 @@
-# study-code
+# imwj-dev-tech-code
 > 项目学习代码汇总
 
 # 项目目录
