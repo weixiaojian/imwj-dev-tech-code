@@ -1,4 +1,4 @@
-# 蓝兔支付SDK
+# 蓝兔支付sdk开发
 ## SDK编写
 * 1.编写Retrofit2-http请求接口
 ```
