@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/dev-ops/app/start.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/dev-ops/app/stop.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-app.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-environment.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/dev-ops/mysql/sql/imwj-frame-archetype.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/GuavaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/ThreadPoolConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/ThreadPoolConfigProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/config/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/frame_case_mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/ApiTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/adapter/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/model/aggregate/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/model/entity/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/model/valobj/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/repository/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/service/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/model/aggregate/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/model/entity/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/model/valobj/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/repository/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/service/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/gateway/adapter/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/gateway/api/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/gateway/dto/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/http/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/job/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/listener/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/common/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/enums/ResponseCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/exception/AppException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\class2\repository" />
+        <option name="mavenHome" value="D:/class2/apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="D:\class2\apache-maven-3.6.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2fDpIF2LOiCGWaD6rnTwAFVgv89" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="imwj-dev-tech-big-market-app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.imwj.big.market.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\29168\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="" />
+      <created>1713345422340</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713345422340</updated>
+      <workItem from="1713345423356" duration="598000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
