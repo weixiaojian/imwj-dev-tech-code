@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Bean;
  * @description
  */
 @Slf4j
-@Configuration
 @EnableConfigurationProperties(LtzfSDKConfigProperties.class)
 public class LtzfSDKConfig {
 
