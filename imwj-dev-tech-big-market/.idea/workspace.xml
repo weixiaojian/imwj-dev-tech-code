@@ -5,66 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/app/start.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/app/stop.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-app.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-environment.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/mysql/sql/imwj-frame-archetype.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/GuavaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/ThreadPoolConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/ThreadPoolConfigProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/config/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/frame_case_mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/ApiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/adapter/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/model/aggregate/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/model/entity/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/model/valobj/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/repository/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/xxx/service/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/model/aggregate/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/model/entity/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/model/valobj/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/repository/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/yyy/service/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/gateway/adapter/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/gateway/api/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/gateway/dto/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/http/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/job/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/listener/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/common/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/enums/ResponseCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/exception/AppException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_award_mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_rule_mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/AwardDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IAwardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyRuleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/Award.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/Strategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/StrategyAward.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/StrategyRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/config/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/config/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/frame_case_mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/award_dao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/package-info.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -81,9 +54,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2fDpIF2LOiCGWaD6rnTwAFVgv89" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -95,14 +68,41 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/idea-work/imwj/study-code/imwj-dev-tech-big-market/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "73fb731f8301eaf31ccd732495309aab",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.imwj.big.market.infrastructure.persistent.po" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\imwj-dev-tech-big-market-app\src\main\resources\mybatis\mapper" />
+      <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\imwj-dev-tech-big-market-infrastructure\src\main\java\com\imwj\big\market\infrastructure\persistent\po" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.AwardDaoTest.test_awardDao">
+    <configuration name="AwardDaoTest.test_awardDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imwj-dev-tech-big-market-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.AwardDaoTest" />
+      <option name="METHOD_NAME" value="test_awardDao" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.imwj.big.market.Application" />
@@ -110,6 +110,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AwardDaoTest.test_awardDao" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -123,6 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713345422340</updated>
       <workItem from="1713345423356" duration="598000" />
+      <workItem from="1713403101045" duration="4587000" />
     </task>
     <servers />
   </component>
