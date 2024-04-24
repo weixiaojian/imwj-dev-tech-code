@@ -1,4 +1,4 @@
-# 命令执行 docker-compose -f docker-compose-environment.yml up -d
+# 命令执行 docker-compose up -d
 version: '3.9'
 services:
   mysql:
@@ -8,6 +8,7 @@ services:
     restart: always
     environment:
       TZ: Asia/Shanghai
+      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes' # 可配置无密码，注意配置 SPRING_DATASOURCE_PASSWORD=
       MYSQL_ROOT_PASSWORD: 123456
     networks:
       - my-network
@@ -52,7 +53,7 @@ services:
 
   # Redis
   redis:
-    image: redis:6.2
+    image: redis:7.2.0
     container_name: redis
     restart: always
     hostname: redis
@@ -82,9 +83,6 @@ services:
       - REDIS_HOSTS=local:redis:6379
       - HTTP_USER=admin
       - HTTP_PASSWORD=admin
-      - LANG=C.UTF-8
-      - LANGUAGE=C.UTF-8
-      - LC_ALL=C.UTF-8
     networks:
       - my-network
     depends_on:

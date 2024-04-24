@@ -19,6 +19,6 @@
 
     <select id="queryStrategyAwardList" resultMap="dataMap">
         select strategy_id
-        from strategy_award limit 10
+        from strategy_award where strategy_id = #{strategyId}
     </select>
 </mapper>
