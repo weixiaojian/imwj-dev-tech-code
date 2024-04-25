@@ -1,6 +1,7 @@
 package com.imwj.big.market.test.infrastructure.domain;
 
 import com.imwj.big.market.domain.service.armory.IStrategyArmory;
+import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
 import com.imwj.big.market.infrastructure.persistent.redis.RedissonService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,8 @@ public class StrategyTest {
     private RedissonService redisService;
     @Resource
     private IStrategyArmory strategyArmory;
+    @Resource
+    private IStrategyDispatch strategyDispatch;
 
     /**
      * redis测试
@@ -52,7 +55,7 @@ public class StrategyTest {
     @Test
     public void test_StrategyAward() {
         strategyArmory.assembleLotteryStrategy(100001L);
-        strategyArmory.assembleLotteryStrategy(100002L);
+        // strategyArmory.assembleLotteryStrategy(100002L);
     }
 
     /**
@@ -60,7 +63,15 @@ public class StrategyTest {
      */
     @Test
     public void test_getRandomAwardId() {
-        Integer randomAwardId = strategyArmory.getRandomAwardId(100001L);
+        Integer randomAwardId = strategyDispatch.getRandomAwardId(100001L);
+        log.info("奖品id：{}", randomAwardId);
+    }
+
+    @Test
+    public void test_getRandomWeightAwardId() {
+        //  消耗六千积分 抽指定奖品
+        String ruleWeightValue = "6000:107,108,109";
+        Integer randomAwardId = strategyDispatch.getRandomAwardId(100001L, ruleWeightValue);
         log.info("奖品id：{}", randomAwardId);
     }
 }
