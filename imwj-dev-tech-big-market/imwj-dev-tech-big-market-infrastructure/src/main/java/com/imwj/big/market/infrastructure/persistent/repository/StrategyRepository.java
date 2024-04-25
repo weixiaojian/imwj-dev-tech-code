@@ -1,5 +1,6 @@
 package com.imwj.big.market.infrastructure.persistent.repository;
 
+import com.alibaba.fastjson.JSONArray;
 import com.imwj.big.market.domain.model.entity.StrategyAwardEntity;
 import com.imwj.big.market.domain.repository.IStrategyRepository;
 import com.imwj.big.market.domain.service.armory.IStrategyArmory;
@@ -33,7 +34,8 @@ public class StrategyRepository implements IStrategyRepository {
     public List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId) {
         // 1.优先从缓存中获取
         String cachekey = Constants.RedisKey.STRATEGY_AWARD_KEY + strategyId;
-        List<StrategyAwardEntity> strategyAwardEntities = redisService.getValue(cachekey);
+        JSONArray jsonStr = redisService.getValue(cachekey);
+        List<StrategyAwardEntity> strategyAwardEntities = jsonStr.toJavaList(StrategyAwardEntity.class);
         if(strategyAwardEntities != null)
             return strategyAwardEntities;
         // 2.缓存中没有再从数据库获取

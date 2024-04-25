@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/redis/redis.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/RedisClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/RedisClientConfigProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/domain/StrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/entity/AwardEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/entity/StrategyAwardEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/entity/StrategyConditionEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/repository/IStrategyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/armory/IStrategyArmory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/armory/StrategyArmory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/redis/IRedisService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/redis/RedissonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/dev-ops/docker-compose-app.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/dev-ops/docker-compose-environment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/config/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_award_mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_award_mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +47,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -96,7 +75,7 @@
       <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\imwj-dev-tech-big-market-infrastructure\src\main\java\com\imwj\big\market\infrastructure\persistent\po" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StrategyTest.test_StrategyAward">
+  <component name="RunManager" selected="JUnit.StrategyTest.test_getRandomAwardId">
     <configuration name="AwardDaoTest.test_awardDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <extension name="coverage">
@@ -145,6 +124,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StrategyTest.test_getRandomAwardId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imwj-dev-tech-big-market-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.domain.StrategyTest" />
+      <option name="METHOD_NAME" value="test_getRandomAwardId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StrategyTest.test_map" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <extension name="coverage">
@@ -170,6 +165,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StrategyTest.test_getRandomAwardId" />
         <item itemvalue="JUnit.StrategyTest.test_StrategyAward" />
         <item itemvalue="JUnit.StrategyTest.test_map" />
         <item itemvalue="JUnit.AwardDaoTest.test_map" />
@@ -192,7 +188,8 @@
       <workItem from="1713403101045" duration="4653000" />
       <workItem from="1713489086828" duration="1656000" />
       <workItem from="1713835944638" duration="601000" />
-      <workItem from="1713921676832" duration="7757000" />
+      <workItem from="1713921676832" duration="8516000" />
+      <workItem from="1714007997476" duration="1273000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />
@@ -202,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713435123413</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat:3.策略概率装配处理">
+      <option name="closed" value="true" />
+      <created>1713953458223</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713953458223</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +215,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat:持久化功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:持久化功能实现" />
+    <MESSAGE value="feat:3.策略概率装配处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:3.策略概率装配处理" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -18,7 +18,7 @@
     </resultMap>
 
     <select id="queryStrategyAwardList" resultMap="dataMap">
-        select strategy_id
+        select *
         from strategy_award where strategy_id = #{strategyId}
     </select>
 </mapper>

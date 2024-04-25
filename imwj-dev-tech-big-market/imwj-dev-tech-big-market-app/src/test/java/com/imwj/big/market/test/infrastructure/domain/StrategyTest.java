@@ -60,6 +60,7 @@ public class StrategyTest {
      */
     @Test
     public void test_getRandomAwardId() {
-        strategyArmory.getRandomAwardId(100001L);
+        Integer randomAwardId = strategyArmory.getRandomAwardId(100001L);
+        log.info("奖品id：{}", randomAwardId);
     }
 }
