@@ -2,6 +2,7 @@ package com.imwj.big.market.infrastructure.persistent.repository;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.imwj.big.market.domain.model.entity.StrategyAwardEntity;
 import com.imwj.big.market.domain.model.entity.StrategyEntity;
 import com.imwj.big.market.domain.model.entity.StrategyRuleEntity;
@@ -45,11 +46,13 @@ public class StrategyRepository implements IStrategyRepository {
     @Override
     public List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId) {
         // 1.优先从缓存中获取
+        List<StrategyAwardEntity> strategyAwardEntities = new ArrayList<>();
         String cachekey = Constants.RedisKey.STRATEGY_AWARD_KEY + strategyId;
         JSONArray jsonStr = redisService.getValue(cachekey);
-        List<StrategyAwardEntity> strategyAwardEntities = jsonStr.toJavaList(StrategyAwardEntity.class);
-        if(strategyAwardEntities != null)
+        if(jsonStr != null){
+            strategyAwardEntities = jsonStr.toJavaList(StrategyAwardEntity.class);
             return strategyAwardEntities;
+        }
         // 2.缓存中没有再从数据库获取
         List<StrategyAward> strategyAwards = strategyAwardDao.queryStrategyAwardList(strategyId);
         // 3.存入缓存并返回
@@ -92,8 +95,12 @@ public class StrategyRepository implements IStrategyRepository {
     public StrategyEntity queryStrategyEntityByStrategyId(Long strategyId) {
         // 0.优先从缓存获取
         String cacheKey = Constants.RedisKey.STRATEGY_KEY + strategyId;
-        StrategyEntity strategyEntity = redisService.getValue(cacheKey);
-        if (null != strategyEntity) return strategyEntity;
+        JSONObject jsonObject = redisService.getValue(cacheKey);
+        StrategyEntity strategyEntity = null;
+        if(jsonObject  != null){
+            strategyEntity = jsonObject.toJavaObject(StrategyEntity.class);
+            return strategyEntity;
+        }
         // 1.查询数据库中的数据
         Strategy strategyDb = strategyDao.queryStrategyByStrategyId(strategyId);
         // 2.转换为充血实体
@@ -123,5 +130,14 @@ public class StrategyRepository implements IStrategyRepository {
                 .ruleValue(strategyRuleDb.getRuleValue())
                 .ruleDesc(strategyRuleDb.getRuleDesc())
                 .build();
+    }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRuleReq = new StrategyRule();
+        strategyRuleReq.setStrategyId(strategyId);
+        strategyRuleReq.setAwardId(awardId);
+        strategyRuleReq.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRuleReq);
     }
 }
