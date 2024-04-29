@@ -1,12 +1,7 @@
 package com.imwj.big.market.test.infrastructure.domain;
 
-import com.imwj.big.market.domain.model.entity.RaffleAwardEntity;
-import com.imwj.big.market.domain.model.entity.RaffleFactorEntity;
-import com.imwj.big.market.domain.model.entity.RuleActionEntity;
 import com.imwj.big.market.domain.service.armory.IStrategyArmory;
 import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
-import com.imwj.big.market.domain.service.raffle.DefaultRaffleStrategy;
-import com.imwj.big.market.domain.service.rule.impl.RuleWeightLogicFilter;
 import com.imwj.big.market.infrastructure.persistent.redis.RedissonService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -33,8 +28,6 @@ public class StrategyTest {
     private IStrategyArmory strategyArmory;
     @Resource
     private IStrategyDispatch strategyDispatch;
-    @Resource
-    private DefaultRaffleStrategy defaultRaffleStrategy;
 
     /**
      * redis测试
@@ -74,28 +67,11 @@ public class StrategyTest {
         log.info("奖品id：{}", randomAwardId);
     }
 
-    /**
-     * 带权重的抽奖测试
-     */
     @Test
     public void test_getRandomWeightAwardId() {
         //  消耗六千积分 抽指定奖品
         String ruleWeightValue = "6000:107,108,109";
         Integer randomAwardId = strategyDispatch.getRandomAwardId(100001L, ruleWeightValue);
         log.info("奖品id：{}", randomAwardId);
-    }
-
-    /**
-     * 带抽奖策略的抽奖测试（前置规制校验）
-     */
-    @Test
-    public void test_defaultRaffleStrategy() {
-        RaffleFactorEntity factorEntity = RaffleFactorEntity.builder()
-                .strategyId(100001L)
-                .userId("user5")
-                .build();
-
-        RaffleAwardEntity raffleAwardEntity = defaultRaffleStrategy.performRaffle(factorEntity);
-        log.info("奖品id：{}", raffleAwardEntity.getAwardId());
     }
 }

@@ -13,24 +13,8 @@ import java.util.List;
 @Mapper
 public interface IStrategyRuleDao {
 
-    /**
-     * 查询所有的抽奖规则
-     * @return
-     */
     List<StrategyRule> queryStrategyRuleList();
 
-    /**
-     * 根据抽奖策略ID和规则类型查询
-     * @param strategyRuleReq
-     * @return
-     */
     StrategyRule queryStrategyRule(StrategyRule strategyRuleReq);
-
-    /**
-     * 根据抽奖策略ID、规则类型、奖品ID查询抽奖规则值
-     * @param strategyRuleReq
-     * @return
-     */
-    String queryStrategyRuleValue(StrategyRule strategyRuleReq);
 
 }
