@@ -13,6 +13,17 @@ import java.util.List;
 @Mapper
 public interface IStrategyAwardDao {
 
+    /**
+     * 根据策略id查询策略集合
+     * @param strategyId
+     * @return
+     */
     List<StrategyAward> queryStrategyAwardList(Long strategyId);
 
+    /**
+     * 根据策略id和奖品id查询策略规则role_models
+     * @param strategyAward
+     * @return
+     */
+    String queryStrategyAwardRuleModes(StrategyAward strategyAward);
 }

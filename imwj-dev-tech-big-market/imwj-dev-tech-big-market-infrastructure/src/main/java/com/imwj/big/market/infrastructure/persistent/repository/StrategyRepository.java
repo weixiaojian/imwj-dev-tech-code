@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.imwj.big.market.domain.model.entity.StrategyAwardEntity;
 import com.imwj.big.market.domain.model.entity.StrategyEntity;
 import com.imwj.big.market.domain.model.entity.StrategyRuleEntity;
+import com.imwj.big.market.domain.model.valobj.StrategyAwardRuleModeVo;
 import com.imwj.big.market.domain.repository.IStrategyRepository;
 import com.imwj.big.market.domain.service.armory.IStrategyArmory;
 import com.imwj.big.market.infrastructure.persistent.dao.IStrategyAwardDao;
@@ -109,7 +110,6 @@ public class StrategyRepository implements IStrategyRepository {
                 .strategyDesc(strategyDb.getStrategyDesc())
                 .ruleModels(strategyDb.getRuleModels())
                 .build();
-        log.info("strategyEntity实体序列化：{}", JSON.toJSONString(strategyEntity));
         redisService.setValue(cacheKey, strategyEntity);
         return strategyEntity;
     }
@@ -139,5 +139,14 @@ public class StrategyRepository implements IStrategyRepository {
         strategyRuleReq.setAwardId(awardId);
         strategyRuleReq.setRuleModel(ruleModel);
         return strategyRuleDao.queryStrategyRuleValue(strategyRuleReq);
+    }
+
+    @Override
+    public StrategyAwardRuleModeVo queryStrategyAwardRuleMode(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        String ruleModes = strategyAwardDao.queryStrategyAwardRuleModes(strategyAward);
+        return StrategyAwardRuleModeVo.builder().ruleModes(ruleModes).build();
     }
 }
