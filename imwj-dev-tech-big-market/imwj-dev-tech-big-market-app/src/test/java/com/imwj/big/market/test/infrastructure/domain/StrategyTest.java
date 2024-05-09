@@ -2,11 +2,9 @@ package com.imwj.big.market.test.infrastructure.domain;
 
 import com.imwj.big.market.domain.model.entity.RaffleAwardEntity;
 import com.imwj.big.market.domain.model.entity.RaffleFactorEntity;
-import com.imwj.big.market.domain.model.entity.RuleActionEntity;
 import com.imwj.big.market.domain.service.armory.IStrategyArmory;
 import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
 import com.imwj.big.market.domain.service.raffle.DefaultRaffleStrategy;
-import com.imwj.big.market.domain.service.rule.impl.RuleWeightLogicFilter;
 import com.imwj.big.market.infrastructure.persistent.redis.RedissonService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

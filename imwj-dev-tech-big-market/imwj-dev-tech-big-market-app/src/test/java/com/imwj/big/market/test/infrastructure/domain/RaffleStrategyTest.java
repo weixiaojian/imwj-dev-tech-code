@@ -1,17 +1,11 @@
 package com.imwj.big.market.test.infrastructure.domain;
 
-import com.alibaba.fastjson.JSON;
 import com.imwj.big.market.domain.model.entity.RaffleAwardEntity;
 import com.imwj.big.market.domain.model.entity.RaffleFactorEntity;
-import com.imwj.big.market.domain.model.entity.StrategyEntity;
 import com.imwj.big.market.domain.service.armory.IStrategyArmory;
-import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
 import com.imwj.big.market.domain.service.raffle.DefaultRaffleStrategy;
-import com.imwj.big.market.domain.service.rule.impl.RuleLockLogicFilter;
-import com.imwj.big.market.domain.service.rule.impl.RuleWeightLogicFilter;
-import com.imwj.big.market.infrastructure.persistent.redis.RedissonService;
+import com.imwj.big.market.domain.service.rule.filter.impl.RuleLockLogicFilter;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,8 +29,6 @@ public class RaffleStrategyTest {
     @Resource
     private DefaultRaffleStrategy defaultRaffleStrategy;
     @Resource
-    private RuleWeightLogicFilter ruleWeightLogicFilter;
-    @Resource
     private RuleLockLogicFilter ruleLockLogicFilter;
 
 
@@ -50,7 +42,6 @@ public class RaffleStrategyTest {
         strategyArmory.assembleLotteryStrategy(100003L);
 
         // 通过反射 mock 规则中的值
-        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 6500L);
         ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 10L);
     }
 

@@ -1,6 +1,6 @@
 package com.imwj.big.market.domain.model.valobj;
 
-import com.imwj.big.market.domain.service.rule.factory.DefaultLogicFactory;
+import com.imwj.big.market.domain.service.rule.filter.factory.DefaultLogicFactory;
 import com.imwj.big.market.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

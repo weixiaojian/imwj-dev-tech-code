@@ -1,4 +1,4 @@
-package com.imwj.big.market.domain.service.rule.impl;
+package com.imwj.big.market.domain.service.rule.filter.impl;
 
 import com.imwj.big.market.domain.model.entity.RuleActionEntity;
 import com.imwj.big.market.domain.model.entity.RuleMatterEntity;
@@ -6,7 +6,7 @@ import com.imwj.big.market.domain.model.valobj.RuleLogicCheckTypeVO;
 import com.imwj.big.market.domain.repository.IStrategyRepository;
 import com.imwj.big.market.domain.service.annotaion.LogicStrategy;
 import com.imwj.big.market.domain.service.rule.ILogicFilter;
-import com.imwj.big.market.domain.service.rule.factory.DefaultLogicFactory;
+import com.imwj.big.market.domain.service.rule.filter.factory.DefaultLogicFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

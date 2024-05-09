@@ -1,4 +1,4 @@
-package com.imwj.big.market.domain.service.rule.factory;
+package com.imwj.big.market.domain.service.rule.filter.factory;
 
 import com.alibaba.fastjson2.util.AnnotationUtils;
 import com.imwj.big.market.domain.model.entity.RuleActionEntity;

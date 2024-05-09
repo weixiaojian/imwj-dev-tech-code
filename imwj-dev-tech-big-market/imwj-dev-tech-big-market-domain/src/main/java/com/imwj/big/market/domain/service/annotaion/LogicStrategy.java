@@ -1,6 +1,6 @@
 package com.imwj.big.market.domain.service.annotaion;
 
-import com.imwj.big.market.domain.service.rule.factory.DefaultLogicFactory;
+import com.imwj.big.market.domain.service.rule.filter.factory.DefaultLogicFactory;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
