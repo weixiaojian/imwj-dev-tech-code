@@ -1,4 +1,4 @@
-package com.imwj.big.market.domain.service.rule;
+package com.imwj.big.market.domain.service.rule.filter;
 
 import com.imwj.big.market.domain.model.entity.RuleActionEntity;
 import com.imwj.big.market.domain.model.entity.RuleMatterEntity;

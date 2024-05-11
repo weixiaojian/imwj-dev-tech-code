@@ -6,7 +6,7 @@ import com.imwj.big.market.domain.service.armory.IStrategyArmory;
 import com.imwj.big.market.domain.service.raffle.DefaultRaffleStrategy;
 import com.imwj.big.market.domain.service.rule.filter.impl.RuleLockLogicFilter;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;

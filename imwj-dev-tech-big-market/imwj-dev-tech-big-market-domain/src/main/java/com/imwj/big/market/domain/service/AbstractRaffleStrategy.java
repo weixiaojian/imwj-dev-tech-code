@@ -47,7 +47,7 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
             throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
         }
 
-        // 2.责任链模式过滤规则
+        // 2.责任链模式过滤规则（抽奖前：黑名单、权重、默认兜底）
         ILogicChain logicChain = defaultChainFactory.openLogicChain(strategyId);
         Integer randomAwardId = logicChain.logic(userId, strategyId);
 

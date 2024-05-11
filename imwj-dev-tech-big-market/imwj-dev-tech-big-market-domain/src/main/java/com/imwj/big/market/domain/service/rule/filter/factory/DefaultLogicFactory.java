@@ -3,7 +3,7 @@ package com.imwj.big.market.domain.service.rule.filter.factory;
 import com.alibaba.fastjson2.util.AnnotationUtils;
 import com.imwj.big.market.domain.model.entity.RuleActionEntity;
 import com.imwj.big.market.domain.service.annotaion.LogicStrategy;
-import com.imwj.big.market.domain.service.rule.ILogicFilter;
+import com.imwj.big.market.domain.service.rule.filter.ILogicFilter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;

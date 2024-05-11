@@ -7,7 +7,7 @@ import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
 import com.imwj.big.market.domain.service.raffle.DefaultRaffleStrategy;
 import com.imwj.big.market.infrastructure.persistent.redis.RedissonService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.redisson.api.RMap;
 import org.springframework.boot.test.context.SpringBootTest;
