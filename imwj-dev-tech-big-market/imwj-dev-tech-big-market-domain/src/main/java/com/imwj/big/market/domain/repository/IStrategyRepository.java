@@ -3,7 +3,8 @@ package com.imwj.big.market.domain.repository;
 import com.imwj.big.market.domain.model.entity.StrategyAwardEntity;
 import com.imwj.big.market.domain.model.entity.StrategyEntity;
 import com.imwj.big.market.domain.model.entity.StrategyRuleEntity;
-import com.imwj.big.market.domain.model.valobj.StrategyAwardRuleModeVo;
+import com.imwj.big.market.domain.model.valobj.RuleTreeVO;
+import com.imwj.big.market.domain.model.valobj.StrategyAwardRuleModelVo;
 
 import java.util.List;
 import java.util.Map;
@@ -76,5 +77,12 @@ public interface IStrategyRepository {
      * @param awardId
      * @return
      */
-    StrategyAwardRuleModeVo queryStrategyAwardRuleMode(Long strategyId, Integer awardId);
+    StrategyAwardRuleModelVo queryStrategyAwardRuleModel(Long strategyId, Integer awardId);
+
+    /**
+     * 查询数据库中的rule_tree、rule_tree_node、rule_tree_node_line数据并转换为Vo
+     * @param treeId
+     * @return
+     */
+    RuleTreeVO queryRuleTreeVoByTreeId(String treeId);
 }

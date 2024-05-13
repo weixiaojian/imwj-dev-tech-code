@@ -24,7 +24,7 @@
     </select>
 
     <!--根据策略id和奖品id查询策略规则role_models-->
-    <select id="queryStrategyAwardRuleModes" resultType="java.lang.String">
+    <select id="queryStrategyAwardRuleModels" resultType="java.lang.String">
         select rule_models
         from strategy_award where strategy_id = #{strategyId} and award_id = #{awardId}
     </select>

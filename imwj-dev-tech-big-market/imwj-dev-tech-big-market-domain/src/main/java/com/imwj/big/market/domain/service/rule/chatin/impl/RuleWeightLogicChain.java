@@ -5,6 +5,7 @@ import com.imwj.big.market.domain.model.valobj.RuleLogicCheckTypeVO;
 import com.imwj.big.market.domain.repository.IStrategyRepository;
 import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
 import com.imwj.big.market.domain.service.rule.chatin.AbstractLongChain;
+import com.imwj.big.market.domain.service.rule.chatin.factory.DefaultChainFactory;
 import com.imwj.big.market.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -32,7 +33,7 @@ public class RuleWeightLogicChain extends AbstractLongChain {
 
 
     @Override
-    public Integer logic(String userId, Long strategyId) {
+    public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
         log.info("责任链-规则过滤-权重 userId:{} strategyId:{} ruleModel:{}", userId, strategyId);
         // 1.查询strategy_rule表中的rule_value（4000:102,103,104,105 5000:102,103,104,105,106,107 6000:107,108,109）
         String ruleValue = strategyRepository.queryStrategyRuleValue(strategyId, ruleModel());
@@ -55,7 +56,10 @@ public class RuleWeightLogicChain extends AbstractLongChain {
         if(fisrtKey != null){
             Integer awardId = strategyDispatch.getRandomAwardId(strategyId, ruleValueMap.get(fisrtKey));
             log.info("抽奖责任链权重接管 userId: {} strategyId: {} ruleModel: {} awardId: {}", userId, strategyId, ruleModel(), awardId);
-            return awardId;
+            return DefaultChainFactory.StrategyAwardVO.builder()
+                    .awardId(awardId)
+                    .logicModel(ruleValue)
+                    .build();
         }
         log.info("抽奖责任链-权重放行 userId: {} strategyId: {} ruleModel: {}", userId, strategyId, ruleModel());
         return next().logic(userId, strategyId);
@@ -63,7 +67,7 @@ public class RuleWeightLogicChain extends AbstractLongChain {
 
     @Override
     protected String ruleModel() {
-        return "rule_weight";
+        return DefaultChainFactory.LogicModel.RULE_WEIGHT.getCode();
     }
 
     /**

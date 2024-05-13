@@ -25,5 +25,5 @@ public interface IStrategyAwardDao {
      * @param strategyAward
      * @return
      */
-    String queryStrategyAwardRuleModes(StrategyAward strategyAward);
+    String queryStrategyAwardRuleModels(StrategyAward strategyAward);
 }

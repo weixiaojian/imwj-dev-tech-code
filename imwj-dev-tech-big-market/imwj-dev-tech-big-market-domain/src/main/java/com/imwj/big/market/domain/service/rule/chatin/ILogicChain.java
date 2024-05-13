@@ -1,5 +1,7 @@
 package com.imwj.big.market.domain.service.rule.chatin;
 
+import com.imwj.big.market.domain.service.rule.chatin.factory.DefaultChainFactory;
+
 /**
  * @author wj
  * @create 2024-05-07 17:18
@@ -13,6 +15,6 @@ public interface ILogicChain extends ILogicChainArmory{
      * @param strategyId
      * @return
      */
-    Integer logic(String userId, Long strategyId);
+    DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId);
 
 }

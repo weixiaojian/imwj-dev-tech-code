@@ -1,4 +1,4 @@
-package com.imwj.big.market.test.infrastructure.domain;
+package com.imwj.big.market.test.domain;
 
 import com.imwj.big.market.domain.model.entity.RaffleAwardEntity;
 import com.imwj.big.market.domain.model.entity.RaffleFactorEntity;

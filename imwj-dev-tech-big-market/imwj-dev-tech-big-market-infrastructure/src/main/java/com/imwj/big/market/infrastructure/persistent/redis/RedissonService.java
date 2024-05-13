@@ -27,6 +27,7 @@ public class RedissonService implements IRedisService{
     }
 
     public <T> T getValue(String key) {
+        redissonClient.<T>getBucket(key).get();
         return redissonClient.<T>getBucket(key).get();
     }
 
