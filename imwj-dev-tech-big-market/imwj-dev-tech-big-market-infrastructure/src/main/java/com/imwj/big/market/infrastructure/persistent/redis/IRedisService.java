@@ -245,4 +245,31 @@ public interface IRedisService {
      * @return 返回结果
      */
     <T> RBloomFilter<T> getBloomFilter(String key);
+
+    /**
+     * 获取原子性的Long值
+     * @param cacheKey
+     */
+    Long getAtomicLong(String cacheKey);
+
+    /**
+     * 设置原子性的Long值
+     * @param cacheKey
+     * @param awardCount
+     */
+    void setAtomicLong(String cacheKey, Integer awardCount);
+
+    /**
+     * 设置原子性的锁
+     * @param lockKey
+     * @return
+     */
+    Boolean setNx(String key);
+
+    /**
+     * 删除指定的key
+     * @param key
+     * @return
+     */
+    Boolean delte(String key);
 }

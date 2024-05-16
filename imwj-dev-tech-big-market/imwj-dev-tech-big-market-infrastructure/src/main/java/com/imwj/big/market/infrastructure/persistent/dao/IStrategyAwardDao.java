@@ -26,4 +26,10 @@ public interface IStrategyAwardDao {
      * @return
      */
     String queryStrategyAwardRuleModels(StrategyAward strategyAward);
+
+    /**
+     * 更新数据库中的商品表库存
+     * @param strategyAward
+     */
+    void updateStrategyAwardStock(StrategyAward strategyAward);
 }

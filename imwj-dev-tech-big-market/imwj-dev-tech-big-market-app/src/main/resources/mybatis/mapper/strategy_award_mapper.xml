@@ -17,6 +17,13 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <!--更新数据库中的商品表库存-->
+    <update id="updateStrategyAwardStock">
+        update strategy_award
+        set award_count_surplus = award_count_surplus - 1
+        where strategy_id = #{strategyId} and award_id = #{awardId}
+    </update>
+
     <!--根据策略id查询策略集合-->
     <select id="queryStrategyAwardList" resultMap="dataMap">
         select *

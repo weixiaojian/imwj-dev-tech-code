@@ -14,7 +14,8 @@ public interface ILogicTreeNode {
      * @param userId
      * @param strategyId
      * @param awardId
+     * @param ruleValue
      */
-    DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId);
+    DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue);
 
 }

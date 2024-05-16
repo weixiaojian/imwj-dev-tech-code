@@ -5,45 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:8.抽奖规则树模型实现">
-      <change afterPath="$PROJECT_DIR$/9.模板模式串联抽奖规则.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/rule_tree_mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/rule_tree_node_line_mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/rule_tree_node_mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/StrategyRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IRuleTreeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IRuleTreeNodeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IRuleTreeNodeLineDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RuleTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RuleTreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RuleTreeNodeLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/10.不超卖库存规则实现.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/StrategyAwardStockKeyVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/IRaffleStock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/job/UpdateAwardStockJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/java/com/imwj/big/market/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_award_mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/mybatis/mapper/strategy_award_mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/domain/LogicChainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/domain/LogicChainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/domain/LogicTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/domain/LogicTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/domain/RaffleStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/domain/RaffleStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/infrastructure/domain/StrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/domain/StrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/entity/RaffleFactorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/entity/RaffleFactorEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/RuleTreeNodeLineVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/RuleTreeNodeLineVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/RuleTreeNodeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/RuleTreeNodeVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/RuleTreeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/RuleTreeVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/StrategyAwardRuleModeVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/model/valobj/StrategyAwardRuleModelVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/domain/RaffleStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/test/java/com/imwj/big/market/test/domain/RaffleStrategyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/repository/IStrategyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/repository/IStrategyRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/AbstractRaffleStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/AbstractRaffleStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/annotaion/LogicStrategy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/armory/IStrategyDispatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/armory/IStrategyDispatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/armory/StrategyArmoryDispatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/armory/StrategyArmoryDispatch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/raffle/DefaultRaffleStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/raffle/DefaultRaffleStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/ILogicChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/ILogicChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/factory/DefaultChainFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/factory/DefaultChainFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/impl/DefaultLogicChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/impl/DefaultLogicChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/impl/RuleBackListLogicChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/impl/RuleBackListLogicChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/impl/RuleWeightLogicChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/chatin/impl/RuleWeightLogicChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/filter/ILogicFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/filter/factory/DefaultLogicFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/filter/impl/RuleLockLogicFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/factory/DefaultTreeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/factory/DefaultTreeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/factory/engine/IDecisionTreeEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/factory/engine/IDecisionTreeEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/ILogicTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/ILogicTreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/factory/engine/impl/DescisionTreeEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/factory/engine/impl/DescisionTreeEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/impl/RuleLockLogicTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/impl/RuleLockLogicTreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/impl/RuleLuckAwardLogicTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/impl/RuleLuckAwardLogicTreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/impl/RuleStockLogicTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-domain/src/main/java/com/imwj/big/market/domain/service/rule/tree/impl/RuleStockLogicTreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/redis/IRedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/redis/IRedisService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/redis/RedissonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/redis/RedissonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-types/src/main/java/com/imwj/big/market/types/common/Constants.java" afterDir="false" />
@@ -56,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,6 +49,20 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "weixiaojian"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="474b61ed-0f56-4fa1-9123-84d795020ed8" />
+        <option name="url" value="https://github.com/weixiaojian/study-code.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,25 +84,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/idea-work/imwj/study-code/imwj-dev-tech-big-market",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reactor",
-    "spring.configuration.checksum": "73fb731f8301eaf31ccd732495309aab",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/idea-work/imwj/study-code/imwj-dev-tech-big-market&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reactor&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;73fb731f8301eaf31ccd732495309aab&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -123,39 +118,7 @@
       <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\docs\dev-ops" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_TO">
-    <configuration name="LogicChainTest.test_LogicChain_rule_blacklist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imwj-dev-tech-big-market-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.domain.LogicChainTest" />
-      <option name="METHOD_NAME" value="test_LogicChain_rule_blacklist" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogicTreeTest.setUp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imwj-dev-tech-big-market-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.domain.LogicTreeTest" />
-      <option name="METHOD_NAME" value="setUp" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_three">
     <configuration name="LogicTreeTest.test_tree_rule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <extension name="coverage">
@@ -172,6 +135,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RaffleStrategyTest.before" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imwj-dev-tech-big-market-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.imwj.big.market.test.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.domain.RaffleStrategyTest" />
+      <option name="METHOD_NAME" value="before" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RaffleStrategyTest.test_defaultRaffleStrategy_TO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <extension name="coverage">
@@ -183,6 +162,22 @@
       <option name="PACKAGE_NAME" value="com.imwj.big.market.test.domain" />
       <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.domain.RaffleStrategyTest" />
       <option name="METHOD_NAME" value="test_defaultRaffleStrategy_TO" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RaffleStrategyTest.test_defaultRaffleStrategy_three" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imwj-dev-tech-big-market-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.imwj.big.market.test.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.domain.RaffleStrategyTest" />
+      <option name="METHOD_NAME" value="test_defaultRaffleStrategy_three" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -212,20 +207,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.RaffleStrategyTest.before" />
+      <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_three" />
       <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_TO" />
       <item itemvalue="JUnit.StrategyRepositoryTest.test_queryRuleTreeVoByTreeId" />
-      <item itemvalue="JUnit.LogicTreeTest.setUp" />
       <item itemvalue="JUnit.LogicTreeTest.test_tree_rule" />
-      <item itemvalue="JUnit.LogicChainTest.test_LogicChain_rule_blacklist" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_three" />
+        <item itemvalue="JUnit.RaffleStrategyTest.before" />
         <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_TO" />
         <item itemvalue="JUnit.StrategyRepositoryTest.test_queryRuleTreeVoByTreeId" />
         <item itemvalue="JUnit.LogicTreeTest.test_tree_rule" />
-        <item itemvalue="JUnit.LogicTreeTest.setUp" />
-        <item itemvalue="JUnit.LogicChainTest.test_LogicChain_rule_blacklist" />
       </list>
     </recent_temporary>
   </component>
@@ -258,6 +253,9 @@
       <workItem from="1715303290174" duration="4550000" />
       <workItem from="1715390342407" duration="12701000" />
       <workItem from="1715562836130" duration="4318000" />
+      <workItem from="1715649306909" duration="598000" />
+      <workItem from="1715736631966" duration="5700000" />
+      <workItem from="1715822275064" duration="10360000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />

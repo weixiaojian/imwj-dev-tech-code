@@ -22,4 +22,19 @@ public interface IStrategyDispatch {
      * @return
      */
     Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
+
+    /**
+     * 获取抽奖策略装配的随机结果
+     * @param key
+     * @return
+     */
+    Integer getRandomAwardId(String key);
+
+    /**
+     * 扣减库存（redis）
+     * @param strategyId
+     * @param awardId
+     * @return
+     */
+    Boolean subtractionAwardStock(Long strategyId, Integer awardId);
 }

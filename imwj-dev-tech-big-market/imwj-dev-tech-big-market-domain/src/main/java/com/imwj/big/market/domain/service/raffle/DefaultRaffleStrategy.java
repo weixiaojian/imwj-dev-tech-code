@@ -2,6 +2,7 @@ package com.imwj.big.market.domain.service.raffle;
 
 import com.imwj.big.market.domain.model.valobj.RuleTreeVO;
 import com.imwj.big.market.domain.model.valobj.StrategyAwardRuleModelVo;
+import com.imwj.big.market.domain.model.valobj.StrategyAwardStockKeyVo;
 import com.imwj.big.market.domain.repository.IStrategyRepository;
 import com.imwj.big.market.domain.service.AbstractRaffleStrategy;
 import com.imwj.big.market.domain.service.armory.IStrategyDispatch;
@@ -49,4 +50,13 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
         return decisionTreeEngine.process(userId, strategyId, awardId);
     }
 
+    @Override
+    public StrategyAwardStockKeyVo takeQueueValue() throws Exception {
+        return strategyRepository.takeQueueValue();
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategtId, Integer awardId) {
+        strategyRepository.updateStrategyAwardStock(strategtId, awardId);
+    }
 }
