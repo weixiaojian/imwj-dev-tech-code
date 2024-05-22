@@ -35,4 +35,11 @@
         select rule_models
         from strategy_award where strategy_id = #{strategyId} and award_id = #{awardId}
     </select>
+
+    <!--根据策略id和奖品id查询奖品数据-->
+    <select id="queryStrategyAward"
+            resultType="com.imwj.big.market.infrastructure.persistent.po.StrategyAward">
+        select *
+        from strategy_award where strategy_id = #{strategyId} and award_id = #{awardId}
+    </select>
 </mapper>

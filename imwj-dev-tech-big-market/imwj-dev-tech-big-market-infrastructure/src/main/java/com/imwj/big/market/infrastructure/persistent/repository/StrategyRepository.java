@@ -12,9 +12,11 @@ import com.imwj.big.market.infrastructure.persistent.dao.*;
 import com.imwj.big.market.infrastructure.persistent.po.*;
 import com.imwj.big.market.infrastructure.persistent.redis.IRedisService;
 import com.imwj.big.market.types.common.Constants;
+import com.imwj.big.market.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBlockingQueue;
 import org.redisson.api.RDelayedQueue;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -23,6 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import static com.imwj.big.market.types.enums.ResponseCode.UN_ASSEMBLED_STRATEGY_ARMORY;
 
 /**
  * @author wj
@@ -66,6 +70,8 @@ public class StrategyRepository implements IStrategyRepository {
             StrategyAwardEntity strategyAwardEntity = StrategyAwardEntity.builder()
                     .strategyId(strategyAward.getStrategyId())
                     .awardId(strategyAward.getAwardId())
+                    .awardTitle(strategyAward.getAwardTitle())
+                    .awardSubTitle(strategyAward.getAwardSubtitle())
                     .awardCount(strategyAward.getAwardCount())
                     .awardCountSurplus(strategyAward.getAwardCountSurplus())
                     .awardRate(strategyAward.getAwardRate())
@@ -93,7 +99,11 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public int getRateRange(String strategyId) {
-        return redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + strategyId);
+        String key = Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + strategyId;
+        if(!redisService.isExists(key)){
+            throw new AppException(UN_ASSEMBLED_STRATEGY_ARMORY.getCode(), key + Constants.COLON + UN_ASSEMBLED_STRATEGY_ARMORY.getInfo());
+        }
+        return redisService.getValue(key);
     }
 
     @Override
@@ -269,5 +279,15 @@ public class StrategyRepository implements IStrategyRepository {
         strategyAward.setStrategyId(strategtId);
         strategyAward.setAwardId(awardId);
         strategyAwardDao.updateStrategyAwardStock(strategyAward);
+    }
+
+    @Override
+    public StrategyAwardEntity queryStrategyAwardEntity(Long strategyId, Integer awardId) {
+        // 查询数据库
+        StrategyAward strategyAward = strategyAwardDao.queryStrategyAward(strategyId, awardId);
+        // 转换实体
+        StrategyAwardEntity strategyAwardEntity = new StrategyAwardEntity();
+        BeanUtils.copyProperties(strategyAward, strategyAwardEntity);
+        return strategyAwardEntity;
     }
 }

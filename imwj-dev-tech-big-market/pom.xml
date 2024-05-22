@@ -13,6 +13,7 @@
         <module>imwj-dev-tech-big-market-trigger</module>
         <module>imwj-dev-tech-big-market-infrastructure</module>
         <module>imwj-dev-tech-big-market-types</module>
+        <module>imwj-dev-tech-big-market-api</module>
     </modules>
 
     <repositories>
