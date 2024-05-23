@@ -4,12 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:10.不超卖库存规则实现">
-      <change afterPath="$PROJECT_DIR$/11.抽奖API接口实现.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:11.抽奖API接口实现">
+      <change afterPath="$PROJECT_DIR$/big-market-front/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/globals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/next.config.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/postcss.config.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/public/next.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/public/vercel.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/tailwind.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccountFlow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityCount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/repository/StrategyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/http/IRaffleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-trigger/src/main/java/com/imwj/big/market/trigger/http/IRaffleController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +123,9 @@
       <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\imwj-dev-tech-big-market-infrastructure\src\main\java\com\imwj\big\market\infrastructure\persistent\dao" />
       <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\imwj-dev-tech-big-market-infrastructure\src\main\java\com\imwj\big\market\infrastructure\persistent\po" />
       <recent name="E:\idea-work\imwj\study-code\imwj-dev-tech-big-market\docs\dev-ops" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.imwj.big.market.infrastructure.persistent.po" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
@@ -251,7 +270,7 @@
       <workItem from="1716168144110" duration="599000" />
       <workItem from="1716367306593" duration="4552000" />
       <workItem from="1716426310817" duration="1214000" />
-      <workItem from="1716450637207" duration="1413000" />
+      <workItem from="1716450637207" duration="3975000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />
@@ -309,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715840862063</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat:11.抽奖API接口实现">
+      <option name="closed" value="true" />
+      <created>1716452213053</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716452213053</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +360,8 @@
     <MESSAGE value="feat:6.抽奖中置规则过滤" />
     <MESSAGE value="feat:8.抽奖规则树模型实现" />
     <MESSAGE value="feat:10.不超卖库存规则实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:10.不超卖库存规则实现" />
+    <MESSAGE value="feat:11.抽奖API接口实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:11.抽奖API接口实现" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
