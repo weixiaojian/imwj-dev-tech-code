@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:11.抽奖API接口实现">
-      <change afterPath="$PROJECT_DIR$/big-market-front/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/next.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/postcss.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/public/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/tailwind.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivity.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccount.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccountFlow.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityCount.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,34 +72,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea-work/imwj/study-code/imwj-dev-tech-big-market",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "E:/idea-work/imwj/study-code/imwj-dev-tech-big-market/imwj-dev-tech-big-market-api/src/main/java/com/imwj/big/market/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reactor",
-    "spring.configuration.checksum": "5ab21bd0d610a645a38ef40b3844b456",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/idea-work/imwj/study-code/imwj-dev-tech-big-market&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;E:/idea-work/imwj/study-code/imwj-dev-tech-big-market/imwj-dev-tech-big-market-api/src/main/java/com/imwj/big/market/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reactor&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;5ab21bd0d610a645a38ef40b3844b456&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -271,6 +261,7 @@
       <workItem from="1716367306593" duration="4552000" />
       <workItem from="1716426310817" duration="1214000" />
       <workItem from="1716450637207" duration="3975000" />
+      <workItem from="1716513403821" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />
