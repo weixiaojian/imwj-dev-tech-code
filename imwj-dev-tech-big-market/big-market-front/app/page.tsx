@@ -8,7 +8,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
         {/* 头部文案 */}
         <header className="text-3xl font-bold text-center text-gray-800 my-8">
-          抽奖展示
+
         </header>
 
         {/* 中间的两个div元素 */}

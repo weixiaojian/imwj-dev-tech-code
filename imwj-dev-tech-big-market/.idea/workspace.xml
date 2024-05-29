@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:11.抽奖API接口实现">
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivity.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccount.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccountFlow.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityCount.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/big-market-front/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +95,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reactor&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;5ab21bd0d610a645a38ef40b3844b456&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\idea-work\\imwj\\study-code\\imwj-dev-tech-big-market\\big-market-front\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -261,7 +260,12 @@
       <workItem from="1716367306593" duration="4552000" />
       <workItem from="1716426310817" duration="1214000" />
       <workItem from="1716450637207" duration="3975000" />
-      <workItem from="1716513403821" duration="1246000" />
+      <workItem from="1716513403821" duration="3746000" />
+      <workItem from="1716532005085" duration="8000" />
+      <workItem from="1716539882026" duration="2354000" />
+      <workItem from="1716771632427" duration="2385000" />
+      <workItem from="1716858382256" duration="1211000" />
+      <workItem from="1716945059287" duration="2216000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />
@@ -327,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716452213053</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat:12.React工程创建和抽奖组件使用">
+      <option name="closed" value="true" />
+      <created>1716522630918</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716522630918</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +364,8 @@
     <MESSAGE value="feat:8.抽奖规则树模型实现" />
     <MESSAGE value="feat:10.不超卖库存规则实现" />
     <MESSAGE value="feat:11.抽奖API接口实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:11.抽奖API接口实现" />
+    <MESSAGE value="feat:12.React工程创建和抽奖组件使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:12.React工程创建和抽奖组件使用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
