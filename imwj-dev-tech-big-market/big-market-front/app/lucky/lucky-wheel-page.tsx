@@ -12,6 +12,14 @@ export function LuckyWheelPage() {
     const strategyIdParam = queryParams.get('strategyId');
     const strategyId = strategyIdParam ? Number(strategyIdParam) : 100006;
     const [prizes, setPrizes] = useState([{}])
+    /*const [prizes] = useState([
+        {background: '#e9e8fe', fonts: [{text: '0'}]},
+        {background: '#b8c5f2', fonts: [{text: '1'}]},
+        {background: '#e9e8fe', fonts: [{text: '2'}]},
+        {background: '#b8c5f2', fonts: [{text: '3'}]},
+        {background: '#e9e8fe', fonts: [{text: '4'}]},
+        {background: '#b8c5f2', fonts: [{text: '5'}]},
+    ])*/
     const myLucky = useRef()
 
 
