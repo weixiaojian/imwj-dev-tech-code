@@ -2,6 +2,7 @@ package com.imwj.big.market.infrastructure.persistent.dao;
 
 import com.imwj.big.market.infrastructure.persistent.po.StrategyAward;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -39,5 +40,5 @@ public interface IStrategyAwardDao {
      * @param awardId
      * @return
      */
-    StrategyAward queryStrategyAward(Long strategyId, Integer awardId);
+    StrategyAward queryStrategyAward(@Param("strategyId") Long strategyId, @Param("awardId")Integer awardId);
 }

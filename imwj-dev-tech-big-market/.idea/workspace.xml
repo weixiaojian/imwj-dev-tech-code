@@ -5,15 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:11.抽奖API接口实现">
+      <change afterPath="$PROJECT_DIR$/big-market-front/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/app/components/StrategyArmory.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/big-market-front/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-app.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivity.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccount.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccountFlow.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityCount.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/.env.local" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/big-market-front/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/dev-ops/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-environment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/dev-ops/mysql/sql/imwj-frame-archetype.sql" beforeDir="false" afterPath="$PROJECT_DIR$/docs/dev-ops/mysql/sql/imwj-frame-archetype.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +75,14 @@
         <option name="userSettingsFile" value="D:\class2\apache-maven-3.6.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="dev" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -94,7 +116,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reactor&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5ab21bd0d610a645a38ef40b3844b456&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;254e598207b27d00cb12f691b30a558e&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\idea-work\\imwj\\study-code\\imwj-dev-tech-big-market\\big-market-front\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -118,17 +140,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
-    <configuration name="LogicTreeTest.test_tree_rule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AwardDaoTest.test_awardDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.domain.*" />
+          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.domain.LogicTreeTest" />
-      <option name="METHOD_NAME" value="test_tree_rule" />
+      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.AwardDaoTest" />
+      <option name="METHOD_NAME" value="test_awardDao" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -182,22 +204,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StrategyRepositoryTest.test_queryRuleTreeVoByTreeId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imwj-dev-tech-big-market-app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.imwj.big.market.test.infrastructure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.imwj.big.market.test.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.imwj.big.market.test.infrastructure.StrategyRepositoryTest" />
-      <option name="METHOD_NAME" value="test_queryRuleTreeVoByTreeId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="imwj-dev-tech-big-market-app" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.imwj.big.market.Application" />
@@ -205,21 +211,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="imwj-dev-tech-big-market-app/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="" />
+          <option name="sourceFilePath" value="imwj-dev-tech-big-market-app/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Docker.imwj-dev-tech-big-market-app/Dockerfile" />
+      <item itemvalue="JUnit.AwardDaoTest.test_awardDao" />
       <item itemvalue="JUnit.RaffleStrategyTest.before" />
       <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_three" />
       <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_TO" />
-      <item itemvalue="JUnit.StrategyRepositoryTest.test_queryRuleTreeVoByTreeId" />
-      <item itemvalue="JUnit.LogicTreeTest.test_tree_rule" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.imwj-dev-tech-big-market-app/Dockerfile" />
+        <item itemvalue="JUnit.AwardDaoTest.test_awardDao" />
         <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_three" />
         <item itemvalue="JUnit.RaffleStrategyTest.before" />
         <item itemvalue="JUnit.RaffleStrategyTest.test_defaultRaffleStrategy_TO" />
-        <item itemvalue="JUnit.StrategyRepositoryTest.test_queryRuleTreeVoByTreeId" />
-        <item itemvalue="JUnit.LogicTreeTest.test_tree_rule" />
       </list>
     </recent_temporary>
   </component>
@@ -265,7 +286,23 @@
       <workItem from="1716539882026" duration="2354000" />
       <workItem from="1716771632427" duration="2385000" />
       <workItem from="1716858382256" duration="1211000" />
-      <workItem from="1716945059287" duration="2216000" />
+      <workItem from="1716945059287" duration="4879000" />
+      <workItem from="1717031738069" duration="1535000" />
+      <workItem from="1717117595769" duration="1197000" />
+      <workItem from="1717376654206" duration="1194000" />
+      <workItem from="1717462442159" duration="1213000" />
+      <workItem from="1717549206396" duration="599000" />
+      <workItem from="1717635400310" duration="481000" />
+      <workItem from="1719301745559" duration="229000" />
+      <workItem from="1719992974405" duration="937000" />
+      <workItem from="1720055950393" duration="3417000" />
+      <workItem from="1720081263865" duration="392000" />
+      <workItem from="1720083894099" duration="1481000" />
+      <workItem from="1720087100911" duration="301000" />
+      <workItem from="1720141984486" duration="603000" />
+      <workItem from="1720428538727" duration="2148000" />
+      <workItem from="1720487864316" duration="2363000" />
+      <workItem from="1720681938546" duration="4912000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />

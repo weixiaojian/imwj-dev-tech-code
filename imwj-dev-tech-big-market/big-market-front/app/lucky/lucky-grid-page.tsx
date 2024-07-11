@@ -12,9 +12,12 @@ import {RaffleAwardVO} from "@/types/RaffleAwardVO";
  */
 export function LuckyGridPage() {
     // 参数配置
-    const queryParams = new URLSearchParams(window.location.search);
-    const strategyIdParam = queryParams.get('strategyId');
-    const strategyId = strategyIdParam ? Number(strategyIdParam) : 100006;
+    let strategyId = 100006;
+    if (typeof window !== 'undefined') {
+        const queryParams = new URLSearchParams(window.location.search);
+        const strategyIdParam = queryParams.get('strategyId');
+        strategyId = strategyIdParam ? Number(strategyIdParam) : 100006;
+    }
     // 背景
     const [blocks] = useState([
         {padding: '10px', background: '#869cfa'}

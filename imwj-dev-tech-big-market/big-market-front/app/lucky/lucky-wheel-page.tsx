@@ -8,9 +8,12 @@ import {RaffleAwardVO} from "@/types/RaffleAwardVO";
 
 
 export function LuckyWheelPage() {
-    const queryParams = new URLSearchParams(window.location.search);
-    const strategyIdParam = queryParams.get('strategyId');
-    const strategyId = strategyIdParam ? Number(strategyIdParam) : 100006;
+    let strategyId = 100006;
+    if (typeof window !== 'undefined') {
+        const queryParams = new URLSearchParams(window.location.search);
+        const strategyIdParam = queryParams.get('strategyId');
+        strategyId = strategyIdParam ? Number(strategyIdParam) : 100006;
+    }
     const [prizes, setPrizes] = useState([{}])
     /*const [prizes] = useState([
         {background: '#e9e8fe', fonts: [{text: '0'}]},

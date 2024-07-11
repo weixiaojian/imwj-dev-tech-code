@@ -11,7 +11,11 @@ ENV PARAMS=""
 ENV TZ=PRC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# 添加应用
-ADD target/imwj-dev-tech-big-market-app-app.jar /imwj-dev-tech-big-market-app-app.jar
+# 端口
+EXPOSE 8091
+ENV PORT 8091
 
-ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /imwj-dev-tech-big-market-app-app.jar $PARAMS"]
+# 添加应用
+ADD target/imwj-dev-tech-big-market-app.jar /imwj-dev-tech-big-market-app.jar
+
+ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /imwj-dev-tech-big-market-app.jar $PARAMS"]
