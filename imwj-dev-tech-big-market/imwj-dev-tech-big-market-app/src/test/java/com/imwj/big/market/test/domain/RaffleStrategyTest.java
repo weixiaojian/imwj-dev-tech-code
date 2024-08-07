@@ -1,12 +1,12 @@
 package com.imwj.big.market.test.domain;
 
 import com.alibaba.fastjson.JSON;
-import com.imwj.big.market.domain.model.entity.RaffleAwardEntity;
-import com.imwj.big.market.domain.model.entity.RaffleFactorEntity;
-import com.imwj.big.market.domain.service.armory.IStrategyArmory;
-import com.imwj.big.market.domain.service.raffle.DefaultRaffleStrategy;
-import com.imwj.big.market.domain.service.rule.chatin.impl.RuleWeightLogicChain;
-import com.imwj.big.market.domain.service.rule.tree.impl.RuleLockLogicTreeNode;
+import com.imwj.big.market.domain.strategy.model.entity.RaffleAwardEntity;
+import com.imwj.big.market.domain.strategy.model.entity.RaffleFactorEntity;
+import com.imwj.big.market.domain.strategy.service.armory.IStrategyArmory;
+import com.imwj.big.market.domain.strategy.service.raffle.DefaultRaffleStrategy;
+import com.imwj.big.market.domain.strategy.service.rule.chatin.impl.RuleWeightLogicChain;
+import com.imwj.big.market.domain.strategy.service.rule.tree.impl.RuleLockLogicTreeNode;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

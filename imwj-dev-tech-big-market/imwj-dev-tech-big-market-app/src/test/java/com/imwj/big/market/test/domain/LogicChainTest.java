@@ -1,12 +1,11 @@
 package com.imwj.big.market.test.domain;
 
 import com.alibaba.fastjson.JSON;
-import com.imwj.big.market.domain.service.armory.IStrategyArmory;
-import com.imwj.big.market.domain.service.rule.chatin.ILogicChain;
-import com.imwj.big.market.domain.service.rule.chatin.factory.DefaultChainFactory;
-import com.imwj.big.market.domain.service.rule.chatin.impl.RuleWeightLogicChain;
+import com.imwj.big.market.domain.strategy.service.armory.IStrategyArmory;
+import com.imwj.big.market.domain.strategy.service.rule.chatin.ILogicChain;
+import com.imwj.big.market.domain.strategy.service.rule.chatin.factory.DefaultChainFactory;
+import com.imwj.big.market.domain.strategy.service.rule.chatin.impl.RuleWeightLogicChain;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

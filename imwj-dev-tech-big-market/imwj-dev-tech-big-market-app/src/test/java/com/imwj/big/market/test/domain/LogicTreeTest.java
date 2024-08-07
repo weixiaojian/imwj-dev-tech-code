@@ -1,10 +1,10 @@
 package com.imwj.big.market.test.domain;
 
 import com.alibaba.fastjson2.JSON;
-import com.imwj.big.market.domain.model.valobj.*;
-import com.imwj.big.market.domain.service.armory.IStrategyArmory;
-import com.imwj.big.market.domain.service.rule.tree.factory.DefaultTreeFactory;
-import com.imwj.big.market.domain.service.rule.tree.factory.engine.IDecisionTreeEngine;
+import com.imwj.big.market.domain.strategy.model.valobj.*;
+import com.imwj.big.market.domain.strategy.service.armory.IStrategyArmory;
+import com.imwj.big.market.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
+import com.imwj.big.market.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

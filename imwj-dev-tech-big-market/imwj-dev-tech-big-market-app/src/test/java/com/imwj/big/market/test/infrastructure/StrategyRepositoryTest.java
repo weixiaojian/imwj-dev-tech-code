@@ -1,9 +1,8 @@
 package com.imwj.big.market.test.infrastructure;
 
 import com.alibaba.fastjson.JSON;
-import com.imwj.big.market.domain.model.valobj.RuleTreeVO;
-import com.imwj.big.market.domain.repository.IStrategyRepository;
-import com.imwj.big.market.domain.service.armory.IStrategyArmory;
+import com.imwj.big.market.domain.strategy.model.valobj.RuleTreeVO;
+import com.imwj.big.market.domain.strategy.repository.IStrategyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

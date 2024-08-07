@@ -1,7 +1,7 @@
 package com.imwj.big.market.trigger.job;
 
-import com.imwj.big.market.domain.model.valobj.StrategyAwardStockKeyVo;
-import com.imwj.big.market.domain.service.IRaffleStock;
+import com.imwj.big.market.domain.strategy.model.valobj.StrategyAwardStockKeyVo;
+import com.imwj.big.market.domain.strategy.service.IRaffleStock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

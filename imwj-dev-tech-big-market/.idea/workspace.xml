@@ -4,30 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="feat:11.抽奖API接口实现">
-      <change afterPath="$PROJECT_DIR$/big-market-front/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/app/components/StrategyArmory.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/big-market-front/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-app.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityAccountFlow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/po/RaffleActivityOrder.java" afterDir="false" />
+    <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/.env.local" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-grid-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/app/lucky/lucky-wheel-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big-market-front/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/big-market-front/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/dev-ops/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/dev-ops/docker-compose-environment.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/dev-ops/mysql/sql/imwj-frame-archetype.sql" beforeDir="false" afterPath="$PROJECT_DIR$/docs/dev-ops/mysql/sql/imwj-frame-archetype.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-app/src/main/resources/application-test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/imwj-dev-tech-big-market-infrastructure/src/main/java/com/imwj/big/market/infrastructure/persistent/dao/IStrategyAwardDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +280,11 @@
       <workItem from="1720141984486" duration="603000" />
       <workItem from="1720428538727" duration="2148000" />
       <workItem from="1720487864316" duration="2363000" />
-      <workItem from="1720681938546" duration="4912000" />
+      <workItem from="1720681938546" duration="5560000" />
+      <workItem from="1720746760827" duration="2412000" />
+      <workItem from="1721006307014" duration="1814000" />
+      <workItem from="1721208820397" duration="720000" />
+      <workItem from="1723020145363" duration="365000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />
@@ -376,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716522630918</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat:14.docker部署">
+      <option name="closed" value="true" />
+      <created>1720690288709</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1720690288709</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,9 +390,11 @@
     <MESSAGE value="feat:6.抽奖中置规则过滤" />
     <MESSAGE value="feat:8.抽奖规则树模型实现" />
     <MESSAGE value="feat:10.不超卖库存规则实现" />
-    <MESSAGE value="feat:11.抽奖API接口实现" />
     <MESSAGE value="feat:12.React工程创建和抽奖组件使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:12.React工程创建和抽奖组件使用" />
+    <MESSAGE value="feat:11.抽奖API接口实现" />
+    <MESSAGE value="feat:12.抽奖API接口实现" />
+    <MESSAGE value="feat:14.docker部署" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:14.docker部署" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
