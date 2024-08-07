@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e657b99-d35c-4cf5-8206-380a8b6e5935" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +284,7 @@
       <workItem from="1720746760827" duration="2412000" />
       <workItem from="1721006307014" duration="1814000" />
       <workItem from="1721208820397" duration="720000" />
-      <workItem from="1723020145363" duration="365000" />
+      <workItem from="1723020145363" duration="1105000" />
     </task>
     <task id="LOCAL-00001" summary="feat:持久化功能实现">
       <option name="closed" value="true" />
@@ -366,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720690288709</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat:14.docker部署（domain包结构调整）">
+      <option name="closed" value="true" />
+      <created>1723020697098</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723020697098</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +402,8 @@
     <MESSAGE value="feat:11.抽奖API接口实现" />
     <MESSAGE value="feat:12.抽奖API接口实现" />
     <MESSAGE value="feat:14.docker部署" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:14.docker部署" />
+    <MESSAGE value="feat:14.docker部署（domain包结构调整）" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:14.docker部署（domain包结构调整）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
