@@ -1,0 +1,17 @@
+# 数据库连接配置
+router:
+  jdbc:
+    datasource:
+      dbCount: 2
+      tbCount: 4
+      list: db01,db02
+      db01:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/imwj_router01
+        username: root
+        password: 123456
+      db02:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/imwj_router02
+        username: root
+        password: 123456
