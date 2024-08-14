@@ -1,9 +1,9 @@
 package com.imwj.big.market.domain.strategy.service.rule.chatin.impl;
 
 import com.imwj.big.market.domain.strategy.repository.IStrategyRepository;
-import com.imwj.big.market.domain.strategy.service.rule.chatin.AbstractLongChain;
 import com.imwj.big.market.domain.strategy.service.rule.chatin.factory.DefaultChainFactory;
 import com.imwj.big.market.types.common.Constants;
+import com.imwj.big.market.domain.strategy.service.rule.chatin.AbstractLongChain;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

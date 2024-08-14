@@ -1,13 +1,9 @@
 package com.imwj.big.market.domain.strategy.model.valobj;
 
-import com.imwj.big.market.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author wj

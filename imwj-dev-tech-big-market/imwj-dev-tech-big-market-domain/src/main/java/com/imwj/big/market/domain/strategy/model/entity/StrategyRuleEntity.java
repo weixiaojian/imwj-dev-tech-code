@@ -56,7 +56,7 @@ public class StrategyRuleEntity {
                 throw new IllegalArgumentException("rule_weight rule_rule invalid input format" + ruleValueGroup);
             }
             // 3.解析值102,103,104,105
-            String[] valueStrings = parts[1].split(com.imwj.big.market.types.common.Constants.SPLIT);
+            String[] valueStrings = parts[1].split(Constants.SPLIT);
             List<Integer> values = new ArrayList<>();
             for (String valueString : valueStrings) {
                 values.add(Integer.parseInt(valueString));

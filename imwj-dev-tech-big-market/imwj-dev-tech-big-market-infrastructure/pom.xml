@@ -27,6 +27,16 @@
             <groupId>com.imwj.big.market</groupId>
             <artifactId>imwj-dev-tech-big-market-domain</artifactId>
         </dependency>
+
+        <!--多数据源路由组件-->
+        <dependency>
+            <groupId>com.imwj</groupId>
+            <artifactId>imwj-dev-tech-db-router-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jeasy</groupId>
+            <artifactId>easy-random-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,9 +1,9 @@
 package com.imwj.big.market.domain.strategy.service.rule.tree.impl;
 
 import com.imwj.big.market.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
-import com.imwj.big.market.domain.strategy.service.rule.tree.ILogicTreeNode;
 import com.imwj.big.market.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import com.imwj.big.market.types.common.Constants;
+import com.imwj.big.market.domain.strategy.service.rule.tree.ILogicTreeNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
