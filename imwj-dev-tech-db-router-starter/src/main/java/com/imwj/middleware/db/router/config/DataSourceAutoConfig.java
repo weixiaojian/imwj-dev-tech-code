@@ -2,9 +2,12 @@ package com.imwj.middleware.db.router.config;
 
 import com.imwj.middleware.db.router.DBRouterConfig;
 import com.imwj.middleware.db.router.dynamic.DynamicDataSource;
+import com.imwj.middleware.db.router.dynamic.DynamicMybatisPlugin;
 import com.imwj.middleware.db.router.utils.PropertyUtil;
+import org.apache.ibatis.plugin.Interceptor;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -19,6 +22,7 @@ import java.util.Map;
  * @description 数据源自动配置类
  */
 @Configuration
+@ComponentScan(value = "com.imwj")
 public class DataSourceAutoConfig implements EnvironmentAware {
 
     private Map<String, Map<String, Object>> dataSourceMap = new HashMap<>();
@@ -29,6 +33,11 @@ public class DataSourceAutoConfig implements EnvironmentAware {
     @Bean
     public DBRouterConfig dbRouterConfig() {
         return new DBRouterConfig(dbCount, tbCount);
+    }
+
+    @Bean
+    public Interceptor plugin() {
+        return new DynamicMybatisPlugin();
     }
 
     @Bean

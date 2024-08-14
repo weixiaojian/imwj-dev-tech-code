@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.imwj</groupId>
-    <artifactId>imwj-dev-tech-db-router</artifactId>
+    <artifactId>imwj-dev-tech-db-router-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>jar</packaging>
