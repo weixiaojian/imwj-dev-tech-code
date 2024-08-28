@@ -4,6 +4,7 @@
 # 项目目录
 * [design-tutorials](design-tutorials)：Java23种设计模式
 * [imwj-dev-tech-alipay-sandbox](imwj-dev-tech-alipay-sandbox)：支付宝扫码支付
+* [imwj-dev-tech-big-market](imwj-dev-tech-big-market)：大营销平台
 * [imwj-dev-tech-content-moderation](imwj-dev-tech-content-moderation)：内容敏感词过滤
 * [imwj-dev-tech-ltzf-sdk](imwj-dev-tech-ltzf-sdk)：蓝兔支付SDK设计开发
 * [imwj-dev-tech-weixin-login](imwj-dev-tech-weixin-login)：微信扫码登录
