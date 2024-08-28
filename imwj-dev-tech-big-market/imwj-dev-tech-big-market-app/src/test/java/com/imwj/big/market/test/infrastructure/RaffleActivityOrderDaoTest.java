@@ -1,6 +1,8 @@
 package com.imwj.big.market.test.infrastructure;
 
 import com.alibaba.fastjson.JSON;
+import com.imwj.big.market.domain.activity.model.entity.ActivityShopCartEntity;
+import com.imwj.big.market.domain.activity.service.RaffleActivityService;
 import com.imwj.big.market.infrastructure.persistent.dao.IRaffleActivityOrderDao;
 import com.imwj.big.market.infrastructure.persistent.po.RaffleActivityOrder;
 import lombok.extern.slf4j.Slf4j;
@@ -27,15 +29,22 @@ public class RaffleActivityOrderDaoTest {
     @Resource
     private IRaffleActivityOrderDao raffleActivityOrderDao;
 
+    @Resource
+    private RaffleActivityService raffleActivityService;
+
     @Test
     public void test_insert() {
         RaffleActivityOrder raffleActivityOrder = new RaffleActivityOrder();
         raffleActivityOrder.setUserId("imwj");
+        raffleActivityOrder.setSku(10001L);
         raffleActivityOrder.setActivityId(100301L);
         raffleActivityOrder.setActivityName("测试活动");
         raffleActivityOrder.setStrategyId(100006L);
         raffleActivityOrder.setOrderId(RandomStringUtils.randomNumeric(12));
         raffleActivityOrder.setOrderTime(new Date());
+        raffleActivityOrder.setTotalCount(100L);
+        raffleActivityOrder.setDayCount(50L);
+        raffleActivityOrder.setMonthCount(10L);
         raffleActivityOrder.setState("not_used");
         // 插入数据
         raffleActivityOrderDao.insert(raffleActivityOrder);
@@ -46,6 +55,14 @@ public class RaffleActivityOrderDaoTest {
         String userId = "imwj";
         List<RaffleActivityOrder> raffleActivityOrders = raffleActivityOrderDao.queryRaffleActivityOrderByUserId(userId);
         log.info("测试结果：{}", JSON.toJSONString(raffleActivityOrders));
+    }
+
+    @Test
+    public void test_createRaffleActivityOrder() {
+        ActivityShopCartEntity activityShopCartEntity = new ActivityShopCartEntity();
+        activityShopCartEntity.setSku(9011L);
+        activityShopCartEntity.setUserId("imwj");
+        raffleActivityService.createRaffleActivityOrder(activityShopCartEntity);
     }
 
 }
