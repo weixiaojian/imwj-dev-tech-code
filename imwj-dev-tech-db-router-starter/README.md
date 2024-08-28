@@ -1,4 +1,4 @@
-# 数据库分库分表路由组件
+# 数据库分库分表路由组件（简单starter）
 imwj-dev-tech-db-router
 
 
