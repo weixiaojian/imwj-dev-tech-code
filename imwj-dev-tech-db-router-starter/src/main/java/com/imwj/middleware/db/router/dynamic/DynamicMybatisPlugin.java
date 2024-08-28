@@ -1,6 +1,7 @@
 package com.imwj.middleware.db.router.dynamic;
 
 import com.imwj.middleware.db.router.DBContextHolder;
+import com.imwj.middleware.db.router.config.DBRouterStrategy;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -39,6 +40,10 @@ public class DynamicMybatisPlugin implements Interceptor {
         String id = mappedStatement.getId();
         String className = id.substring(0, id.lastIndexOf("."));
         Class<?> clazz = Class.forName(className);
+        DBRouterStrategy dbRouterStrategy = clazz.getAnnotation(DBRouterStrategy.class);
+        if (null == dbRouterStrategy || !dbRouterStrategy.splitTable()){
+            return invocation.proceed();
+        }
 
         // 获取SQL
         BoundSql boundSql = statementHandler.getBoundSql();
