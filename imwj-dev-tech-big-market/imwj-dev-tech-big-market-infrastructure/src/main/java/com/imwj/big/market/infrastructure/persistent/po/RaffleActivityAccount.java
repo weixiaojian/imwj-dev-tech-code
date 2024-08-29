@@ -19,17 +19,17 @@ public class RaffleActivityAccount {
     /** 活动ID */
     private Long activityId;
     /** 总次数 */
-    private Integer totalCount;
+    private Long totalCount;
     /** 总次数-剩余 */
-    private Integer totalCountSurplus;
+    private Long totalCountSurplus;
     /** 日次数 */
-    private Integer dayCount;
+    private Long dayCount;
     /** 日次数-剩余 */
-    private Integer dayCountSurplus;
+    private Long dayCountSurplus;
     /** 月次数 */
-    private Integer monthCount;
+    private Long monthCount;
     /** 月次数-剩余 */
-    private Integer monthCountSurplus;
+    private Long monthCountSurplus;
     /** 创建时间 */
     private Date createTime;
     /** 更新时间 */

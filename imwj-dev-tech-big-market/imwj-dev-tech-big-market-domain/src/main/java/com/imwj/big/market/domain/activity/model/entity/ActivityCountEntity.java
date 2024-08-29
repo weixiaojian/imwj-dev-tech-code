@@ -24,17 +24,17 @@ public class ActivityCountEntity {
     /**
      * 总次数
      */
-    private Integer totalCount;
+    private Long totalCount;
 
     /**
      * 日次数
      */
-    private Integer dayCount;
+    private Long dayCount;
 
     /**
      * 月次数
      */
-    private Integer monthCount;
+    private Long monthCount;
 
 }
 

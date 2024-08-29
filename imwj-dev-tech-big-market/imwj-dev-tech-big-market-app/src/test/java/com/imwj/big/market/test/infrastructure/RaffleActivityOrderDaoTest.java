@@ -2,6 +2,8 @@ package com.imwj.big.market.test.infrastructure;
 
 import com.alibaba.fastjson.JSON;
 import com.imwj.big.market.domain.activity.model.entity.ActivityShopCartEntity;
+import com.imwj.big.market.domain.activity.model.entity.SkuRechargeEntity;
+import com.imwj.big.market.domain.activity.service.IRaffleOrder;
 import com.imwj.big.market.domain.activity.service.RaffleActivityService;
 import com.imwj.big.market.infrastructure.persistent.dao.IRaffleActivityOrderDao;
 import com.imwj.big.market.infrastructure.persistent.po.RaffleActivityOrder;
@@ -32,6 +34,9 @@ public class RaffleActivityOrderDaoTest {
     @Resource
     private RaffleActivityService raffleActivityService;
 
+    @Resource
+    private IRaffleOrder raffleOrder;
+
     @Test
     public void test_insert() {
         RaffleActivityOrder raffleActivityOrder = new RaffleActivityOrder();
@@ -46,6 +51,7 @@ public class RaffleActivityOrderDaoTest {
         raffleActivityOrder.setDayCount(50L);
         raffleActivityOrder.setMonthCount(10L);
         raffleActivityOrder.setState("not_used");
+        raffleActivityOrder.setOutBusinessNo("89128938");
         // 插入数据
         raffleActivityOrderDao.insert(raffleActivityOrder);
     }
@@ -62,7 +68,17 @@ public class RaffleActivityOrderDaoTest {
         ActivityShopCartEntity activityShopCartEntity = new ActivityShopCartEntity();
         activityShopCartEntity.setSku(9011L);
         activityShopCartEntity.setUserId("imwj");
-        raffleActivityService.createRaffleActivityOrder(activityShopCartEntity);
+        raffleActivityService.queryRaffleActivityOrder(activityShopCartEntity);
     }
 
+    @Test
+    public void test_createSkuRechargeOrder() {
+        SkuRechargeEntity skuRechargeEntity = new SkuRechargeEntity();
+        skuRechargeEntity.setUserId("imwj");
+        skuRechargeEntity.setSku(9011L);
+        // outBusinessNo 作为幂等仿重使用，同一个业务单号2次使用会抛出索引冲突 Duplicate entry '700091009111' for key 'uq_out_business_no' 确保唯一性。
+        skuRechargeEntity.setOutBusinessNo("700091009111");
+        String orderId = raffleOrder.createSkuRechargeOrder(skuRechargeEntity);
+        log.info("测试结果：{}", orderId);
+    }
 }

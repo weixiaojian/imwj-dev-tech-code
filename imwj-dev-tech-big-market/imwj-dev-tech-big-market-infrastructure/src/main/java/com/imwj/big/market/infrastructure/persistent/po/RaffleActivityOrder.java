@@ -37,5 +37,9 @@ public class RaffleActivityOrder {
     private Date createTime;
     /** 更新时间 */
     private Date updateTime;
+    /**
+     * 业务仿重ID - 外部透传的，确保幂等
+     */
+    private String outBusinessNo;
 
 }

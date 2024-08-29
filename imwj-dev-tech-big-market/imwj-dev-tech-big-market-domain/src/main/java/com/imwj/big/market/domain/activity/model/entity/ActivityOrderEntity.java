@@ -23,6 +23,10 @@ public class ActivityOrderEntity {
      * 用户ID
      */
     private String userId;
+    /**
+     * sku
+     */
+    private Long sku;
 
     /**
      * 活动ID
@@ -52,21 +56,25 @@ public class ActivityOrderEntity {
     /**
      * 总次数
      */
-    private Integer totalCount;
+    private Long totalCount;
 
     /**
      * 日次数
      */
-    private Integer dayCount;
+    private Long dayCount;
 
     /**
      * 月次数
      */
-    private Integer monthCount;
+    private Long monthCount;
 
     /**
      * 订单状态
      */
     private OrderStateVO state;
+    /**
+     * 业务仿重ID - 外部透传的，确保幂等
+     */
+    private String outBusinessNo;
 
 }

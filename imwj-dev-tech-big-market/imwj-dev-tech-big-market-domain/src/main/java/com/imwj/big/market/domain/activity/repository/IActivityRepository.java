@@ -1,5 +1,6 @@
 package com.imwj.big.market.domain.activity.repository;
 
+import com.imwj.big.market.domain.activity.model.aggregate.CreateOrderAggregate;
 import com.imwj.big.market.domain.activity.model.entity.ActivityCountEntity;
 import com.imwj.big.market.domain.activity.model.entity.ActivityEntity;
 import com.imwj.big.market.domain.activity.model.entity.ActivitySkuEntity;
@@ -17,4 +18,5 @@ public interface IActivityRepository {
 
     ActivityCountEntity queryRaffleActivityCountByActivityCountId(Long activityCountId);
 
+    void doSaveOrder(CreateOrderAggregate createOrderAggregate);
 }
