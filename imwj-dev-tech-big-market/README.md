@@ -6,3 +6,4 @@ imwj-dev-tech-big-market-domain：是功能实现层，像是登录的具体实�
 imwj-dev-tech-big-market-trigger：调用http外部接口、定时任务、监听器触发等  
 imwj-dev-tech-big-market-types：用于定义基本的类型、枚举、错误码等内容。 
 
+
