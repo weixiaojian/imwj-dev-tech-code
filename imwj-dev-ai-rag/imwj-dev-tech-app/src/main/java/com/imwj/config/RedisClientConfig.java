@@ -1,4 +1,4 @@
-package com.imwj.app.config;
+package com.imwj.config;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

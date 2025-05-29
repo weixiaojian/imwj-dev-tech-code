@@ -1,4 +1,4 @@
-package com.imwj.app.config;
+package com.imwj.config;
 
 import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.ollama.OllamaEmbeddingClient;

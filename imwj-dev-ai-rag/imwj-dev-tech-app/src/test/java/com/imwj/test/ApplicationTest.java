@@ -1,4 +1,4 @@
-package com.imwj.app.test;
+package com.imwj.test;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
