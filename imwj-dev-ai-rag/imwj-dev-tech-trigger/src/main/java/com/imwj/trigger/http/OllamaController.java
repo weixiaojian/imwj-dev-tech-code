@@ -3,6 +3,7 @@ package com.imwj.trigger.http;
 import com.imwj.api.IAiService;
 import jakarta.annotation.Resource;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatClient;
@@ -16,6 +17,7 @@ import reactor.core.publisher.Flux;
  * @create 2025-05-28 18:09
  * @description Ollama大模型请求
  */
+@Slf4j
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/v1/ollama")
@@ -50,6 +52,7 @@ public class OllamaController implements IAiService {
      */
     @RequestMapping(value = "generate_stream", method = RequestMethod.GET)
     public Flux<ChatResponse> generateStream(@RequestParam String model, @RequestParam String message) {
+        log.info("【generate_stream】请求开始：model={}， message={}", model, message);
         return chatClient.stream(new Prompt(
                 message,
                 OllamaOptions.create()
